@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ultimate" data-variant="night">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="theme-color" content="#07111a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <link rel="manifest" href="../manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Scheherazade+New:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="src/styles/tokens.css" />
+  <link rel="stylesheet" href="src/styles/base.css" />
+  <link rel="stylesheet" href="src/styles/skins.css" />
+  <link rel="stylesheet" href="src/styles/buttons.css" />
+  <link rel="stylesheet" href="src/styles/team-beta2.css" />
+
+  <title>Hikmah Quest — Team Challenge Hub</title>
+</head>
+<body>
+
+  <div class="iq-app">
+    <div class="iq-bg-layer" aria-hidden="true"></div>
+
+    <main class="iq-team-page">
+
+      <!-- Header -->
+      <header class="iq-team-header">
+        <a href="mode-select.html" class="iq-team-header__back">← Back</a>
+        <span class="iq-team-header__title">Team Challenge Hub</span>
+        <span style="width:4rem;"></span><!-- spacer -->
+      </header>
+
+      <!-- بسم الله -->
+      <div style="font-family:'Scheherazade New',serif; font-size:1.1rem; color:rgba(212,175,55,.4); letter-spacing:.04em; text-align:center;" aria-hidden="true">
+        بسم الله الرحمن الرحيم
+      </div>
+
+      <!-- Anonymous Avatar (self) -->
+      <section class="iq-team-section" aria-label="Your identity">
+        <div class="iq-team-section__label">Your identity</div>
+        <div class="iq-avatar-self">
+          <div class="iq-avatar-badge is-hidden" id="tб-self-badge" aria-hidden="true">?</div>
+          <span class="iq-avatar-name" id="tб-self-name">Hidden</span>
+          <button class="iq-avatar-privacy" id="tб-privacy-btn" aria-label="Toggle avatar visibility">
+            👁 Show identity
+          </button>
+        </div>
+        <p style="font-size:.72rem; color:rgba(240,232,213,.35); line-height:1.5; margin:0;">
+          Your anonymous name is randomly generated each session. Hidden by default for conference privacy.
+        </p>
+      </section>
+
+      <!-- Host a Room -->
+      <section class="iq-team-section" aria-label="Host a room">
+        <div class="iq-team-section__label">Host a room</div>
+        <p style="font-size:.78rem; color:rgba(240,232,213,.5); margin:0; line-height:1.5;">
+          Create a room. Share the 4-letter code on screen. Players join on their devices.
+        </p>
+
+        <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
+          <button class="iq-team-btn iq-team-btn--primary" id="tб-host-create">Create Room</button>
+          <button class="iq-team-btn" id="tб-host-stop" style="display:none;">Stop Room</button>
+        </div>
+
+        <!-- Room code display (hidden until room created) -->
+        <div id="tб-host-section" style="display:none;">
+          <div class="iq-room-code-display">
+            <span class="iq-room-code" id="tб-room-code" aria-label="Room code">----</span>
+            <p class="iq-room-code-hint">Share this code with players nearby</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Join a Room -->
+      <section class="iq-team-section" aria-label="Join a room">
+        <div class="iq-team-section__label">Join a room</div>
+        <p style="font-size:.78rem; color:rgba(240,232,213,.5); margin:0; line-height:1.5;">
+          Enter the 4-letter code shown on the host's screen.
+        </p>
+        <div class="iq-room-input">
+          <input
+            type="text"
+            id="tб-join-code"
+            maxlength="4"
+            placeholder="CODE"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="characters"
+            spellcheck="false"
+            aria-label="Room code to join"
+          />
+          <button class="iq-team-btn iq-team-btn--primary" id="tб-join-btn">Join</button>
+          <button class="iq-team-btn" id="tб-leave-btn" style="display:none;">Leave</button>
+        </div>
+      </section>
+
+      <!-- Status -->
+      <div class="iq-team-status" id="tб-status" aria-live="polite"></div>
+
+      <!-- Player lobby (shown when room is open) -->
+      <section class="iq-team-section" id="tб-host-lobby" style="display:none;" aria-label="Players in room">
+        <div class="iq-team-section__label">Players in room</div>
+        <div class="iq-player-grid" id="tб-player-grid" aria-live="polite"></div>
+
+        <button class="iq-team-btn iq-team-btn--primary" id="tб-start-game" disabled style="margin-top:.25rem; align-self:flex-end;">
+          Start Game →
+        </button>
+      </section>
+
+      <!-- Conference Scores (updates live) -->
+      <section class="iq-team-section" aria-label="Live scores" style="display:none;" id="tб-scores-section">
+        <div class="iq-team-section__label">Live Scores</div>
+        <div class="iq-conf-scores" id="tб-conf-scores" aria-live="polite"></div>
+      </section>
+
+      <!-- How to Play -->
+      <section class="iq-team-section" aria-label="How to play Team Mode">
+        <div class="iq-team-section__label">How Team Mode works</div>
+        <ul class="iq-how-to">
+          <li><strong>Host</strong> creates a room and shares the 4-letter code.</li>
+          <li><strong>Players</strong> join on their phones or tablets using the code.</li>
+          <li>Host's screen shows the cards. Players use their devices to call correct/incorrect.</li>
+          <li>Works on the <strong>same Wi-Fi</strong> or same browser (multiple tabs).</li>
+          <li>No accounts. No tracking. Everything stays on-device.</li>
+        </ul>
+        <p style="font-size:.72rem; color:rgba(240,232,213,.3); margin:.5rem 0 0; line-height:1.5;">
+          Beta 2 · Nearby sync uses BroadcastChannel API (same browser, same device, or same browser extension). 
+          Full cross-device support coming in a future update.
+        </p>
+      </section>
+
+      <!-- Legal footer -->
+      <footer style="font-size:.68rem; color:rgba(240,232,213,.25); text-align:center; line-height:1.8;">
+        <a href="beta-participation.html" style="color:inherit;">Beta Participation</a> ·
+        <a href="privacy.html" style="color:inherit;">Privacy</a> ·
+        <a href="terms.html" style="color:inherit;">Terms</a>
+      </footer>
+
+    </main>
+  </div>
+
+  <script type="module" src="src/app/team-beta2.js"></script>
+</body>
+</html>

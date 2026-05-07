@@ -1,0 +1,392 @@
+/* ==========================================================================
+   buttons.css — NurQuest Medallion Button System for Hikmah Quest Beta
+   Pill-shaped CTAs and compact square action buttons ported from NurQuest.
+   Gold glow, glass backdrop, inner ring. Import after tokens.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Medallion-btn — pill-shaped primary action button
+   Used for: Reveal Name, Reveal Answer, Begin Journey, Play Again
+   -------------------------------------------------------------------------- */
+.iq-medallion-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  min-height: 48px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: rgba(7, 14, 27, 0.58);
+  color: var(--iq-gold-pale);
+  letter-spacing: 0.16em;
+  font-family: "Cinzel Decorative", "Palatino Linotype", serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: 1px solid var(--theme-accent);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--theme-accent) 18%, transparent),
+    0 0 20px color-mix(in srgb, var(--theme-glow) 50%, transparent),
+    inset 0 0 16px color-mix(in srgb, var(--theme-glow) 10%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 220ms ease, color 180ms ease;
+  text-decoration: none;
+  white-space: nowrap;
+  font: inherit;
+}
+
+/* Inner ring — the NurQuest signature detail */
+.iq-medallion-btn::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: inherit;
+  border: 1px solid color-mix(in srgb, var(--theme-accent) 38%, transparent);
+  pointer-events: none;
+}
+
+.iq-medallion-btn:hover {
+  transform: translateY(-1px) scale(1.02);
+  color: #fff;
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--theme-accent) 28%, transparent),
+    0 0 34px color-mix(in srgb, var(--theme-glow) 75%, transparent),
+    inset 0 0 20px color-mix(in srgb, var(--theme-glow) 16%, transparent);
+}
+
+.iq-medallion-btn:focus-visible {
+  outline: 2px solid var(--theme-accent);
+  outline-offset: 4px;
+}
+
+.iq-medallion-btn:disabled,
+.iq-medallion-btn[disabled] {
+  opacity: 0.38;
+  pointer-events: none;
+}
+
+.iq-medallion-btn--success {
+  color: var(--theme-success);
+  border-color: color-mix(in srgb, var(--theme-success) 55%, transparent);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--theme-success) 18%, transparent),
+    0 0 18px color-mix(in srgb, var(--theme-success) 38%, transparent),
+    inset 0 0 12px color-mix(in srgb, var(--theme-success) 10%, transparent);
+}
+
+.iq-medallion-btn--danger {
+  color: var(--theme-danger);
+  border-color: color-mix(in srgb, var(--theme-danger) 55%, transparent);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--theme-danger) 18%, transparent),
+    0 0 18px color-mix(in srgb, var(--theme-danger) 38%, transparent),
+    inset 0 0 12px color-mix(in srgb, var(--theme-danger) 10%, transparent);
+}
+
+/* Inside tile btn-rail: compact sizing */
+.iq-tile-btn-rail .iq-medallion-btn {
+  font-size: 0.7rem;
+  min-width: 110px;
+  min-height: 42px;
+  padding: 8px 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Medallion — compact square action button (✓, ✗, −)
+   Used for: Got It (check), Incorrect (x), Skip (skip)
+   -------------------------------------------------------------------------- */
+.iq-medallion {
+  width: clamp(2.6rem, 4vw, 3.5rem);
+  height: clamp(2.6rem, 4vw, 3.5rem);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,0.18), transparent 24%),
+    radial-gradient(circle at 50% 50%, rgba(7,14,27,0.88), rgba(7,14,27,0.94));
+  color: var(--theme-accent);
+  font-size: 1.15rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.06),
+    0 0 18px rgba(0,0,0,0.3),
+    0 0 14px color-mix(in srgb, var(--theme-glow) 30%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 160ms ease, box-shadow 200ms ease;
+  cursor: pointer;
+  border: 1.5px solid color-mix(in srgb, var(--theme-accent) 55%, transparent);
+  font: inherit;
+}
+
+.iq-medallion:hover { transform: scale(1.08); }
+
+.iq-medallion:focus-visible {
+  outline: 2px solid var(--theme-accent);
+  outline-offset: 3px;
+}
+
+.iq-medallion:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Tiny label below the symbol */
+.iq-medallion__label {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 0.42rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+/* B4 — Luminous Orb: radial-gradient sphere, red/green fill */
+.iq-medallion--check {
+  background: radial-gradient(circle at 35% 30%, rgba(140, 240, 180, 0.55), rgba(50, 160, 90, 0.22));
+  border: 1px solid rgba(100, 210, 130, 0.5);
+  color: rgba(200, 255, 220, 0.92);
+  box-shadow:
+    0 0 22px rgba(100, 210, 130, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+/* X / wrong */
+.iq-medallion--x {
+  background: radial-gradient(circle at 35% 30%, rgba(255, 140, 140, 0.55), rgba(180, 50, 50, 0.22));
+  border: 1px solid rgba(220, 90, 90, 0.5);
+  color: rgba(255, 200, 200, 0.92);
+  box-shadow:
+    0 0 22px rgba(220, 90, 90, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.iq-medallion--check:hover,
+.iq-medallion--x:hover {
+  box-shadow:
+    0 0 36px currentColor,
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Skip */
+.iq-medallion--skip {
+  border: 1px solid color-mix(in srgb, var(--iq-text-muted) 40%, transparent);
+  color: var(--iq-text-muted);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--iq-text-muted) 10%, transparent),
+    0 0 8px color-mix(in srgb, var(--iq-text-muted) 15%, transparent),
+    inset 0 0 6px color-mix(in srgb, var(--iq-text-muted) 8%, transparent);
+}
+
+/* In a tile btn-rail: slightly smaller */
+.iq-tile-btn-rail .iq-medallion {
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 1rem;
+}
+
+/* ── Draggable action dock ───────────────────────────────────────────────── */
+.iq-action-dock {
+  position: fixed;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  min-width: 17rem;
+  max-width: 92vw;
+  background: rgba(5, 10, 22, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 1.1rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+  padding: 0 0 0.25rem;
+  user-select: none;
+  display: none; /* shown by JS when a reveal happens */
+}
+
+.iq-action-dock__grip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.22rem 0;
+  cursor: grab;
+  color: rgba(240, 232, 213, 0.28);
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 0.1rem;
+  transition: color 0.15s;
+}
+.iq-action-dock__grip:hover { color: rgba(240, 232, 213, 0.55); }
+.iq-action-dock__grip:active { cursor: grabbing; }
+
+/* sub-rows hidden by default — JS toggles them */
+#iq-dock-name-row,
+#iq-dock-score-row { display: none; }
+
+/* ── Side rails — Nintendo Switch Joy-Con style ─────────────────────────── */
+.iq-side-rail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.9rem;
+  flex: 0 0 2.75rem;
+  padding: 0.5rem 0;
+  z-index: 10;
+}
+
+/* On narrow portrait mobile tiles stack vertically — hide rails, use dock */
+@media (max-width: 600px) {
+  .iq-side-rail { display: none; }
+}
+
+/* ── Rail reveal button — vertical text, sits above ✗/✓ in each rail ──────── */
+.iq-rail-reveal {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  background: rgba(212, 166, 74, 0.10);
+  border: 1px solid rgba(240, 202, 114, 0.30);
+  border-radius: 999px;
+  color: rgba(240, 202, 114, 0.75);
+  font-family: "Lora", serif;
+  font-size: 0.60rem;
+  letter-spacing: 0.09em;
+  padding: 0.85rem 0.26rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.12s;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.iq-rail-reveal:hover {
+  background: rgba(212, 166, 74, 0.22);
+  border-color: rgba(240, 202, 114, 0.55);
+  color: rgba(240, 202, 114, 0.96);
+  transform: rotate(180deg) scale(1.04);
+}
+
+/* ── P4 Ghost Pill — in-tile scoring buttons (✓ Got It / ✗ Missed It) ────── */
+.iq-ghost-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+  padding: 0.5rem 0.7rem 0.1rem;
+}
+
+.iq-ghost-pill {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  border: 1px solid rgba(240, 202, 114, 0.28);
+  border-radius: 999px;
+  padding: 0.52rem 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(248, 233, 199, 0.88);
+  font-family: "Lora", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.14s, filter 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.iq-ghost-pill--x {
+  background: rgba(180, 40, 40, 0.14);
+  border-color: rgba(248, 113, 113, 0.38);
+  color: rgba(255, 180, 180, 0.90);
+}
+
+.iq-ghost-pill--check {
+  background: rgba(46, 161, 85, 0.16);
+  border-color: rgba(110, 231, 183, 0.45);
+  color: rgba(180, 255, 210, 0.90);
+}
+
+.iq-ghost-pill:hover { transform: scale(1.04); filter: brightness(1.14); }
+.iq-ghost-pill:disabled { opacity: 0.35; cursor: not-allowed; transform: none; filter: none; }
+
+/* Subtle skip text button */
+.iq-skip-link {
+  background: none;
+  border: none;
+  color: rgba(205, 191, 149, 0.38);
+  font-family: "Lora", serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  padding: 0.25rem 0.75rem;
+  transition: color 0.18s;
+  font: inherit;
+  text-transform: lowercase;
+}
+
+.iq-skip-link:hover { color: rgba(205, 191, 149, 0.72); }
+
+/* ── Score float toast — "+2 pts" popup on correct ──────────────────────── */
+.iq-toast {
+  position: fixed;
+  bottom: 32%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  pointer-events: none;
+  text-align: center;
+  opacity: 0;
+}
+
+.iq-toast.is-visible {
+  animation: iq-toast-rise 1.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@keyframes iq-toast-rise {
+  0%   { opacity: 0;    transform: translateX(-50%) translateY(0px); }
+  12%  { opacity: 1;    transform: translateX(-50%) translateY(-8px); }
+  65%  { opacity: 1;    transform: translateX(-50%) translateY(-28px); }
+  100% { opacity: 0;    transform: translateX(-50%) translateY(-52px); }
+}
+
+.iq-toast__pts {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: rgba(180, 255, 210, 0.96);
+  text-shadow:
+    0 0 18px rgba(100, 210, 130, 0.85),
+    0 2px 8px rgba(0, 0, 0, 0.7);
+  white-space: nowrap;
+}
+
+.iq-toast__pts--miss {
+  color: rgba(255, 180, 180, 0.90);
+  text-shadow:
+    0 0 18px rgba(220, 90, 90, 0.65),
+    0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.iq-toast__label {
+  font-family: "Lora", serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(240, 232, 213, 0.62);
+  margin-top: 0.1rem;
+}
+
+/* Paired row for action button groups (✓ + ✗, or ✓ + −) */
+.iq-medallion-pair {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}

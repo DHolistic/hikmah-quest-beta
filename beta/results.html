@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ultimate" data-variant="night">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="copyright" content="© 2026 Donya G. Berhan, LPC. All Rights Reserved.">
+  <meta name="author" content="Donya G. Berhan, LPC">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="description" content="Hikmah Quest — Journey complete. Review your score, streak, and missed cards." />
+  <meta name="theme-color" content="#07111a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Hikmah Quest" />
+
+  <link rel="manifest" href="../manifest.json" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Scheherazade+New:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="src/styles/tokens.css" />
+  <link rel="stylesheet" href="src/styles/base.css" />
+  <link rel="stylesheet" href="src/styles/tiles.css" />
+  <link rel="stylesheet" href="src/styles/skins.css" />
+  <link rel="stylesheet" href="src/styles/setup.css" />
+  <link rel="stylesheet" href="src/styles/buttons.css" />
+
+  <title>Hikmah Quest — Results</title>
+</head>
+<body>
+
+  <div class="iq-app">
+    <div class="iq-page" id="page-results" data-variant="night">
+
+      <!-- ── Zoomable background layer (JS controls --bg-zoom/tx/ty) ─────────── -->
+      <div class="iq-bg-layer" aria-hidden="true"></div>
+
+      <!-- ── Background display options panel ─────────────────────────────────── -->
+      <div
+        class="iq-display-panel"
+        id="iq-display-panel"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Background display options"
+      >
+        <div class="iq-display-panel__head">
+          <span class="iq-display-panel__title">Display</span>
+          <button class="iq-display-panel__close" id="iq-display-close" aria-label="Close">×</button>
+        </div>
+        <div class="iq-display-panel__body">
+          <div class="iq-display-group">
+            <span class="iq-display-label">Zoom</span>
+            <div class="iq-display-zoom">
+              <button class="iq-display-ctrl" data-display-action="zoom-out" aria-label="Zoom out">−</button>
+              <span class="iq-display-zoom__value" id="iq-zoom-value">100%</span>
+              <button class="iq-display-ctrl" data-display-action="zoom-in" aria-label="Zoom in">+</button>
+            </div>
+          </div>
+          <div class="iq-display-group">
+            <span class="iq-display-label">Shift</span>
+            <div class="iq-display-dpad">
+              <button class="iq-display-ctrl iq-display-ctrl--up"     data-display-action="pan-up"    aria-label="Pan up">↑</button>
+              <button class="iq-display-ctrl iq-display-ctrl--left"   data-display-action="pan-left"  aria-label="Pan left">←</button>
+              <button class="iq-display-ctrl iq-display-ctrl--center" data-display-action="reset-pan" aria-label="Center" title="Center pan">○</button>
+              <button class="iq-display-ctrl iq-display-ctrl--right"  data-display-action="pan-right" aria-label="Pan right">→</button>
+              <button class="iq-display-ctrl iq-display-ctrl--down"   data-display-action="pan-down"  aria-label="Pan down">↓</button>
+            </div>
+          </div>
+          <button class="iq-display-ctrl iq-display-ctrl--reset" data-display-action="reset-all">Reset View</button>
+        </div>
+      </div>
+
+      <!-- ── Header ─────────────────────────────────────────────────────────── -->
+      <header class="iq-header" role="banner">
+        <a
+          href="index.html"
+          class="iq-btn iq-btn--ghost iq-btn--sm"
+          aria-label="Return to home screen"
+        >← Home</a>
+
+        <div class="iq-header-center">
+          <span class="iq-header-title">Hikmah Quest</span>
+        </div>
+
+        <!-- Right slot: display options toggle -->
+        <button
+          class="iq-display-toggle"
+          id="iq-display-toggle"
+          aria-label="Background display options"
+          aria-expanded="false"
+          aria-controls="iq-display-panel"
+          title="Background display options"
+        >⛶</button>
+      </header>
+
+      <!-- ── Main results content ────────────────────────────────────────────── -->
+      <main
+        class="iq-results-main iq-section"
+        id="results-main"
+        aria-labelledby="results-heading"
+      >
+
+        <!-- Completion emblem -->
+        <div class="iq-results-emblem">
+          <span class="iq-results-icon" id="results-icon" aria-hidden="true"></span>
+          <h1 class="iq-title" id="results-heading">Journey Complete</h1>
+          <p class="iq-subtitle" id="results-tagline">
+            <!-- JS fills: "Excellent!", "Well done!", "Keep practising!", etc. -->
+          </p>
+        </div>
+
+        <!-- Score summary — 3-column grid filled by JS -->
+        <div
+          class="iq-results-score"
+          id="results-score"
+          role="region"
+          aria-label="Score summary"
+          aria-live="polite"
+        >
+          <div class="iq-results-score__cell">
+            <span class="iq-results-score__value" id="iq-results-score">—</span>
+            <span class="iq-results-score__label">Score</span>
+          </div>
+          <div class="iq-results-score__cell">
+            <span class="iq-results-score__value" id="iq-results-streak">—</span>
+            <span class="iq-results-score__label">Streak</span>
+          </div>
+          <div class="iq-results-score__cell">
+            <span class="iq-results-score__value" id="iq-results-correct">—</span>
+            <span class="iq-results-score__label">Accuracy</span>
+          </div>
+        </div>
+
+        <!-- Missed cards review -->
+        <section
+          class="iq-results-review"
+          id="results-review"
+          aria-labelledby="review-heading"
+        >
+          <h2 class="iq-subtitle" id="review-heading">Review Missed Cards</h2>
+          <div
+            class="iq-missed-list"
+            id="missed-list"
+            role="list"
+            aria-label="Missed cards"
+            aria-live="polite"
+          >
+            <!-- Each item rendered by JS as:
+              <div class="iq-missed-card" role="listitem">
+                <p class="iq-missed-card__question">…</p>
+                <p class="iq-missed-card__answer">…</p>
+              </div>
+            -->
+          </div>
+        </section>
+
+      
+        <div style="display:none">
+          <span id="iq-results-missed"></span>
+          <span id="iq-results-total"></span>
+          <span id="iq-results-source"></span>
+          <span id="iq-results-mode"></span>
+          <span id="iq-results-diff"></span>
+          <span id="iq-results-team-a"></span>
+          <span id="iq-results-team-b"></span>
+        </div>
+
+      </main>
+
+      <!-- ── Footer actions ──────────────────────────────────────────────────── -->
+      <footer class="iq-footer iq-section" role="contentinfo">
+        <button
+          class="iq-btn iq-btn--primary iq-btn--lg"
+          id="iq-play-again-btn"
+          aria-label="Play again with the same settings"
+        >
+          Play Again
+        </button>
+        <a
+          href="index.html"
+          class="iq-btn iq-btn--ghost iq-btn--lg"
+          aria-label="Return to source selection"
+        >
+          Change Source
+        </a>
+      </footer>
+
+    </div><!-- /#page-results -->
+  </div><!-- /.iq-app -->
+
+  <noscript>
+    <p style="padding:2rem;text-align:center;font-family:serif;color:#f0e8d5;">
+      Hikmah Quest requires JavaScript to run. Please enable JavaScript in your browser.
+    </p>
+  </noscript>
+
+  <script type="module" src="src/app/bootstrap.js?v=20260501"></script>
+</body>
+</html>

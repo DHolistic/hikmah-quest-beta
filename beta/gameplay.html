@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ultimate" data-variant="night">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="copyright" content="© 2026 Donya G. Berhan, LPC. All Rights Reserved.">
+  <meta name="author" content="Donya G. Berhan, LPC">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="description" content="Hikmah Quest — Islamic trivia gameplay. Two-tile challenge with the 99 Names of Allah and Q&amp;A." />
+  <meta name="theme-color" content="#07111a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Hikmah Quest" />
+
+  <link rel="manifest" href="../manifest.json" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Scheherazade+New:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="src/styles/tokens.css" />
+  <link rel="stylesheet" href="src/styles/base.css" />
+  <link rel="stylesheet" href="src/styles/tiles.css" />
+  <link rel="stylesheet" href="src/styles/skins.css" />
+  <link rel="stylesheet" href="src/styles/setup.css" />
+  <link rel="stylesheet" href="src/styles/buttons.css" />
+  <link rel="stylesheet" href="src/styles/mobile.css" />
+  <link rel="stylesheet" href="src/styles/fx.css" />
+
+  <title>Hikmah Quest — Gameplay</title>
+</head>
+<body>
+
+  <div class="iq-app">
+    <div class="iq-page" id="page-gameplay">
+
+      <div class="iq-bg-layer" aria-hidden="true"></div>
+
+      <div
+        class="iq-display-panel"
+        id="iq-display-panel"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Background display options"
+      >
+        <div class="iq-display-panel__head">
+          <span class="iq-display-panel__title">Display</span>
+          <button class="iq-display-panel__close" id="iq-display-close" aria-label="Close">×</button>
+        </div>
+        <div class="iq-display-panel__body">
+          <div class="iq-display-group">
+            <span class="iq-display-label">Zoom</span>
+            <div class="iq-display-zoom">
+              <button class="iq-display-ctrl" data-display-action="zoom-out" aria-label="Zoom out">−</button>
+              <span class="iq-display-zoom__value" id="iq-zoom-value">100%</span>
+              <button class="iq-display-ctrl" data-display-action="zoom-in" aria-label="Zoom in">+</button>
+            </div>
+          </div>
+          <div class="iq-display-group">
+            <span class="iq-display-label">Shift</span>
+            <div class="iq-display-dpad">
+              <button class="iq-display-ctrl iq-display-ctrl--up" data-display-action="pan-up" aria-label="Pan up">↑</button>
+              <button class="iq-display-ctrl iq-display-ctrl--left" data-display-action="pan-left" aria-label="Pan left">←</button>
+              <button class="iq-display-ctrl iq-display-ctrl--center" data-display-action="reset-pan" aria-label="Center" title="Center pan">○</button>
+              <button class="iq-display-ctrl iq-display-ctrl--right" data-display-action="pan-right" aria-label="Pan right">→</button>
+              <button class="iq-display-ctrl iq-display-ctrl--down" data-display-action="pan-down" aria-label="Pan down">↓</button>
+            </div>
+          </div>
+          <button class="iq-display-ctrl iq-display-ctrl--reset" data-display-action="reset-all">Reset View</button>
+        </div>
+      </div>
+
+      <div
+        class="iq-progress"
+        role="progressbar"
+        aria-label="Round progress"
+        aria-valuenow="0"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      >
+        <div class="iq-progress__fill" id="iq-progress"></div>
+      </div>
+
+      <header class="iq-header" role="banner">
+        <a
+          href="index.html"
+          class="iq-btn iq-btn--ghost iq-btn--sm"
+          aria-label="Exit game and return to home"
+          style="font-size:0.7rem; padding:0.3rem 0.55rem;"
+        >←</a>
+
+        <div class="iq-header-center" aria-live="polite">
+          <span
+            class="iq-title iq-title--sm"
+            id="realm-label"
+            aria-label="Current realm"
+          >Loading…</span>
+        </div>
+
+        <div
+          class="iq-scorebar"
+          id="iq-scorebar"
+          role="status"
+          aria-label="Current score"
+          aria-live="polite"
+        ></div>
+
+        <div class="iq-header-menu" id="iq-header-menu">
+          <button
+            class="iq-header-menu__trigger"
+            id="iq-header-menu-trigger"
+            aria-label="Game menu"
+            aria-expanded="false"
+            aria-controls="iq-header-menu-panel"
+            title="Score, display, feedback"
+          >☰</button>
+          <div class="iq-header-menu__panel" id="iq-header-menu-panel" role="menu">
+            <!-- Scorebar moves into the panel via base.css selector -->
+            <div class="iq-header-menu__row">
+              <button
+                id="bsml-trigger"
+                class="iq-display-toggle"
+                aria-label="Astaghfirullah Correction Space"
+                title="Astaghfirullah Correction Space"
+                style="font-family:'Scheherazade New',serif; font-size:1rem; letter-spacing:.02em; color:var(--theme-accent);"
+              >أستغفر الله</button>
+              <button
+                class="iq-display-toggle"
+                id="iq-display-toggle"
+                aria-label="Background display options"
+                aria-expanded="false"
+                aria-controls="iq-display-panel"
+                title="Background display options"
+              >⛶</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <script>
+      (function(){
+        var menu = document.getElementById('iq-header-menu');
+        var trig = document.getElementById('iq-header-menu-trigger');
+        if (!menu || !trig) return;
+        function close() { menu.classList.remove('is-open'); trig.setAttribute('aria-expanded','false'); }
+        function toggle() {
+          var open = menu.classList.toggle('is-open');
+          trig.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        trig.addEventListener('click', function(e){ e.stopPropagation(); toggle(); });
+        document.addEventListener('click', function(e){ if (!menu.contains(e.target)) close(); });
+        document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+      })();
+      </script>
+
+      <main class="iq-board" id="game-board" aria-label="Game board">
+        <div class="iq-tile-row">
+          <div class="iq-side-rail iq-side-rail--left" id="iq-side-left" aria-label="Name actions">
+            <button class="iq-rail-reveal" data-action="revealName" id="iq-rail-reveal-name" aria-label="Reveal name">Reveal Name</button>
+            <button class="iq-medallion iq-medallion--x" data-action="nameIncorrect" disabled aria-label="Missed name" style="display:none">✗</button>
+            <button class="iq-medallion iq-medallion--check" data-action="nameCorrect" disabled aria-label="Got name" style="display:none">✓</button>
+          </div>
+
+          <div
+            class="iq-tile iq-tile--left"
+            id="iq-tile-left"
+            role="region"
+            aria-label="Name of Allah challenge"
+            aria-live="polite"
+          >
+            <div class="iq-tile-loading" aria-hidden="true">Loading Names…</div>
+          </div>
+
+          <div
+            class="iq-tile iq-tile--right"
+            id="iq-tile-right"
+            role="region"
+            aria-label="Question and Answer"
+            aria-live="polite"
+          >
+            <div class="iq-tile-loading" aria-hidden="true">Loading Question…</div>
+          </div>
+
+          <div class="iq-side-rail iq-side-rail--right" id="iq-side-right" aria-label="Score actions">
+            <button class="iq-rail-reveal" data-action="revealAnswer" id="iq-rail-reveal-answer" aria-label="Reveal answer">Reveal Answer</button>
+            <button class="iq-medallion iq-medallion--x" data-action="incorrect" disabled aria-label="Incorrect" style="display:none">✗</button>
+            <button class="iq-medallion iq-medallion--check" data-action="correct" disabled aria-label="Correct" style="display:none">✓</button>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <div class="iq-toast" id="iq-toast" aria-live="assertive" aria-atomic="true"></div>
+
+  <!-- ── Beta Feedback modal (same pattern as index + mode-select) ─────────── -->
+  <div id="bsml-overlay" aria-modal="true" role="dialog" aria-label="Beta Feedback" style="
+    display:none; position:fixed; inset:0; z-index:9999;
+    background:rgba(0,0,0,.72); backdrop-filter:blur(5px);
+    align-items:flex-start; justify-content:center; padding-top:4vh; overflow-y:auto;">
+    <div style="
+      background:rgba(7,17,26,.96); border:1px solid rgba(212,175,55,.28);
+      border-radius:14px; padding:1.6rem 1.5rem; max-width:420px; width:92%;
+      color:#f0e8d5; font-family:'Lora',serif; box-shadow:0 0 48px rgba(0,0,0,.6);
+      margin-bottom:2rem;">
+
+      <!-- DB monogram seal -->
+      <div style="text-align:center; margin-bottom:1rem;">
+        <div style="width:56px; height:56px; border-radius:50%; background:radial-gradient(circle at 35% 35%, rgba(212,175,55,.22), rgba(7,17,26,.9)); border:1.5px solid rgba(212,175,55,.6); box-shadow:0 0 18px rgba(212,175,55,.18), inset 0 0 12px rgba(212,175,55,.08); display:inline-flex; align-items:center; justify-content:center; margin:0 auto;">
+          <span style="font-family:'Cinzel Decorative',serif; font-size:1.1rem; font-weight:700; color:#d4af37; letter-spacing:.04em;">DB</span>
+        </div>
+      </div>
+
+      <div style="text-align:center; font-family:'Scheherazade New',serif; font-size:1.15rem; color:rgba(212,175,55,.55); margin-bottom:1rem;">بسم الله الرحمن الرحيم</div>
+      <p style="margin:0 0 .95rem; text-align:center; font-size:.73rem; letter-spacing:.02em; color:rgba(240,232,213,.62);">Round 2 Beta Feedback | <span lang="ar" dir="rtl">ملاحظات المرحلة الثانية</span></p>
+
+      <!-- Card context (shown when a card is active) -->
+      <div id="bf-card-ctx" style="display:none; background:rgba(240,232,213,.04); border:1px solid rgba(240,232,213,.08); border-radius:8px; padding:.65rem .85rem; margin-bottom:.9rem; font-size:.76rem;">
+        <div style="display:flex; gap:.5rem; margin-bottom:.25rem;">
+          <span style="color:rgba(240,232,213,.45); min-width:88px; text-transform:uppercase; font-size:.68rem; letter-spacing:.06em;">Name of Allah | <span lang="ar" dir="rtl">اسم الله</span></span>
+          <span id="bf-ctx-name" style="color:#f0e8d5; font-weight:600;"></span>
+        </div>
+        <div style="display:flex; gap:.5rem; margin-bottom:.25rem;">
+          <span style="color:rgba(240,232,213,.45); min-width:88px; text-transform:uppercase; font-size:.68rem; letter-spacing:.06em;">Meaning | <span lang="ar" dir="rtl">المعنى</span></span>
+          <span id="bf-ctx-meaning" style="color:#f0e8d5;"></span>
+        </div>
+        <div style="display:flex; gap:.5rem; margin-bottom:.25rem;">
+          <span style="color:rgba(240,232,213,.45); min-width:88px; text-transform:uppercase; font-size:.68rem; letter-spacing:.06em;">Reference | <span lang="ar" dir="rtl">المرجع</span></span>
+          <span id="bf-ctx-ref" style="color:#f0e8d5;"></span>
+        </div>
+        <div style="border-left:2px solid rgba(212,175,55,.35); padding-left:.65rem; margin-top:.45rem;">
+          <p style="font-size:.68rem; color:rgba(240,232,213,.45); text-transform:uppercase; letter-spacing:.06em; margin:0 0 .15rem;">Question | <span lang="ar" dir="rtl">السؤال</span></p>
+          <p id="bf-ctx-question" style="color:#f0e8d5; margin:0 0 .4rem; line-height:1.4; font-size:.79rem;"></p>
+          <p style="font-size:.68rem; color:rgba(240,232,213,.45); text-transform:uppercase; letter-spacing:.06em; margin:0 0 .15rem;">Answer | <span lang="ar" dir="rtl">الإجابة</span></p>
+          <p id="bf-ctx-answer" style="color:#f0e8d5; margin:0; line-height:1.4; font-size:.79rem;"></p>
+        </div>
+      </div>
+
+      <!-- Issue type (shown when card context present) -->
+      <div id="bf-issue-wrap" style="display:none; margin-bottom:.7rem;">
+        <label style="display:block; font-size:.72rem; color:rgba(240,232,213,.5); margin-bottom:.22rem;">Issue Type | <span lang="ar" dir="rtl">نوع المشكلة</span></label>
+        <select id="bf-issue" style="
+          width:100%; box-sizing:border-box; background:rgba(255,255,255,.06);
+          border:1px solid rgba(212,175,55,.18); border-radius:6px;
+          padding:.45rem .7rem; color:#f0e8d5; font-family:'Lora',serif;
+          font-size:.82rem; outline:none; appearance:none;">
+          <option value="">— choose an issue type | اختر نوع المشكلة —</option>
+          <option value="wrong-question">Wrong / Misleading Question | سؤال غير دقيق</option>
+          <option value="wrong-answer">Wrong Answer | إجابة غير صحيحة</option>
+          <option value="wrong-reference">Wrong Reference (Hadith / Source) | مرجع غير صحيح</option>
+          <option value="incorrect-ayah">Incorrect Ayah or Citation | آية أو توثيق غير صحيح</option>
+          <option value="wrong-name-link">Wrong Name of Allah Link | ربط غير صحيح باسم الله</option>
+          <option value="translation-issue">Translation Issue | مشكلة في الترجمة</option>
+          <option value="other">Other | أخرى</option>
+        </select>
+      </div>
+
+      <label style="display:block; font-size:.72rem; color:rgba(240,232,213,.5); margin-bottom:.22rem;" id="bf-text-label">Your Feedback | <span lang="ar" dir="rtl">ملاحظاتك</span></label>
+      <textarea id="bf-text" placeholder="Share your thoughts, bug reports, card corrections... | شارك ملاحظاتك أو التصحيحات..." rows="4" style="
+        width:100%; box-sizing:border-box; background:rgba(255,255,255,.06);
+        border:1px solid rgba(212,175,55,.18); border-radius:6px;
+        padding:.45rem .7rem; color:#f0e8d5; font-family:'Lora',serif;
+        font-size:.82rem; margin-bottom:.9rem; outline:none; resize:vertical;"></textarea>
+
+      <div style="display:flex; gap:.5rem; justify-content:flex-end;">
+        <button id="bf-cancel" style="
+          background:transparent; border:1px solid rgba(240,232,213,.22);
+          border-radius:6px; padding:.4rem .9rem; color:rgba(240,232,213,.55);
+          font-size:.78rem; cursor:pointer; font-family:'Lora',serif;">Cancel | إلغاء</button>
+        <button id="bf-submit" style="
+          background:linear-gradient(135deg,#b8912a,#d4af37); border:none;
+          border-radius:6px; padding:.4rem 1.1rem; color:#07111a;
+          font-size:.78rem; font-weight:700; cursor:pointer; font-family:'Cinzel Decorative',serif;">Submit → | إرسال</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    var trigger   = document.getElementById('bsml-trigger');
+    var overlay   = document.getElementById('bsml-overlay');
+    var cancelBtn = document.getElementById('bf-cancel');
+    var submitBtn = document.getElementById('bf-submit');
+    var textEl    = document.getElementById('bf-text');
+    var cardCtx   = document.getElementById('bf-card-ctx');
+    var issueWrap = document.getElementById('bf-issue-wrap');
+    var issueEl   = document.getElementById('bf-issue');
+
+    // Bootstrap.js sets this on window so the button can read current card state
+    window.__iqGetCurrentCard = null;
+
+    function openFeedback() {
+      textEl.value = '';
+      issueEl.value = '';
+      var card = window.__iqGetCurrentCard ? window.__iqGetCurrentCard() : null;
+      if (card) {
+        document.getElementById('bf-ctx-name').textContent     = card.nameOfAllah    || '—';
+        document.getElementById('bf-ctx-meaning').textContent  = card.nameMeaning    || '—';
+        document.getElementById('bf-ctx-ref').textContent      = card.referenceHint  || card.sourceTitle || '—';
+        document.getElementById('bf-ctx-question').textContent = card.promptText     || card.question    || '—';
+        document.getElementById('bf-ctx-answer').textContent   = card.answerText     || card.answer      || '—';
+        cardCtx.style.display   = 'block';
+        issueWrap.style.display = 'block';
+        document.getElementById('bf-text-label').innerHTML = 'Additional notes (optional) | <span lang="ar" dir="rtl">ملاحظات إضافية (اختياري)</span>';
+        textEl.placeholder = 'Provide the correct ayah, reference, or any extra detail... | اكتب الآية أو المرجع الصحيح أو أي توضيح إضافي...';
+      } else {
+        cardCtx.style.display   = 'none';
+        issueWrap.style.display = 'none';
+        document.getElementById('bf-text-label').innerHTML = 'Your Feedback | <span lang="ar" dir="rtl">ملاحظاتك</span>';
+        textEl.placeholder = 'Share your thoughts, bug reports, ideas... | شارك ملاحظاتك أو البلاغات أو الأفكار...';
+      }
+      overlay.style.display = 'flex';
+      setTimeout(function(){ (card ? issueEl : textEl).focus(); }, 120);
+    }
+
+    function closeFeedback() { overlay.style.display = 'none'; }
+
+    trigger.addEventListener('click', openFeedback);
+    cancelBtn.addEventListener('click', closeFeedback);
+    overlay.addEventListener('click', function(e){ if(e.target===overlay) closeFeedback(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeFeedback(); });
+
+    submitBtn.addEventListener('click', function(){
+      var text  = textEl.value.trim();
+      var issue = issueEl.value;
+      var card  = window.__iqGetCurrentCard ? window.__iqGetCurrentCard() : null;
+
+      if (card && !issue) { issueEl.focus(); issueEl.style.border='1px solid #e05c5c'; return; }
+      issueEl.style.border = '';
+
+      if (!text && !issue) { textEl.focus(); return; }
+
+      var page = window.location.pathname.split('/').pop() || 'gameplay';
+
+      var bodyLines = ['Page: ' + page];
+      if (card) {
+        bodyLines.push(
+          'Name of Allah: '  + (card.nameOfAllah   || ''),
+          'Meaning: '        + (card.nameMeaning   || ''),
+          'Pack/Deck: '      + (card.pack          || '') + ' / ' + (card.deckName || ''),
+          'Category: '       + (card.category      || ''),
+          'Difficulty: '     + (card.difficulty    || ''),
+          'Reference: '      + (card.referenceHint || card.sourceTitle || ''),
+          'Question: '       + (card.promptText    || card.question    || ''),
+          'Answer: '         + (card.answerText    || card.answer      || ''),
+          'Issue Type: '     + issue
+        );
+      }
+      if (text) bodyLines.push('', 'Notes: ' + text);
+
+      var sub  = encodeURIComponent(card
+        ? 'Hikmah Quest Card Issue — ' + (card.nameOfAllah || page)
+        : 'Hikmah Quest Beta Feedback — ' + page);
+      var body = encodeURIComponent(bodyLines.join('\n'));
+      window.location.href = 'mailto:donyaberhan@gmail.com?subject=' + sub + '&body=' + body;
+      closeFeedback();
+    });
+  })();
+  </script>
+
+  <div class="iq-action-dock" id="iq-action-dock">
+    <div class="iq-action-dock__grip" id="iq-dock-grip" title="Drag to move">
+      <span>⠿</span>
+    </div>
+    <div class="iq-ghost-row" id="iq-dock-name-row">
+      <button class="iq-ghost-pill iq-ghost-pill--x" data-dock-action="nameIncorrect" aria-label="Missed name">✗ Missed It</button>
+      <button class="iq-ghost-pill iq-ghost-pill--check" data-dock-action="nameCorrect" aria-label="Got name">✓ Got It <em>+1</em></button>
+    </div>
+    <div class="iq-ghost-row" id="iq-dock-score-row">
+      <button class="iq-ghost-pill iq-ghost-pill--x" data-dock-action="incorrect" aria-label="Incorrect">✗ Missed It</button>
+      <button class="iq-ghost-pill iq-ghost-pill--check" data-dock-action="correct" aria-label="Correct">✓ Got It</button>
+    </div>
+  </div>
+
+  <noscript>
+    <p style="padding:2rem;text-align:center;font-family:serif;color:#f0e8d5;">
+      Hikmah Quest requires JavaScript to run. Please enable JavaScript in your browser.
+    </p>
+  </noscript>
+
+  <script type="module" src="src/app/bootstrap.js?v=20260501"></script>
+</body>
+</html>

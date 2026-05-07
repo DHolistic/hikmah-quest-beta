@@ -1,0 +1,128 @@
+/* ==========================================================================
+   tokens.css — Hikmah Quest Beta Design Tokens
+   All CSS custom properties. Import this file first in every other sheet.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Base tokens
+   -------------------------------------------------------------------------- */
+:root {
+  /* Background */
+  --iq-bg: #070e1b;
+
+  /* Text */
+  --iq-text:       rgba(240, 232, 213, 0.96);
+  --iq-text-muted: rgba(240, 232, 213, 0.52);
+
+  /* Gold palette */
+  --iq-gold:      #d4af37;
+  --iq-gold-pale: rgba(240, 203, 128, 0.84);
+  --iq-gold-dim:  rgba(240, 203, 128, 0.28);
+
+  /* Spacing scale */
+  --iq-space-1: 0.5rem;
+  --iq-space-2: 1rem;
+  --iq-space-3: 1.5rem;
+  --iq-space-4: 2rem;
+  --iq-space-5: 3rem;
+
+  /* Border radii */
+  --iq-radius-sm: 0.75rem;
+  --iq-radius-md: 1.25rem;
+  --iq-radius-lg: 2rem;
+
+  /* Safe-area insets (PWA / notch support) */
+  --iq-safe-top:    env(safe-area-inset-top,    0px);
+  --iq-safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* Tile layout */
+  --iq-tile-gap:   1.25rem;
+  --iq-tile-min-w: 10rem;
+  --iq-tile-aspect: 5 / 7;
+
+  /* --------------------------------------------------------------------------
+     Theme tokens — default values (ultimate / teal-luminous)
+     Overridden by [data-theme] selectors below.
+     -------------------------------------------------------------------------- */
+  --theme-accent:        rgba(142, 220, 229, 0.82);
+  --theme-accent-soft:   rgba(142, 220, 229, 0.12);
+  --theme-accent-strong: rgba(142, 220, 229, 1);
+  --theme-script:        rgba(237, 245, 247, 0.9);
+  --theme-panel-fill:    rgba(7, 14, 27, 0.62);
+  --theme-panel-edge:    rgba(142, 220, 229, 0.22);
+  --theme-glow:          rgba(142, 220, 229, 0.3);
+  --theme-success:       rgba(100, 210, 130, 0.9);
+  --theme-danger:        rgba(230, 100, 100, 0.9);
+
+  /* Background image slots — populated by skins.css */
+  --theme-bg-day:   none;
+  --theme-bg-night: none;
+}
+
+/* --------------------------------------------------------------------------
+   Quran theme — blue / galactic
+   -------------------------------------------------------------------------- */
+[data-theme="quran"] {
+  --theme-accent:        rgba(150, 177, 255, 0.84);
+  --theme-accent-soft:   rgba(150, 177, 255, 0.12);
+  --theme-accent-strong: rgba(150, 177, 255, 1);
+  --theme-script:        rgba(226, 234, 255, 0.92);
+  --theme-panel-fill:    rgba(10, 16, 31, 0.64);
+  --theme-panel-edge:    rgba(150, 177, 255, 0.22);
+  --theme-glow:          rgba(150, 177, 255, 0.35);
+  --theme-success:       rgba(100, 210, 130, 0.9);
+  --theme-danger:        rgba(230, 100, 100, 0.9);
+}
+
+/* --------------------------------------------------------------------------
+   Sunnah theme — green / rainforest
+   -------------------------------------------------------------------------- */
+[data-theme="sunnah"] {
+  --theme-accent:        rgba(126, 220, 163, 0.8);
+  --theme-accent-soft:   rgba(126, 220, 163, 0.12);
+  --theme-accent-strong: rgba(126, 220, 163, 1);
+  --theme-script:        rgba(241, 232, 188, 0.92);
+  --theme-panel-fill:    rgba(9, 21, 19, 0.60);
+  --theme-panel-edge:    rgba(126, 220, 163, 0.22);
+  --theme-glow:          rgba(126, 220, 163, 0.3);
+  --theme-success:       rgba(100, 210, 130, 0.9);
+  --theme-danger:        rgba(230, 100, 100, 0.9);
+}
+
+/* --------------------------------------------------------------------------
+   Ummah theme — gold / courtyard
+   -------------------------------------------------------------------------- */
+[data-theme="ummah"] {
+  --theme-accent:        rgba(230, 187, 120, 0.84);
+  --theme-accent-soft:   rgba(230, 187, 120, 0.12);
+  --theme-accent-strong: rgba(230, 187, 120, 1);
+  --theme-script:        rgba(248, 234, 206, 0.92);
+  --theme-panel-fill:    rgba(25, 17, 11, 0.60);
+  --theme-panel-edge:    rgba(230, 187, 120, 0.22);
+  --theme-glow:          rgba(230, 187, 120, 0.3);
+  --theme-success:       rgba(100, 210, 130, 0.9);
+  --theme-danger:        rgba(230, 100, 100, 0.9);
+}
+
+/* --------------------------------------------------------------------------
+   Ultimate theme — teal / luminous (matches :root defaults)
+   -------------------------------------------------------------------------- */
+[data-theme="ultimate"] {
+  --theme-accent:        rgba(142, 220, 229, 0.82);
+  --theme-accent-soft:   rgba(142, 220, 229, 0.12);
+  --theme-accent-strong: rgba(142, 220, 229, 1);
+  --theme-script:        rgba(237, 245, 247, 0.9);
+  --theme-panel-fill:    rgba(7, 14, 27, 0.62);
+  --theme-panel-edge:    rgba(142, 220, 229, 0.22);
+  --theme-glow:          rgba(142, 220, 229, 0.3);
+  --theme-success:       rgba(100, 210, 130, 0.9);
+  --theme-danger:        rgba(230, 100, 100, 0.9);
+}
+
+/* --------------------------------------------------------------------------
+   Night variant — deepens panel fills across all themes
+   -------------------------------------------------------------------------- */
+[data-variant="night"] {
+  --theme-panel-fill: color-mix(in srgb, var(--theme-panel-fill), rgba(0, 0, 0, 0.35));
+  --theme-panel-edge: color-mix(in srgb, var(--theme-panel-edge), transparent 30%);
+}

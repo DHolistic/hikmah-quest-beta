@@ -1,0 +1,277 @@
+/* ==========================================================================
+   skins.css — Hikmah Quest Beta Background Images & Theme Decorative Tweaks
+   ========================================================================== */
+
+@import "./tokens.css";
+
+/* --------------------------------------------------------------------------
+   Background image helper — two-layer system.
+
+   .iq-bg-layer  : absolutely positioned behind .iq-page content (z-index -1).
+                   Holds only the image. Transforms for zoom/pan applied here.
+                   JS controls --bg-zoom, --bg-tx, --bg-ty on this element.
+
+   .iq-page      : gradient overlay only (no image URL).
+                   Painted on top of .iq-bg-layer since .iq-page creates a
+                   stacking context (transform: translateZ(0) in skins.css).
+
+   Image paths go ../../../ (styles/ → src/ → beta/ → ilm-quest/) to reach
+   the shared prototype/art-direction/ folder.
+   -------------------------------------------------------------------------- */
+
+/* ── Background layer base ───────────────────────────────────────────────── */
+.iq-bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: -1;           /* behind .iq-page gradient, within its stacking ctx */
+  background-size: cover;            /* landscape images fill the full viewport */
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform-origin: center center;
+  transform: translate(var(--bg-tx, 0px), var(--bg-ty, 0px)) scale(var(--bg-zoom, 1));
+  will-change: transform;
+  pointer-events: none;
+  transition: transform 0.15s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Quran — blue / galactic
+   -------------------------------------------------------------------------- */
+html[data-theme="quran"][data-variant="day"] .iq-page {
+  background-image: linear-gradient(180deg, rgba(7, 17, 26, 0.08), rgba(7, 17, 26, 0.38));
+}
+html[data-theme="quran"][data-variant="day"] .iq-bg-layer {
+  background-image: url(../../../assets/images/2BWorldinner_landscape.png);
+  background-position: center center;
+}
+
+html[data-theme="quran"][data-variant="night"] .iq-page {
+  background-image: linear-gradient(180deg, rgba(4, 10, 22, 0.12), rgba(4, 10, 22, 0.50));
+}
+html[data-theme="quran"][data-variant="night"] .iq-bg-layer {
+  background-image: url(../../../assets/images/Arch2B_landscape.png);
+  background-position: center center;
+}
+
+/* --------------------------------------------------------------------------
+   Sunnah — green / rainforest
+   -------------------------------------------------------------------------- */
+html[data-theme="sunnah"][data-variant="day"] .iq-page {
+  background-image: linear-gradient(180deg, rgba(5, 15, 12, 0.08), rgba(5, 15, 12, 0.38));
+}
+html[data-theme="sunnah"][data-variant="day"] .iq-bg-layer {
+  background-image: url(../../../assets/images/2AWorldInner_landscape.png);
+  background-position: center center;
+}
+
+html[data-theme="sunnah"][data-variant="night"] .iq-page {
+  background-image: linear-gradient(180deg, rgba(3, 10, 8, 0.12), rgba(3, 10, 8, 0.50));
+}
+html[data-theme="sunnah"][data-variant="night"] .iq-bg-layer {
+  background-image: url(../../../assets/images/Arch2A_landscape.png);
+  background-position: center center;
+}
+
+/* --------------------------------------------------------------------------
+   Ummah — gold / courtyard
+   -------------------------------------------------------------------------- */
+html[data-theme="ummah"][data-variant="day"] .iq-page {
+  background-image: linear-gradient(180deg, rgba(18, 10, 5, 0.08), rgba(18, 10, 5, 0.38));
+}
+html[data-theme="ummah"][data-variant="day"] .iq-bg-layer {
+  background-image: url(../../../assets/images/2cWorldInner_landscape.png);
+  background-position: center center;
+}
+
+html[data-theme="ummah"][data-variant="night"] .iq-page {
+  background-image: linear-gradient(180deg, rgba(14, 8, 3, 0.12), rgba(14, 8, 3, 0.50));
+}
+html[data-theme="ummah"][data-variant="night"] .iq-bg-layer {
+  background-image: url(../../../assets/images/Arch2C_landscape.png);
+  background-position: center center;
+}
+
+/* --------------------------------------------------------------------------
+   Ultimate — teal / luminous
+   -------------------------------------------------------------------------- */
+html[data-theme="ultimate"][data-variant="day"] .iq-page {
+  background-image: linear-gradient(180deg, rgba(7, 17, 26, 0.08), rgba(7, 17, 26, 0.38));
+}
+html[data-theme="ultimate"][data-variant="day"] .iq-bg-layer {
+  background-image: url(../../../assets/images/2DWorldInner.png);
+  background-position: center center;
+}
+
+html[data-theme="ultimate"][data-variant="night"] .iq-page {
+  background-image: linear-gradient(180deg, rgba(4, 10, 20, 0.12), rgba(4, 10, 20, 0.50));
+}
+html[data-theme="ultimate"][data-variant="night"] .iq-bg-layer {
+  background-image: url(../../../assets/images/2DArch_landscape.png);
+  background-position: center center;
+}
+
+/* --------------------------------------------------------------------------
+   Selection menu (index.html) — Arch images for all themes, both variants.
+   #page-home ID specificity overrides the per-variant .iq-bg-layer rules above.
+   -------------------------------------------------------------------------- */
+html[data-theme="quran"] #page-home .iq-bg-layer {
+  background-image: url(../../../assets/images/Arch2B_landscape.png);
+}
+html[data-theme="sunnah"] #page-home .iq-bg-layer {
+  background-image: url(../../../assets/images/Arch2A_landscape.png);
+}
+html[data-theme="ummah"] #page-home .iq-bg-layer {
+  background-image: url(../../../assets/images/Arch2C_landscape.png);
+}
+html[data-theme="ultimate"] #page-home .iq-bg-layer {
+  background-image: url(../../../assets/images/2DArch_landscape.png);
+}
+
+/* --------------------------------------------------------------------------
+   Quran theme decorative tweaks
+   -------------------------------------------------------------------------- */
+[data-theme="quran"] .iq-title {
+  text-shadow:
+    0 0 32px rgba(150, 177, 255, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="quran"] .iq-tile-arabic {
+  text-shadow:
+    0 0 28px rgba(150, 177, 255, 0.6),
+    0 0 56px rgba(150, 177, 255, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   Sunnah theme decorative tweaks
+   -------------------------------------------------------------------------- */
+[data-theme="sunnah"] .iq-title {
+  text-shadow:
+    0 0 32px rgba(126, 220, 163, 0.5),
+    0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="sunnah"] .iq-tile-arabic {
+  text-shadow:
+    0 0 28px rgba(126, 220, 163, 0.55),
+    0 0 56px rgba(126, 220, 163, 0.18);
+}
+
+/* --------------------------------------------------------------------------
+   Ummah theme decorative tweaks
+   -------------------------------------------------------------------------- */
+[data-theme="ummah"] .iq-title {
+  text-shadow:
+    0 0 32px rgba(230, 187, 120, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="ummah"] .iq-tile-arabic {
+  text-shadow:
+    0 0 28px rgba(230, 187, 120, 0.6),
+    0 0 56px rgba(230, 187, 120, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   Ultimate theme decorative tweaks
+   -------------------------------------------------------------------------- */
+[data-theme="ultimate"] .iq-title,
+.iq-title {
+  text-shadow:
+    0 0 32px rgba(142, 220, 229, 0.5),
+    0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="ultimate"] .iq-tile-arabic {
+  text-shadow:
+    0 0 28px rgba(142, 220, 229, 0.55),
+    0 0 56px rgba(142, 220, 229, 0.18);
+}
+
+/* Ultimate readability — no backdrop boxes, no blur. We rely on
+   (a) a higher-contrast color palette and
+   (b) layered black text-shadows that hug each glyph,
+   so legibility holds against any bright pixel in the background image. */
+
+/* Body text: shift from cream to a richer parchment with stronger shadow */
+[data-theme="ultimate"] .iq-tile--right .iq-tile-question,
+[data-theme="ultimate"] .iq-tile--right .iq-tile-anchor,
+[data-theme="ultimate"] .iq-tile--right .iq-tile-clue,
+[data-theme="ultimate"] .iq-tile--right .iq-tile-transliteration,
+[data-theme="ultimate"] .iq-tile--right .iq-list-prose {
+  color: #fff7e1;
+  text-shadow:
+    0 0 2px rgba(0, 0, 0, 1),
+    0 1px 3px rgba(0, 0, 0, 0.95),
+    0 2px 10px rgba(0, 0, 0, 0.85),
+    0 3px 22px rgba(0, 0, 0, 0.6);
+}
+
+/* Answer line: warm amber instead of teal accent — pops against teal bg */
+[data-theme="ultimate"] .iq-tile--right .iq-tile-answer,
+[data-theme="ultimate"] .iq-tile--right .iq-list-answer {
+  color: #ffd86b;
+  text-shadow:
+    0 0 2px rgba(0, 0, 0, 1),
+    0 1px 3px rgba(0, 0, 0, 0.95),
+    0 2px 12px rgba(0, 0, 0, 0.85),
+    0 0 16px rgba(255, 196, 86, 0.35);
+}
+
+/* Italic clue/explanation: keep parchment but slightly muted */
+[data-theme="ultimate"] .iq-tile--right .iq-tile-clue,
+[data-theme="ultimate"] .iq-tile--right .iq-list-prose {
+  color: rgba(255, 247, 225, 0.82);
+}
+
+/* Source/footer caption — keep faint but readable */
+[data-theme="ultimate"] .iq-tile--right .iq-tile-source {
+  color: rgba(255, 247, 225, 0.55);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+/* --------------------------------------------------------------------------
+   Glow pulse keyframe (also referenced in tiles.css — defined here as
+   the canonical source for cross-file animation consistency)
+   -------------------------------------------------------------------------- */
+@keyframes iq-tile-glow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.45),
+      0 0 0 1px var(--theme-glow),
+      0 0 20px var(--theme-glow);
+  }
+  50% {
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.45),
+      0 0 0 1.5px var(--theme-accent),
+      0 0 40px var(--theme-glow);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Utility: hardware-accelerated backdrop for performance on low-end devices
+   -------------------------------------------------------------------------- */
+.iq-page,
+.iq-header,
+.iq-footer {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* --------------------------------------------------------------------------
+   Reduced motion — respect user accessibility preferences
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .iq-tile.is-revealed {
+    animation: none;
+  }
+
+  .iq-progress__fill {
+    transition: none;
+  }
+
+  .iq-tile {
+    transition: border-color 0s, box-shadow 0s;
+  }
+}
