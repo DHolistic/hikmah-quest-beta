@@ -23,12 +23,5 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ],
-  "screenshots": [
-    {
-      "src": "screenshots/home.png",
-      "sizes": "390x844",
-      "type": "image/png"
-    }
   ]
 }

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Hikmah Quest Beta Flow Review</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:wght@400;600&display=swap');
+
+    :root {
+      --bg: #08111b;
+      --panel: rgba(10, 18, 30, 0.94);
+      --line: rgba(212, 175, 55, 0.22);
+      --gold: #d4af37;
+      --text: rgba(240, 232, 213, 0.92);
+      --muted: rgba(240, 232, 213, 0.58);
+      --good: #7edca3;
+      --warn: #f0c96c;
+      --bad: #f09090;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Lora', serif;
+      background:
+        radial-gradient(circle at top, rgba(212, 175, 55, 0.08), transparent 35%),
+        linear-gradient(180deg, #07111a, #0d1622 60%, #111c29);
+      color: var(--text);
+    }
+
+    main {
+      width: min(1024px, calc(100vw - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 3rem;
+    }
+
+    h1, h2 {
+      font-family: 'Cinzel Decorative', serif;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+    }
+
+    .intro {
+      max-width: 44rem;
+      margin: 0.8rem auto 1.5rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1rem;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+      margin-bottom: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    }
+
+    .step {
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 14px;
+      padding: 0.95rem;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .step h2 {
+      font-size: 0.8rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .step p {
+      margin: 0 0 0.7rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .step a {
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    .choices {
+      display: grid;
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+    }
+
+    .choice {
+      display: block;
+      padding: 0.7rem 0.8rem;
+      border-radius: 12px;
+      border: 1px solid rgba(240, 232, 213, 0.12);
+      background: rgba(255, 255, 255, 0.025);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.84rem;
+    }
+
+    .good { border-color: rgba(126, 220, 163, 0.32); color: var(--good); }
+    .warn { border-color: rgba(240, 201, 108, 0.32); color: var(--warn); }
+    .bad { border-color: rgba(240, 144, 144, 0.32); color: var(--bad); }
+
+    ol {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+
+    li + li {
+      margin-top: 0.45rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Hikmah Quest Beta Flow Review</h1>
+    <p class="intro">Run the pages in order, then answer in chat with the page number and one of the fixed result codes. Use this page only as the checklist and launch board.</p>
+
+    <section class="panel">
+      <h2 style="font-size:.86rem; margin-bottom:.8rem;">Answer Codes</h2>
+      <div class="grid">
+        <div class="choice good"><strong>A</strong> — Page and flow are correct.</div>
+        <div class="choice warn"><strong>B</strong> — Mostly correct, minor copy/layout issue.</div>
+        <div class="choice warn"><strong>C</strong> — Page loads, but the flow is confusing or incomplete.</div>
+        <div class="choice bad"><strong>D</strong> — Broken link, broken UI, or blocked flow.</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2 style="font-size:.86rem; margin-bottom:.8rem;">Review Order</h2>
+      <div class="grid">
+        <div class="step">
+          <h2>1. Home</h2>
+          <p>Check realm selection, support panel, and whether the main page feels ready for an external beta email.</p>
+          <a href="./beta/index.html" target="_blank">Open Home</a>
+        </div>
+        <div class="step">
+          <h2>2. Mode Select</h2>
+          <p>Check mode, difficulty, answer style, and whether the next step is obvious.</p>
+          <a href="./beta/mode-select.html" target="_blank">Open Mode Select</a>
+        </div>
+        <div class="step">
+          <h2>3. Team Hub</h2>
+          <p>Check anonymous identity, room creation/join UI, and whether the privacy posture is clear.</p>
+          <a href="./beta/team-beta2.html" target="_blank">Open Team Hub</a>
+        </div>
+        <div class="step">
+          <h2>4. Gameplay</h2>
+          <p>Check card readability, reveal flow, skip, mobile dock logic, and feedback modal access.</p>
+          <a href="./beta/gameplay.html" target="_blank">Open Gameplay</a>
+        </div>
+        <div class="step">
+          <h2>5. Results</h2>
+          <p>Check score summary, replay actions, and missed-card review layout.</p>
+          <a href="./beta/results.html" target="_blank">Open Results</a>
+        </div>
+        <div class="step">
+          <h2>6. Legal / Beta Notes</h2>
+          <p>Check Terms, Privacy, Copyright, Donation, and Beta Participation pages for link health and release readiness.</p>
+          <a href="./beta-master-review.html" target="_blank">Open Review Guide</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2 style="font-size:.86rem; margin-bottom:.8rem;">Reply Format</h2>
+      <ol>
+        <li>Reply with `1A`, `1B`, `1C`, or `1D` after Home.</li>
+        <li>Add a short note only if the answer is `B`, `C`, or `D`.</li>
+        <li>We will patch each issue before moving to the final email-ready pass.</li>
+      </ol>
+    </section>
+  </main>
+</body>
+</html>

@@ -409,9 +409,12 @@ async function initGameplay() {
   // ── Action dock: draggable scoring panel ──────────────────────────────────
   const dock      = document.getElementById("iq-action-dock");
   const grip      = document.getElementById("iq-dock-grip");
+  const revealRow = document.getElementById("iq-dock-reveal-row");
   const nameRow   = document.getElementById("iq-dock-name-row");
   const scoreRow  = document.getElementById("iq-dock-score-row");
+  const utilityRow= document.getElementById("iq-dock-utility-row");
   const DOCK_KEY  = "iq-dock-pos";
+  const mobileDockQuery = window.matchMedia("(max-width: 600px)");
 
   // Restore saved position
   (function restoreDockPos() {
@@ -466,19 +469,58 @@ async function initGameplay() {
   if (dock) {
     dock.addEventListener("click", e => {
       const action = e.target.closest("[data-dock-action]")?.dataset.dockAction;
+      if (action === "revealName"    && handlers.onRevealName)    handlers.onRevealName();
+      if (action === "revealAnswer"  && handlers.onRevealAnswer)  handlers.onRevealAnswer();
       if (action === "correct"       && handlers.onCorrect)       handlers.onCorrect();
       if (action === "incorrect"     && handlers.onIncorrect)     handlers.onIncorrect();
       if (action === "nameCorrect"   && handlers.onNameCorrect)   handlers.onNameCorrect();
       if (action === "nameIncorrect" && handlers.onNameIncorrect) handlers.onNameIncorrect();
+      if (action === "skip"          && handlers.onSkip)          handlers.onSkip();
     });
   }
 
   function syncDock() {
-    if (!dock || !nameRow || !scoreRow) return;
-    // P4: scoring pills are now rendered in-tile — dock stays hidden
-    nameRow.style.display  = "none";
-    scoreRow.style.display = "none";
-    dock.style.display     = "none";
+    if (!dock || !revealRow || !nameRow || !scoreRow || !utilityRow) return;
+
+    const isMobile = mobileDockQuery.matches;
+    const answerStyle = state.answerStyle ?? "reveal";
+    const nameNeedsScore = state.nameRevealed && !state.nameBonusClaimed;
+    const answerNeedsScore = answerStyle !== "mcq" && state.revealStage === "answer";
+    const canRevealName = !state.nameRevealed;
+    const canRevealAnswer = state.revealStage !== "answer";
+    const hasAnyDockAction =
+      canRevealName ||
+      canRevealAnswer ||
+      nameNeedsScore ||
+      answerNeedsScore ||
+      !state.isComplete;
+
+    if (!isMobile || !hasAnyDockAction) {
+      revealRow.style.display = "none";
+      nameRow.style.display = "none";
+      scoreRow.style.display = "none";
+      utilityRow.style.display = "none";
+      dock.style.display = "none";
+      dock.dataset.mobileActive = "false";
+      return;
+    }
+
+    dock.style.top = "";
+    dock.style.left = "";
+    dock.style.bottom = "";
+    dock.style.transform = "";
+
+    const revealNameBtn = revealRow.querySelector('[data-dock-action="revealName"]');
+    const revealAnswerBtn = revealRow.querySelector('[data-dock-action="revealAnswer"]');
+    if (revealNameBtn) revealNameBtn.style.display = canRevealName ? "" : "none";
+    if (revealAnswerBtn) revealAnswerBtn.style.display = canRevealAnswer ? "" : "none";
+
+    revealRow.style.display = canRevealName || canRevealAnswer ? "flex" : "none";
+    nameRow.style.display = nameNeedsScore ? "flex" : "none";
+    scoreRow.style.display = answerNeedsScore ? "flex" : "none";
+    utilityRow.style.display = state.isComplete ? "none" : "flex";
+    dock.style.display = "flex";
+    dock.dataset.mobileActive = "true";
   }
 
   // ── Score float toast ──
@@ -584,6 +626,11 @@ async function initGameplay() {
   }
 
   redraw();
+  if (typeof mobileDockQuery.addEventListener === "function") {
+    mobileDockQuery.addEventListener("change", redraw);
+  } else if (typeof mobileDockQuery.addListener === "function") {
+    mobileDockQuery.addListener(redraw);
+  }
 
   // Init FX panels
   initSoundPanel();

@@ -44,7 +44,7 @@ function renderSelf() {
   selfBadge.style.color = _hidden ? "rgba(240,232,213,.3)" : _avatar.color;
   selfBadge.classList.toggle("is-hidden", _hidden);
   if (selfName) selfName.textContent = _hidden ? "Hidden" : _avatar.name;
-  if (privacyBtn) privacyBtn.textContent = _hidden ? "👁 Show identity" : "🙈 Hide identity";
+  if (privacyBtn) privacyBtn.textContent = _hidden ? "Show identity" : "Hide identity";
 }
 
 if (privacyBtn) {

@@ -368,6 +368,67 @@
     inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
+/* Gameplay header uses a compact single-row scorebar.
+   Scope these overrides to gameplay so setup/results keep their card layout. */
+#page-gameplay .iq-header {
+  gap: 0.4rem;
+}
+
+#page-gameplay .iq-header-center {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+#page-gameplay .iq-header-center .iq-title--sm {
+  max-width: 16vw;
+}
+
+#page-gameplay #iq-scorebar {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: none;
+}
+
+#page-gameplay #iq-scorebar .iq-scorebar--inline {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+#page-gameplay #iq-scorebar .iq-scorebar--inline::-webkit-scrollbar {
+  display: none;
+}
+
+#page-gameplay #iq-scorebar .iq-scorebar--solo,
+#page-gameplay #iq-scorebar .iq-scorebar--team {
+  display: inline-flex;
+  grid-template-columns: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+#page-gameplay #iq-scorebar .iq-scorebar__pill,
+#page-gameplay #iq-scorebar .iq-scorebar__team {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 900px) {
+  #page-gameplay .iq-header-center .iq-title--sm {
+    max-width: 24vw;
+  }
+}
+
 #page-gameplay .iq-bg-layer {
   transition: filter 0.45s ease, transform 0.45s ease, opacity 0.45s ease;
 }

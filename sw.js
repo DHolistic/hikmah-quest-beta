@@ -1,5 +1,5 @@
-const CACHE = 'ilm-quest-v8';
-const RUNTIME_CACHE = 'ilm-quest-runtime-v1';
+const CACHE = 'hikmah-quest-v9';
+const RUNTIME_CACHE = 'hikmah-quest-runtime-v1';
 const ASSETS = [
   './beta/index.html',
   './beta/gameplay.html',
@@ -11,10 +11,7 @@ const ASSETS = [
   './beta/copyright.html',
   './beta/donation.html',
   './beta/beta-participation.html',
-  './action-button-picker.html',
-  './cards-99.json',
-  './cards-99.js',
-  './allah-names.js',
+  './beta/cards-99.json',
   './quran-repository.json',
   './manifest.json',
   './card-back.avif',
@@ -29,11 +26,15 @@ const ASSETS = [
   './beta/src/styles/team-beta2.css',
   './beta/src/app/bootstrap.js',
   './beta/src/app/config.js',
+  './beta/src/app/encouragement.js',
+  './beta/src/app/mcq.js',
   './beta/src/app/mode-select.js',
   './beta/src/app/fx.js',
   './beta/src/app/sound.js',
   './beta/src/app/multiplayer.js',
   './beta/src/app/team-beta2.js',
+  './beta/src/app/turn-switch.js',
+  './beta/src/app/verify-toggle.js',
   './beta/src/content/deck-loader.js',
   './beta/src/gameplay/actions.js',
   './beta/src/gameplay/render.js',

@@ -1,6 +1,7 @@
 // ─── Session ────────────────────────────────────────────────────────────────
 
-export const SESSION_KEY = "ilmQuestBetaSession";
+export const SESSION_KEY = "hikmahQuestBetaSession";
+const LEGACY_SESSION_KEY = "ilmQuestBetaSession";
 
 export function saveSession(config) {
   sessionStorage.setItem(SESSION_KEY, JSON.stringify(config));
@@ -8,7 +9,16 @@ export function saveSession(config) {
 
 export function loadSession() {
   const raw = sessionStorage.getItem(SESSION_KEY);
-  return raw ? JSON.parse(raw) : null;
+  if (raw) return JSON.parse(raw);
+
+  const legacyRaw = sessionStorage.getItem(LEGACY_SESSION_KEY);
+  if (!legacyRaw) return null;
+
+  const parsed = JSON.parse(legacyRaw);
+  try {
+    sessionStorage.setItem(SESSION_KEY, legacyRaw);
+  } catch {}
+  return parsed;
 }
 
 // ─── Source configuration ────────────────────────────────────────────────────

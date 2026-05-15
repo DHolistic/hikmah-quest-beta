@@ -368,6 +368,10 @@
     <div class="iq-action-dock__grip" id="iq-dock-grip" title="Drag to move">
       <span>⠿</span>
     </div>
+    <div class="iq-action-dock__row iq-action-dock__row--reveal" id="iq-dock-reveal-row">
+      <button class="iq-medallion-btn iq-medallion-btn--dock" data-dock-action="revealName" aria-label="Reveal name">Reveal Name</button>
+      <button class="iq-medallion-btn iq-medallion-btn--dock" data-dock-action="revealAnswer" aria-label="Reveal answer">Reveal Answer</button>
+    </div>
     <div class="iq-ghost-row" id="iq-dock-name-row">
       <button class="iq-ghost-pill iq-ghost-pill--x" data-dock-action="nameIncorrect" aria-label="Missed name">✗ Missed It</button>
       <button class="iq-ghost-pill iq-ghost-pill--check" data-dock-action="nameCorrect" aria-label="Got name">✓ Got It <em>+1</em></button>
@@ -375,6 +379,9 @@
     <div class="iq-ghost-row" id="iq-dock-score-row">
       <button class="iq-ghost-pill iq-ghost-pill--x" data-dock-action="incorrect" aria-label="Incorrect">✗ Missed It</button>
       <button class="iq-ghost-pill iq-ghost-pill--check" data-dock-action="correct" aria-label="Correct">✓ Got It</button>
+    </div>
+    <div class="iq-action-dock__row iq-action-dock__row--utility" id="iq-dock-utility-row">
+      <button class="iq-skip-link iq-skip-link--dock" data-dock-action="skip" aria-label="Skip this card">skip →</button>
     </div>
   </div>
 

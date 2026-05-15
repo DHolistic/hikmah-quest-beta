@@ -9,6 +9,15 @@
    Stack tiles, compact arch, horizontal source list, scrollable page
    -------------------------------------------------------------------------- */
 @media (max-width: 600px) {
+  #page-gameplay {
+    overflow-y: auto;
+  }
+
+  #page-gameplay .iq-board {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+    padding-bottom: calc(var(--iq-safe-bottom, 0px) + 7.4rem);
+  }
 
   /* Allow page to scroll so Begin Journey is always reachable */
   #page-home {
@@ -155,6 +164,15 @@
 
   .iq-header-logo__name {
     font-size: 0.72rem;
+  }
+
+  .iq-scorebar--inline {
+    gap: 0.3rem;
+    font-size: 0.66rem;
+  }
+
+  .iq-scorebar--inline .iq-scorebar__pill {
+    padding: 0.16rem 0.42rem;
   }
 }
 

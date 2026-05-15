@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+  <title>Hikmah Quest — Beta Review Guide</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Scheherazade+New:wght@400;700&display=swap');
+
+    :root {
+      --bg: #08111b;
+      --panel: rgba(12, 21, 33, 0.92);
+      --line: rgba(212, 175, 55, 0.22);
+      --gold: #d4af37;
+      --text: rgba(240, 232, 213, 0.9);
+      --muted: rgba(240, 232, 213, 0.58);
+      --soft: rgba(240, 232, 213, 0.36);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, rgba(212, 175, 55, 0.08), transparent 35%),
+        linear-gradient(180deg, #07111a, #0b1421 58%, #101926);
+      color: var(--text);
+      font-family: 'Lora', serif;
+      line-height: 1.6;
+    }
+
+    main {
+      width: min(960px, calc(100vw - 2rem));
+      margin: 0 auto;
+      padding: 2.25rem 0 3rem;
+    }
+
+    h1, h2 {
+      font-family: 'Cinzel Decorative', serif;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(1.25rem, 3vw, 1.9rem);
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 0.88rem;
+      margin-bottom: 0.8rem;
+    }
+
+    p { margin: 0; }
+
+    .intro {
+      text-align: center;
+      margin: 0.75rem auto 1.4rem;
+      max-width: 46rem;
+      color: var(--muted);
+    }
+
+    .arabic {
+      text-align: center;
+      font-family: 'Scheherazade New', serif;
+      font-size: 1.35rem;
+      color: rgba(212, 175, 55, 0.72);
+      margin-bottom: 1.2rem;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.2rem 1.1rem;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
+      margin-bottom: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .link-list,
+    .check-list {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .link-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid rgba(212, 175, 55, 0.14);
+      border-radius: 14px;
+      padding: 0.85rem 0.95rem;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .link-card:hover {
+      border-color: rgba(212, 175, 55, 0.36);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .link-card strong {
+      display: block;
+      color: var(--gold);
+      font-size: 0.84rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+
+    .link-card span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .check-list div,
+    .note-list div {
+      padding-left: 1rem;
+      position: relative;
+      color: var(--muted);
+    }
+
+    .check-list div::before,
+    .note-list div::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .mail-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(212, 175, 55, 0.14);
+      margin-top: 1rem;
+      padding-top: 1rem;
+    }
+
+    .mail-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0.72rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .mail-link:hover {
+      background: rgba(212, 175, 55, 0.08);
+    }
+
+    .small {
+      color: var(--soft);
+      font-size: 0.78rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Hikmah Quest Beta Review Guide</h1>
+    <p class="intro">Use this page as the stable review link in the beta build. It gives testers one place to open the main flows, confirm legal/support pages, and send focused feedback.</p>
+    <div class="arabic">بسم الله الرحمن الرحيم</div>
+
+    <section class="panel">
+      <h2>Core Links</h2>
+      <div class="grid link-list">
+        <a class="link-card" href="./beta/index.html">
+          <strong>Home</strong>
+          <span>Realm selection and support panel.</span>
+        </a>
+        <a class="link-card" href="./beta/mode-select.html">
+          <strong>Mode Select</strong>
+          <span>Solo, team, difficulty, and answer-style setup.</span>
+        </a>
+        <a class="link-card" href="./beta/team-beta2.html">
+          <strong>Team Hub</strong>
+          <span>Anonymous team room setup and conference testing.</span>
+        </a>
+        <a class="link-card" href="./beta/gameplay.html">
+          <strong>Gameplay</strong>
+          <span>Card flow, reveal logic, mobile dock, and feedback modal.</span>
+        </a>
+        <a class="link-card" href="./beta/results.html">
+          <strong>Results</strong>
+          <span>Score summary and missed-card review screen.</span>
+        </a>
+        <a class="link-card" href="./beta/beta-participation.html">
+          <strong>Beta Notes</strong>
+          <span>Participation, privacy, and reporting expectations.</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <h2>What To Check</h2>
+        <div class="check-list">
+          <div>Beta links open without 404s from the home page and feedback modal.</div>
+          <div>Mobile gameplay controls stay reachable on narrow screens.</div>
+          <div>Name reveal, answer reveal, skip, and scoring actions behave correctly.</div>
+          <div>Results page reflects score, streak, missed cards, and team totals accurately.</div>
+          <div>Feedback copy, privacy wording, and legal links match the Hikmah Quest beta.</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Feedback Format</h2>
+        <div class="note-list">
+          <div>Page or flow: home, mode select, gameplay, team hub, or results.</div>
+          <div>Realm and difficulty used when the issue happened.</div>
+          <div>Card prompt, answer, or Name of Allah if content is the problem.</div>
+          <div>Device and browser if the issue looks layout- or input-related.</div>
+        </div>
+        <div class="mail-box">
+          <div class="small">Email reports to Donya with enough detail to reproduce the issue.</div>
+          <a class="mail-link" href="mailto:donyaberhan@gmail.com?subject=Hikmah%20Quest%20Beta%20Feedback">Send Feedback</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

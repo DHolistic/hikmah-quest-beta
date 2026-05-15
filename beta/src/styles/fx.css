@@ -559,3 +559,37 @@ html[data-reduce-motion="1"] *::after {
   width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
+
+@media (max-width: 600px) {
+  .iq-toast {
+    bottom: calc(var(--iq-safe-bottom, 0px) + 8.2rem);
+  }
+
+  .iq-encouragement {
+    top: calc(var(--iq-safe-top, 0px) + 3.1rem);
+    max-width: calc(100vw - 1.5rem);
+    padding: 0.4rem 0.75rem;
+  }
+
+  .iq-sound-panel,
+  .iq-a11y-panel {
+    bottom: calc(var(--iq-safe-bottom, 0px) + 8rem);
+    gap: 0.35rem;
+  }
+
+  .iq-sound-panel { right: 0.75rem; }
+  .iq-a11y-panel { left: 0.75rem; }
+
+  .iq-sound-drawer,
+  .iq-a11y-drawer {
+    max-width: min(11.5rem, calc(100vw - 1.5rem));
+    padding: 0.55rem 0.65rem;
+  }
+
+  .iq-verify-chip {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(var(--iq-safe-bottom, 0px) + 5.5rem);
+    opacity: 0.92;
+  }
+}

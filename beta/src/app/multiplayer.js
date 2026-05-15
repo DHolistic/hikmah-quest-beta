@@ -90,7 +90,7 @@ export class MultiplayerRoom {
 
   /** Open the BroadcastChannel. Call before any send/receive. */
   open() {
-    const channelName = `ilm-quest-room-${this.roomCode}`;
+    const channelName = `hikmah-quest-room-${this.roomCode}`;
     try {
       this._channel = new BroadcastChannel(channelName);
       this._channel.onmessage = (evt) => this._handleMessage(evt.data);
