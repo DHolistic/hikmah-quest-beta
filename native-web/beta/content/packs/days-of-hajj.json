@@ -1,0 +1,148 @@
+[
+  {
+    "id": "days-of-hajj-01",
+    "packId": "days-of-hajj",
+    "category": "ummah",
+    "title": "Hajj Month",
+    "promptText": "In which month do the main Hajj rites take place?",
+    "answerText": "Dhul Hijjah.",
+    "sourceTitle": "Quran 2:197",
+    "explanation": "The pilgrimage is tied to the sacred final month of the Islamic year.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "days-of-hajj-02",
+    "packId": "days-of-hajj",
+    "category": "ummah",
+    "title": "Ihram",
+    "promptText": "What is ihram?",
+    "answerText": "The sacred state and dress entered before Hajj.",
+    "sourceTitle": "Hajj rites",
+    "explanation": "Pilgrims enter ihram before beginning the rites and avoid its restrictions.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "days-of-hajj-03",
+    "packId": "days-of-hajj",
+    "category": "ummah",
+    "title": "Talbiyah",
+    "promptText": "What is the talbiyah?",
+    "answerText": "Labbayk Allahumma labbayk, the pilgrim's call of devotion.",
+    "sourceTitle": "Sunnah",
+    "explanation": "It is a repeated declaration of readiness, sincerity, and worship.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "days-of-hajj-04",
+    "packId": "days-of-hajj",
+    "category": "ummah",
+    "title": "Arafah",
+    "promptText": "What is the core day of Hajj?",
+    "answerText": "Standing at Arafah on 9 Dhul Hijjah.",
+    "sourceTitle": "Sahih Muslim",
+    "explanation": "The Day of Arafah is the heart of the pilgrimage.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "days-of-hajj-05",
+    "packId": "days-of-hajj",
+    "category": "ummah",
+    "title": "Muzdalifah",
+    "promptText": "What do pilgrims do after leaving Arafah?",
+    "answerText": "Spend the night in Muzdalifah and collect pebbles.",
+    "sourceTitle": "Hajj rites",
+    "explanation": "Muzdalifah is a pause of rest, dhikr, and preparation for the next day.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "days-of-hajj-06",
+    "packId": "days-of-hajj",
+    "category": "ummah",
+    "title": "Mina",
+    "promptText": "Where do pilgrims stay and stone the Jamarat?",
+    "answerText": "Mina.",
+    "sourceTitle": "Hajj rites",
+    "explanation": "Mina becomes a temporary home for worship and movement between rites.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "days-of-hajj-07",
+    "packId": "days-of-hajj",
+    "category": "ummah",
+    "title": "Jamarat",
+    "promptText": "What is rami al-jamarat?",
+    "answerText": "Stoning the pillars that symbolize rejecting Satan.",
+    "sourceTitle": "Sunnah",
+    "explanation": "It recalls Ibrahim rejecting temptation and staying firm in obedience.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "days-of-hajj-08",
+    "packId": "days-of-hajj",
+    "category": "ummah",
+    "title": "Tawaf",
+    "promptText": "What is tawaf?",
+    "answerText": "Circling the Kaaba seven times.",
+    "sourceTitle": "Quran 22:29",
+    "explanation": "It is one of the central acts of pilgrimage around the House of Allah.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "days-of-hajj-09",
+    "packId": "days-of-hajj",
+    "category": "ummah",
+    "title": "Sa'i",
+    "promptText": "What is sa'i?",
+    "answerText": "Walking between Safa and Marwah.",
+    "sourceTitle": "Quran 2:158",
+    "explanation": "Sa'i remembers Hajar's search for water and Allah's provision.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "days-of-hajj-10",
+    "packId": "days-of-hajj",
+    "category": "ummah",
+    "title": "Sacrifice",
+    "promptText": "What rite follows on the 10th of Dhul Hijjah for many pilgrims?",
+    "answerText": "The sacrifice, called hady or udhiyah.",
+    "sourceTitle": "Quran 22:36",
+    "explanation": "This rite links Hajj with gratitude, feeding others, and remembrance of Allah.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "days-of-hajj-11",
+    "packId": "days-of-hajj",
+    "category": "ummah",
+    "title": "Ifadah",
+    "questionType": "match",
+    "promptText": "Match each Hajj rite to what happens there.",
+    "answerText": "Tawaf al-Ifadah.",
+    "matchPairs": [
+      { "left": "Arafah", "right": "Standing in prayer and dua" },
+      { "left": "Muzdalifah", "right": "Night stay and pebble collection" },
+      { "left": "Mina", "right": "Stoning the Jamarat" }
+    ],
+    "sourceTitle": "Hajj rites",
+    "explanation": "It is one of the essential tawafs that complete the pilgrimage.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "days-of-hajj-12",
+    "packId": "days-of-hajj",
+    "category": "ummah",
+    "title": "Farewell Tawaf",
+    "questionType": "sequence",
+    "promptText": "Tap these Hajj moments in the correct travel order.",
+    "answerText": "Ihram, Arafah, Muzdalifah, Mina, Farewell Tawaf.",
+    "sequenceSteps": [
+      "Ihram",
+      "Arafah",
+      "Muzdalifah",
+      "Mina",
+      "Farewell Tawaf"
+    ],
+    "sourceTitle": "Sunnah",
+    "explanation": "The farewell tawaf closes the journey before departure.",
+    "difficulty": "hard"
+  }
+]

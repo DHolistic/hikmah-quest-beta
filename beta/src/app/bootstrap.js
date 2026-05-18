@@ -1,8 +1,8 @@
-import { sourceConfig, SESSION_KEY, saveSession, loadSession, getModeLabel, getDifficultyLabel } from "./config.js";
-import { loadDeck, loadNamesDeck, loadUltimateDeck } from "../content/deck-loader.js";
+import { sourceConfig, MAIN_SOURCE_IDS, SESSION_KEY, saveSession, loadSession, getModeLabel, getDifficultyLabel } from "./config.js";
+import { loadDeck } from "../content/deck-loader.js";
 import { createGameplayState } from "../gameplay/state.js";
-import { revealName, revealAnswer, markCorrect, markIncorrect, markNameBonus, dismissNameBonus, skipCard, ptsForDifficulty, switchTurn } from "../gameplay/actions.js";
-import { renderLeftTile, renderRightTile, renderScorebar, renderProgressBar } from "../gameplay/render.js";
+import { revealAnswer, markCorrect, markIncorrect, skipCard, ptsForDifficulty, switchTurn } from "../gameplay/actions.js";
+import { renderRightTile, renderScorebar, renderProgressBar } from "../gameplay/render.js";
 import { triggerNoorPulse, rollBarakahCard, clearBarakahCard, triggerKnowledgeChain, updateBackdrop, resetBackdrop, initSoundPanel, initA11yPanel } from "./fx.js";
 import { playCorrect, playMiss, playBonus, playStreak, playBarakah, playTurnSwitch, primeAudio } from "./sound.js";
 import { showEncouragement } from "./encouragement.js";
@@ -169,7 +169,7 @@ function initIndex() {
   applyTheme(selected.themeId, selected.variant);
 
   const display = initDisplayOptions(selected.themeId);
-  let sourceOrder = Object.values(sourceConfig);
+  let sourceOrder = MAIN_SOURCE_IDS.map(id => sourceConfig[id]).filter(Boolean);
   let dragSrc     = null;
 
   const list = document.getElementById("iq-source-list");
@@ -279,6 +279,23 @@ function initIndex() {
       location.href = `mode-select.html?realm=${selected.themeId}`;
     });
   }
+
+  const bonusBtn = document.getElementById("iq-bonus-btn");
+  if (bonusBtn) {
+    bonusBtn.addEventListener("click", () => {
+      const bonus = sourceConfig.bonus;
+      const bonusSession = {
+        sourceId: bonus.id,
+        themeId: bonus.themeId,
+        mode: "solo",
+        difficulty: "medium",
+        variant: bonus.variant,
+        answerStyle: "guided",
+      };
+      saveSession(bonusSession);
+      location.href = `mode-select.html?realm=${bonus.themeId}`;
+    });
+  }
 }
 
 function chipValue(chip) {
@@ -318,26 +335,60 @@ async function initGameplay() {
   document.addEventListener("pointerdown", primeAudio, { once: true });
 
   const config = sourceConfig[session.sourceId] ?? sourceConfig.quran;
+  document.getElementById("page-gameplay")?.classList.add("iq-page--single-trivia");
 
   const realmLabel = document.getElementById("realm-label");
   if (realmLabel) realmLabel.textContent = `${config.symbol} ${config.label}`;
-  const [rawRightDeck, leftDeck] = await Promise.all([
-    loadDeck(config, session.difficulty),
-    loadNamesDeck(),
-  ]);
+  const rawRightDeck = await loadDeck(config, session.difficulty);
 
-  // MCQ augmentation: when the user picks Multiple Choice, attach options +
-  // correctIndex to every card that doesn't already have them.
-  const answerStyle = session.answerStyle ?? "reveal";
-  const rightDeck = answerStyle === "mcq"
-    ? augmentDeckWithMcq(rawRightDeck)
-    : rawRightDeck;
+  const answerStyle = "guided";
+  const rightDeck = rawRightDeck.map(card => {
+    if (card.questionType === "multiple-choice" && !card.options?.length) {
+      return augmentDeckWithMcq([card, ...rawRightDeck])[0];
+    }
+    return card;
+  });
 
-  let state = createGameplayState(rightDeck, leftDeck, session.mode, {
+  let state = createGameplayState(rightDeck, [], session.mode, {
     difficulty: session.difficulty ?? "medium",
+    shuffleDecks: false,
   });
   state.answerStyle = answerStyle;
   document.documentElement.dataset.answerStyle = answerStyle;
+
+  const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+  let activeRecognition = null;
+
+  function stopActiveRecognition() {
+    if (!activeRecognition) return;
+    try { activeRecognition.onresult = null; } catch {}
+    try { activeRecognition.onerror = null; } catch {}
+    try { activeRecognition.onend = null; } catch {}
+    try { activeRecognition.stop(); } catch {}
+    activeRecognition = null;
+  }
+
+  function normalizedTokens(text) {
+    return String(text ?? "")
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, " ")
+      .split(/\s+/)
+      .filter(token => token.length > 1);
+  }
+
+  function scoreSpeechTranscript(transcript, targets) {
+    const spoken = normalizedTokens(transcript);
+    if (!spoken.length) return 0;
+
+    let best = 0;
+    for (const target of targets) {
+      const expected = normalizedTokens(target);
+      if (!expected.length) continue;
+      const matched = expected.filter(token => spoken.includes(token)).length;
+      best = Math.max(best, matched / expected.length);
+    }
+    return best;
+  }
 
   // Provides current card context to the inline Beta Feedback modal script in gameplay.html.
   window.__iqGetCurrentCard = () => {
@@ -346,8 +397,8 @@ async function initGameplay() {
     return {
       id:           card.id ?? "",
       packId:       card.packId ?? "",
-      nameOfAllah:  card.nameOfAllah ?? "",
-      nameMeaning:  card.nameMeaning ?? "",
+      nameOfAllah:  card.transliterationText ?? "",
+      nameMeaning:  card.themeAnchorText ?? "",
       pack:         card.packId ?? card.subTheme ?? "",
       deckName:     card.deckName ?? config.label ?? "",
       category:     card.category ?? "",
@@ -362,21 +413,12 @@ async function initGameplay() {
 
   const verifyToggle = initVerifyToggle({ getCard: window.__iqGetCurrentCard });
 
-  const leftEl     = document.getElementById("iq-tile-left");
   const rightEl    = document.getElementById("iq-tile-right");
   const scoreEl    = document.getElementById("iq-scorebar");
   const progressEl = document.getElementById("iq-progress");
 
   // ── Side rail wiring — left: name actions, right: score actions ──────────
-  const leftRail  = document.getElementById("iq-side-left");
   const rightRail = document.getElementById("iq-side-right");
-
-  leftRail?.addEventListener("click", e => {
-    const action = e.target.closest("[data-action]")?.dataset.action;
-    if (action === "revealName"    && handlers.onRevealName)    handlers.onRevealName();
-    if (action === "nameCorrect"   && handlers.onNameCorrect)   handlers.onNameCorrect();
-    if (action === "nameIncorrect" && handlers.onNameIncorrect) handlers.onNameIncorrect();
-  });
 
   rightRail?.addEventListener("click", e => {
     const action = e.target.closest("[data-action]")?.dataset.action;
@@ -386,16 +428,7 @@ async function initGameplay() {
   });
 
   function syncSideRails() {
-    const nameRevealed   = state.nameRevealed;
     const answerRevealed = state.revealStage === "answer";
-
-    // Left rail: show Reveal Name → swap to ✗/✓ after name revealed
-    const revealNameBtn = leftRail?.querySelector('[data-action="revealName"]');
-    if (revealNameBtn) revealNameBtn.style.display = nameRevealed ? "none" : "";
-    leftRail?.querySelectorAll(".iq-medallion").forEach(btn => {
-      btn.style.display = nameRevealed ? "" : "none";
-      btn.disabled = !nameRevealed || state.nameBonusClaimed;
-    });
 
     // Right rail: show Reveal Answer → swap to ✗/✓ after answer revealed
     const revealAnswerBtn = rightRail?.querySelector('[data-action="revealAnswer"]');
@@ -410,7 +443,6 @@ async function initGameplay() {
   const dock      = document.getElementById("iq-action-dock");
   const grip      = document.getElementById("iq-dock-grip");
   const revealRow = document.getElementById("iq-dock-reveal-row");
-  const nameRow   = document.getElementById("iq-dock-name-row");
   const scoreRow  = document.getElementById("iq-dock-score-row");
   const utilityRow= document.getElementById("iq-dock-utility-row");
   const DOCK_KEY  = "iq-dock-pos";
@@ -469,35 +501,27 @@ async function initGameplay() {
   if (dock) {
     dock.addEventListener("click", e => {
       const action = e.target.closest("[data-dock-action]")?.dataset.dockAction;
-      if (action === "revealName"    && handlers.onRevealName)    handlers.onRevealName();
       if (action === "revealAnswer"  && handlers.onRevealAnswer)  handlers.onRevealAnswer();
       if (action === "correct"       && handlers.onCorrect)       handlers.onCorrect();
       if (action === "incorrect"     && handlers.onIncorrect)     handlers.onIncorrect();
-      if (action === "nameCorrect"   && handlers.onNameCorrect)   handlers.onNameCorrect();
-      if (action === "nameIncorrect" && handlers.onNameIncorrect) handlers.onNameIncorrect();
       if (action === "skip"          && handlers.onSkip)          handlers.onSkip();
     });
   }
 
   function syncDock() {
-    if (!dock || !revealRow || !nameRow || !scoreRow || !utilityRow) return;
+    if (!dock || !revealRow || !scoreRow || !utilityRow) return;
 
     const isMobile = mobileDockQuery.matches;
     const answerStyle = state.answerStyle ?? "reveal";
-    const nameNeedsScore = state.nameRevealed && !state.nameBonusClaimed;
     const answerNeedsScore = answerStyle !== "mcq" && state.revealStage === "answer";
-    const canRevealName = !state.nameRevealed;
     const canRevealAnswer = state.revealStage !== "answer";
     const hasAnyDockAction =
-      canRevealName ||
       canRevealAnswer ||
-      nameNeedsScore ||
       answerNeedsScore ||
       !state.isComplete;
 
     if (!isMobile || !hasAnyDockAction) {
       revealRow.style.display = "none";
-      nameRow.style.display = "none";
       scoreRow.style.display = "none";
       utilityRow.style.display = "none";
       dock.style.display = "none";
@@ -510,13 +534,10 @@ async function initGameplay() {
     dock.style.bottom = "";
     dock.style.transform = "";
 
-    const revealNameBtn = revealRow.querySelector('[data-dock-action="revealName"]');
     const revealAnswerBtn = revealRow.querySelector('[data-dock-action="revealAnswer"]');
-    if (revealNameBtn) revealNameBtn.style.display = canRevealName ? "" : "none";
     if (revealAnswerBtn) revealAnswerBtn.style.display = canRevealAnswer ? "" : "none";
 
-    revealRow.style.display = canRevealName || canRevealAnswer ? "flex" : "none";
-    nameRow.style.display = nameNeedsScore ? "flex" : "none";
+    revealRow.style.display = canRevealAnswer ? "flex" : "none";
     scoreRow.style.display = answerNeedsScore ? "flex" : "none";
     utilityRow.style.display = state.isComplete ? "none" : "flex";
     dock.style.display = "flex";
@@ -539,9 +560,9 @@ async function initGameplay() {
   }
 
   const handlers = {
-    onRevealName:    () => { state = revealName(state); redraw(); },
-    onRevealAnswer:  () => { state = revealAnswer(state); redraw(); },
+    onRevealAnswer:  () => { stopActiveRecognition(); state = revealAnswer(state); redraw(); },
     onCorrect: () => {
+      stopActiveRecognition();
       showToast(ptsForDifficulty(state.difficulty), "Correct!");
       state = markCorrect(state);
       // FX: streak pulse every 3
@@ -549,12 +570,6 @@ async function initGameplay() {
       triggerNoorPulse(isStreak);
       if (isStreak) playStreak(state.streak); else playCorrect();
       showEncouragement({ streak: state.streak });
-      // Knowledge chain: left tile → right tile on streak ≥ 2
-      if (state.streak >= 2) {
-        const fromEl = document.getElementById("iq-tile-left");
-        const toEl   = document.getElementById("iq-tile-right");
-        triggerKnowledgeChain(fromEl, toEl);
-      }
       updateBackdrop(state.correctCards, state.totalCards ?? state.rightDeck?.length ?? 1);
       clearBarakahCard();
       if (state.mode === "team") { state = switchTurn(state); playTurnSwitch(); showTurnSwitch(state.turn); }
@@ -567,6 +582,7 @@ async function initGameplay() {
       });
     },
     onIncorrect: () => {
+      stopActiveRecognition();
       showToast(0, "Missed");
       playMiss();
       state = markIncorrect(state);
@@ -575,15 +591,7 @@ async function initGameplay() {
       checkComplete();
       redraw();
     },
-    onNameCorrect: () => {
-      showToast(1, "Allah Name · Bonus");
-      triggerNoorPulse(false);
-      playBonus();
-      state = markNameBonus(state);
-      redraw();
-    },
-    onNameIncorrect: () => { state = dismissNameBonus(state); redraw(); },
-    onSkip:          () => { clearBarakahCard(); state = skipCard(state); checkComplete(); redraw(); },
+    onSkip:          () => { stopActiveRecognition(); clearBarakahCard(); state = skipCard(state); checkComplete(); redraw(); },
     onMcqPick: (idx) => {
       const card = state.rightDeck?.[state.index];
       if (!card || typeof card.correctIndex !== "number") return;
@@ -596,10 +604,135 @@ async function initGameplay() {
         else handlers.onIncorrect();
       }, 650);
     },
+    onSequencePick: (idx) => {
+      const card = state.rightDeck?.[state.index];
+      if (!card?.sequenceOptions?.length) return;
+      if (state.sequenceSelection.includes(idx)) return;
+
+      const sequenceSelection = [...state.sequenceSelection, idx];
+      state = { ...state, sequenceSelection };
+      redraw();
+
+      if (sequenceSelection.length !== card.sequenceSteps?.length) return;
+      const chosen = sequenceSelection.map(i => card.sequenceOptions[i]);
+      const correct = chosen.every((step, i) => step === card.sequenceSteps[i]);
+      state = revealAnswer(state);
+      redraw();
+      setTimeout(() => {
+        if (correct) handlers.onCorrect();
+        else handlers.onIncorrect();
+      }, 700);
+    },
+    onMatchLeftPick: (label) => {
+      state = { ...state, pendingMatchLeft: label };
+      redraw();
+    },
+    onMatchRightPick: (label) => {
+      const card = state.rightDeck?.[state.index];
+      if (!card?.matchPairs?.length || !state.pendingMatchLeft) return;
+      const expected = card.matchPairs.find(pair => pair.left === state.pendingMatchLeft);
+      const resolvedPair = {
+        left: state.pendingMatchLeft,
+        right: label,
+        correct: expected?.right === label,
+      };
+      const matchedPairs = [...state.matchedPairs, resolvedPair];
+      state = { ...state, matchedPairs, pendingMatchLeft: null };
+      redraw();
+
+      if (matchedPairs.length !== card.matchPairs.length) return;
+      const allCorrect = matchedPairs.every(pair => pair.correct);
+      state = revealAnswer(state);
+      redraw();
+      setTimeout(() => {
+        if (allCorrect) handlers.onCorrect();
+        else handlers.onIncorrect();
+      }, 700);
+    },
+    onSpeechStart: () => {
+      const card = state.rightDeck?.[state.index];
+      if (!card) return;
+
+      stopActiveRecognition();
+
+      if (!SpeechRecognitionCtor) {
+        state = {
+          ...state,
+          speechStatus: "unsupported",
+          speechError: "Voice recognition is not available on this browser/device.",
+        };
+        redraw();
+        return;
+      }
+
+      const recognition = new SpeechRecognitionCtor();
+      activeRecognition = recognition;
+      recognition.lang = "en-US";
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      state = {
+        ...state,
+        speechStatus: "listening",
+        speechError: "",
+        speechTranscript: "",
+        speechScore: 0,
+      };
+      redraw();
+
+      recognition.onresult = event => {
+        const transcript = Array.from(event.results)
+          .map(result => result[0]?.transcript || "")
+          .join(" ")
+          .trim();
+        const targets = [
+          ...(card.speechTargets || []),
+          card.answerText || "",
+          card.transliterationText || "",
+          card.themeAnchorText || "",
+        ].filter(Boolean);
+        const score = scoreSpeechTranscript(transcript, targets);
+        state = {
+          ...state,
+          speechTranscript: transcript,
+          speechScore: score,
+          speechStatus: "scored",
+          speechError: "",
+        };
+        state = revealAnswer(state);
+        redraw();
+        setTimeout(() => {
+          if (score >= (card.accuracyThreshold ?? 0.67)) handlers.onCorrect();
+          else handlers.onIncorrect();
+        }, 900);
+      };
+
+      recognition.onerror = event => {
+        state = {
+          ...state,
+          speechStatus: "error",
+          speechError: `Voice input error: ${event.error || "unknown-error"}.`,
+        };
+        redraw();
+      };
+
+      recognition.onend = () => {
+        activeRecognition = null;
+        if (state.speechStatus === "listening") {
+          state = {
+            ...state,
+            speechStatus: "ended",
+            speechError: state.speechError || "No voice transcript was captured.",
+          };
+          redraw();
+        }
+      };
+
+      recognition.start();
+    },
   };
 
   function redraw() {
-    if (leftEl)     renderLeftTile(leftEl, state, handlers);
     if (rightEl)    renderRightTile(rightEl, state, handlers);
     if (scoreEl)    renderScorebar(scoreEl, state);
     if (progressEl) renderProgressBar(progressEl, state);

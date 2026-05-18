@@ -1,0 +1,21 @@
+{
+  "name": "hikahquest-native-shell",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Native shell packaging for HikahQuest",
+  "scripts": {
+    "build:banks": "node scripts/build-category-banks.mjs",
+    "prepare:native": "node scripts/prepare-native-web.mjs",
+    "cap:sync": "npm run prepare:native && npx cap sync",
+    "cap:add:android": "npm run prepare:native && npx cap add android",
+    "cap:add:ios": "npm run prepare:native && npx cap add ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.2",
+    "@capacitor/core": "^7.4.2",
+    "@capacitor/ios": "^7.4.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.2"
+  }
+}

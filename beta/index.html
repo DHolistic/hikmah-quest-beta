@@ -6,21 +6,14 @@
   <meta name="copyright" content="© 2026 Donya G. Berhan, LPC. All Rights Reserved.">
   <meta name="author" content="Donya G. Berhan, LPC">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-  <meta name="description" content="Hikmah Quest — Choose your source of Islamic knowledge and begin your trivia journey." />
+  <meta name="description" content="HikahQuest — Choose your source of Islamic knowledge and begin your trivia journey." />
   <meta name="theme-color" content="#07111a" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Hikmah Quest" />
+  <meta name="apple-mobile-web-app-title" content="HikahQuest" />
 
   <link rel="manifest" href="../manifest.json" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Scheherazade+New:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
 
   <link rel="stylesheet" href="src/styles/tokens.css" />
   <link rel="stylesheet" href="src/styles/base.css" />
@@ -30,7 +23,7 @@
   <link rel="stylesheet" href="src/styles/buttons.css" />
   <link rel="stylesheet" href="src/styles/mobile.css" />
 
-  <title>Hikmah Quest — Choose Your Path</title>
+  <title>HikahQuest — Choose Your Path</title>
 </head>
 <body>
 
@@ -83,9 +76,9 @@
 
       <!-- ── Header ─────────────────────────────────────────────────────────── -->
       <header class="iq-header" role="banner">
-        <div class="iq-header-logo" aria-label="Hikmah Quest">
+        <div class="iq-header-logo" aria-label="HikahQuest">
           <span class="iq-header-logo__symbol" aria-hidden="true">☪</span>
-          <span class="iq-header-logo__name">Hikmah Quest</span>
+          <span class="iq-header-logo__name">HikahQuest</span>
         </div>
         <div style="display:flex;align-items:center;gap:.5rem;">
           <button
@@ -118,7 +111,7 @@
             aria-label="Source selection"
           >
             <div class="iq-tile-header">
-              <span class="iq-tile-badge">Choose Your Realm</span>
+              <span class="iq-tile-badge">Choose Your Deck</span>
             </div>
             <div class="iq-tile-body">
               <ul
@@ -141,13 +134,13 @@
             aria-label="Realm information"
           >
             <div class="iq-tile-header">
-              <span class="iq-tile-badge" id="realm-badge">Hikmah Quest</span>
+              <span class="iq-tile-badge" id="realm-badge">HikahQuest</span>
             </div>
 
             <div class="iq-tile-body">
-              <h1 class="iq-tile-name" id="realm-title">Select a Realm</h1>
+              <h1 class="iq-tile-name" id="realm-title">Select a Deck</h1>
               <p class="iq-tile-meaning" id="realm-desc">
-                Choose a realm on the left to begin your journey
+                Choose a deck on the left to begin your journey
               </p>
 
               <!-- Next button to proceed to mode/difficulty page -->
@@ -168,15 +161,10 @@
                 </p>
 
                 <div class="iq-support-panel__qr-wrap">
-                  <img
-                    class="iq-support-panel__qr"
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=176x176&data=mailto%3Adonyaberhan%40gmail.com%3Fsubject%3DIlm%2520Quest%2520Donation%2520Gift"
-                    alt="Donation and gift support QR code"
-                    loading="lazy"
-                  />
+                  <div class="iq-support-panel__qr" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;color:#07111a;font-weight:700;">OFFLINE</div>
                   <div class="iq-support-panel__actions">
                     <a class="iq-support-link" href="donation.html">Donation and Gift Options</a>
-                    <a class="iq-support-link" href="mailto:donyaberhan@gmail.com?subject=Ilm%20Quest%20Donation%20Gift">Email Support Intent</a>
+                    <a class="iq-support-link" href="mailto:donyaberhan@gmail.com?subject=HikahQuest%20Donation%20Gift">Email Support Intent</a>
                   </div>
                 </div>
 
@@ -185,6 +173,10 @@
                   <a href="privacy.html">Privacy Policy</a>
                   <a href="copyright.html">Copyright Notice</a>
                   <a href="donation.html">Donation Disclaimer</a>
+                </div>
+
+                <div class="iq-support-panel__actions" style="margin-top:.75rem;">
+                  <button class="iq-medallion-btn" id="iq-bonus-btn" type="button">Allah's Names Bonus →</button>
                 </div>
               </section>
             </div>
@@ -199,13 +191,14 @@
 
   <noscript>
     <p style="padding:2rem;text-align:center;font-family:serif;color:#f0e8d5;">
-      Hikmah Quest requires JavaScript to run. Please enable JavaScript in your browser.
+      HikahQuest requires JavaScript to run. Please enable JavaScript in your browser.
     </p>
   </noscript>
 
   <script type="module" src="src/app/bootstrap.js?v=20260501"></script>
   <script>
-    if ('serviceWorker' in navigator) {
+    var isNativeShell = typeof window !== 'undefined' && window.Capacitor && typeof window.Capacitor.isNativePlatform === 'function' && window.Capacitor.isNativePlatform();
+    if ('serviceWorker' in navigator && !isNativeShell) {
       navigator.serviceWorker.register('../sw.js', { scope: '../' }).catch(() => {});
     }
   </script>
@@ -279,7 +272,7 @@
       var text = textEl.value.trim();
       if (!text){ textEl.focus(); return; }
       var page = window.location.pathname.split('/').pop() || 'index';
-      var sub  = encodeURIComponent('Hikmah Quest Beta Feedback — ' + name);
+      var sub  = encodeURIComponent('HikahQuest Beta Feedback — ' + name);
       var body = encodeURIComponent('From: ' + name + '\nPage: ' + page + '\n\n' + text);
       window.location.href = 'mailto:donyaberhan@gmail.com?subject=' + sub + '&body=' + body;
       closeFeedback();

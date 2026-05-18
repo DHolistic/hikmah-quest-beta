@@ -1,0 +1,332 @@
+/* ═══════════════════════════════════════════════════════════════
+   ILM QUEST · TEAM BETA 2 HUB
+   Lobby, avatar grid, room code, conference scoreboard
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Layout ──────────────────────────────────────────────────────────── */
+.iq-team-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem 3rem;
+  gap: 1.5rem;
+  color: var(--theme-fg, #f0e8d5);
+  font-family: 'Lora', serif;
+}
+
+.iq-team-header {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iq-team-header__back {
+  font-family: 'Lora', serif;
+  font-size: .82rem;
+  color: rgba(240, 232, 213, .55);
+  text-decoration: none;
+  letter-spacing: .04em;
+  transition: color .15s;
+}
+.iq-team-header__back:hover { color: rgba(212, 175, 55, .9); }
+
+.iq-team-header__title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: .95rem;
+  color: rgba(212, 175, 55, .85);
+  letter-spacing: .06em;
+}
+
+/* ── Avatar Card (self) ──────────────────────────────────────────────── */
+.iq-avatar-self {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .6rem;
+}
+
+.iq-avatar-badge {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border: 2px solid rgba(212, 175, 55, .45);
+  box-shadow: 0 0 20px rgba(212, 175, 55, .15), inset 0 0 12px rgba(0,0,0,.4);
+  transition: opacity .3s;
+}
+
+.iq-avatar-badge.is-hidden {
+  opacity: 0.35;
+  filter: blur(2px);
+}
+
+.iq-avatar-name {
+  font-size: .85rem;
+  color: rgba(240, 232, 213, .8);
+  letter-spacing: .03em;
+}
+
+.iq-avatar-privacy {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .72rem;
+  color: rgba(240, 232, 213, .45);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.iq-avatar-privacy:hover { color: rgba(212, 175, 55, .75); }
+
+/* ── Sections ────────────────────────────────────────────────────────── */
+.iq-team-section {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(240, 232, 213, .03);
+  border: 1px solid rgba(212, 175, 55, .15);
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.iq-team-section__label {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: .72rem;
+  letter-spacing: .1em;
+  color: rgba(212, 175, 55, .55);
+  text-transform: uppercase;
+}
+
+/* ── Room Code display ───────────────────────────────────────────────── */
+.iq-room-code-display {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  flex-wrap: wrap;
+}
+
+.iq-room-code {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.2rem;
+  letter-spacing: .3em;
+  color: rgba(212, 175, 55, .95);
+  text-shadow: 0 0 18px rgba(212, 175, 55, .3);
+}
+
+.iq-room-code-hint {
+  font-size: .74rem;
+  color: rgba(240, 232, 213, .45);
+  line-height: 1.4;
+  max-width: 180px;
+}
+
+/* ── Room Code input (join) ─────────────────────────────────────────── */
+.iq-room-input {
+  display: flex;
+  gap: .6rem;
+  align-items: stretch;
+}
+
+.iq-room-input input {
+  flex: 1;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.4rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  background: rgba(240, 232, 213, .05);
+  border: 1px solid rgba(212, 175, 55, .3);
+  border-radius: 8px;
+  color: rgba(212, 175, 55, .95);
+  padding: .45rem .75rem;
+  text-align: center;
+  width: 0; /* flex takes over */
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.iq-room-input input:focus {
+  border-color: rgba(212, 175, 55, .65);
+  box-shadow: 0 0 12px rgba(212, 175, 55, .15);
+}
+
+.iq-room-input input::placeholder {
+  color: rgba(240, 232, 213, .2);
+  letter-spacing: .2em;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────── */
+.iq-team-btn {
+  font-family: 'Lora', serif;
+  font-size: .84rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  padding: .55rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, .4);
+  background: rgba(212, 175, 55, .10);
+  color: rgba(212, 175, 55, .9);
+  cursor: pointer;
+  transition: background .15s, border-color .15s, box-shadow .15s;
+  white-space: nowrap;
+}
+
+.iq-team-btn:hover:not(:disabled) {
+  background: rgba(212, 175, 55, .2);
+  border-color: rgba(212, 175, 55, .7);
+  box-shadow: 0 0 12px rgba(212, 175, 55, .15);
+}
+
+.iq-team-btn:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.iq-team-btn--primary {
+  background: rgba(212, 175, 55, .2);
+  border-color: rgba(212, 175, 55, .55);
+}
+
+.iq-team-btn--primary:hover:not(:disabled) {
+  background: rgba(212, 175, 55, .32);
+}
+
+/* ── Player grid ─────────────────────────────────────────────────────── */
+.iq-player-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+  min-height: 3rem;
+}
+
+.iq-player-card {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: rgba(240, 232, 213, .04);
+  border: 1px solid rgba(240, 232, 213, .1);
+  border-radius: 8px;
+  padding: .35rem .65rem;
+  animation: player-join-fade 0.4s ease-out;
+}
+
+@keyframes player-join-fade {
+  from { opacity: 0; transform: scale(0.85) translateY(4px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.iq-player-card__badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: .62rem;
+  font-weight: 700;
+  border: 1px solid rgba(212, 175, 55, .3);
+}
+
+.iq-player-card__name {
+  font-size: .74rem;
+  color: rgba(240, 232, 213, .75);
+}
+
+.iq-player-card--self .iq-player-card__name {
+  color: rgba(212, 175, 55, .85);
+}
+
+/* ── Lobby empty state ───────────────────────────────────────────────── */
+.iq-lobby-waiting {
+  font-size: .78rem;
+  color: rgba(240, 232, 213, .35);
+  font-style: italic;
+  letter-spacing: .03em;
+}
+
+/* Pulsing dot for "waiting" */
+.iq-waiting-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, .5);
+  margin-right: .4rem;
+  vertical-align: middle;
+  animation: waiting-dot-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes waiting-dot-pulse {
+  0%, 100% { opacity: .3; transform: scale(0.8); }
+  50%       { opacity: 1;  transform: scale(1.2); }
+}
+
+/* ── Status message ──────────────────────────────────────────────────── */
+.iq-team-status {
+  font-size: .78rem;
+  color: rgba(240, 232, 213, .5);
+  text-align: center;
+  min-height: 1.1rem;
+  letter-spacing: .02em;
+}
+
+.iq-team-status.is-success { color: rgba(120, 200, 120, .85); }
+.iq-team-status.is-error   { color: rgba(200, 90, 90, .85); }
+
+/* ── Conference scoreboard ───────────────────────────────────────────── */
+.iq-conf-scores {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.iq-conf-score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+  padding: .3rem 0;
+  border-bottom: 1px solid rgba(240, 232, 213, .06);
+}
+
+.iq-conf-score-row:last-child { border-bottom: none; }
+
+.iq-conf-score-row__name {
+  font-size: .78rem;
+  color: rgba(240, 232, 213, .7);
+  flex: 1;
+}
+
+.iq-conf-score-row__pts {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: .9rem;
+  color: rgba(212, 175, 55, .85);
+  min-width: 2.5rem;
+  text-align: right;
+}
+
+/* ── How to play instructions ─────────────────────────────────────────── */
+.iq-how-to {
+  font-size: .78rem;
+  color: rgba(240, 232, 213, .5);
+  line-height: 1.7;
+}
+
+.iq-how-to li { margin-bottom: .2rem; }
+
+.iq-how-to strong {
+  color: rgba(212, 175, 55, .75);
+  font-weight: 600;
+}

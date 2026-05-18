@@ -105,6 +105,21 @@
 }
 
 /* --------------------------------------------------------------------------
+   Hidayah theme — cosmic / guidance
+   -------------------------------------------------------------------------- */
+[data-theme="hidayah"] {
+  --theme-accent:        rgba(186, 170, 255, 0.84);
+  --theme-accent-soft:   rgba(186, 170, 255, 0.14);
+  --theme-accent-strong: rgba(186, 170, 255, 1);
+  --theme-script:        rgba(241, 237, 255, 0.94);
+  --theme-panel-fill:    rgba(13, 12, 28, 0.62);
+  --theme-panel-edge:    rgba(186, 170, 255, 0.22);
+  --theme-glow:          rgba(186, 170, 255, 0.32);
+  --theme-success:       rgba(100, 210, 130, 0.9);
+  --theme-danger:        rgba(230, 100, 100, 0.9);
+}
+
+/* --------------------------------------------------------------------------
    Ultimate theme — teal / luminous (matches :root defaults)
    -------------------------------------------------------------------------- */
 [data-theme="ultimate"] {

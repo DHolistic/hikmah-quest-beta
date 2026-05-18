@@ -85,6 +85,8 @@ function transformLegacyCard(card) {
   return {
     id: String(card.id),
     type: "legacy",
+    packId: card.packId || "",
+    deckName: card.deckName || "",
     category: card.cat,
     subTheme: card.subTheme || "Knowledge",
     promptText: card.question || "",
@@ -99,10 +101,13 @@ function transformLegacyCard(card) {
     transliterationText: card.transliterationText || "",
     translationText: card.translationText || card.ayahReveal?.meaning || "",
     questionMode: card.questionMode || "open",
+    questionType: card.questionType || (card.questionMode === "multiple-choice" ? "multiple-choice" : "open"),
     referenceText: card.referenceText || card.ayahReveal?.source || referenceText,
-    sourceTitle: card.sourceTitle || card.ayahReveal?.source || referenceText || "Hikmah Quest",
+    referenceHint: card.referenceHint || "",
+    sourceTitle: card.sourceTitle || card.ayahReveal?.source || referenceText || "HikahQuest",
     sourceUrl: "",
     explanation: card.explanation || "",
+    themeAnchorText: card.themeAnchorText || card.themeOutcome || card.nameMeaning || "",
     options: Array.isArray(card.options) ? card.options : null,
     correctIndex: typeof card.correctIndex === "number" ? card.correctIndex : null,
     ayahReveal: card.ayahReveal || null,
@@ -117,6 +122,10 @@ function pickByCategoryAndDifficulty(cards, catId, difficulty, limit = 11) {
   ).slice(0, limit);
 }
 
+function pickByDifficulty(cards, difficulty) {
+  return cards.filter(card => card.difficulty === difficulty);
+}
+
 // Realm deck stays inside the selected difficulty tier.
 function pickRealmDeck(cards, catId, difficulty) {
   return pickByCategoryAndDifficulty(cards, catId, difficulty, 11);
@@ -128,6 +137,18 @@ function pickUltimate(cards, difficulty) {
     pickByCategoryAndDifficulty(cards, cat, difficulty, 11)
   );
   return shuffleDeck(perCat.flat());
+}
+
+function pickJamiBank(cards, difficulty) {
+  const selectedDifficulty = shuffleDeck(pickByDifficulty(cards, difficulty));
+  const categoryOrder = ["quran", "sunnah", "ummah", "hidayah"];
+  const base = categoryOrder.flatMap(cat =>
+    shuffleDeck(selectedDifficulty.filter(card => card.category === cat)).slice(0, 8)
+  );
+  const used = new Set(base.map(card => card.id));
+  const wildcardPool = selectedDifficulty.filter(card => !used.has(card.id));
+  const wildcard = shuffleDeck(wildcardPool).slice(0, 1);
+  return shuffleDeck([...base, ...wildcard]);
 }
 
 function applyEasyMultipleChoice(card, selectedCards, allCards) {
@@ -157,6 +178,7 @@ function applyEasyMultipleChoice(card, selectedCards, allCards) {
   return {
     ...card,
     questionMode: "multiple-choice",
+    questionType: "multiple-choice",
     options,
     correctIndex: options.indexOf(correct),
   };
@@ -355,13 +377,150 @@ function transformTwoTileCard(card) {
   };
 }
 
+function normalizeSeasonalCard(card, config, difficulty) {
+  const sourceLabel = config.label || "HikahQuest";
+  const questionType = card.questionType || (config.id === "bonus" ? "speech" : "multiple-choice");
+  const sequenceSteps = Array.isArray(card.sequenceSteps) ? card.sequenceSteps : null;
+  const matchPairs = Array.isArray(card.matchPairs) ? card.matchPairs : null;
+  const options = Array.isArray(card.options) ? card.options : null;
+  return {
+    id: String(card.id ?? `${config.id}-${Math.random().toString(36).slice(2, 8)}`),
+    type: "trivia",
+    packId: card.packId || config.id,
+    deckName: sourceLabel,
+    category: card.category || config.id,
+    title: card.title || sourceLabel,
+    promptText: card.promptText || card.question || "",
+    answerText: card.answerText || card.answer || "",
+    sourceTitle: card.sourceTitle || sourceLabel,
+    sourceUrl: card.sourceUrl || "",
+    explanation: card.explanation || "",
+    difficulty: card.difficulty || difficulty || "medium",
+    points: Number(card.points ?? (difficulty === "hard" ? 3 : difficulty === "easy" ? 1 : 2)),
+    promptArabicText: card.promptArabicText || "",
+    arabicText: card.arabicText || "",
+    transliterationText: card.transliterationText || "",
+    translationText: card.translationText || "",
+    themeAnchorText: card.themeAnchorText || "",
+    questionType,
+    options: options ? [...options] : null,
+    correctIndex: typeof card.correctIndex === "number" ? card.correctIndex : null,
+    sequenceSteps,
+    sequenceOptions: sequenceSteps ? shuffleDeck(sequenceSteps) : null,
+    matchPairs,
+    matchLeftOptions: matchPairs ? matchPairs.map(pair => pair.left) : null,
+    matchRightOptions: matchPairs ? shuffleDeck(matchPairs.map(pair => pair.right)) : null,
+    speechTargets: Array.isArray(card.speechTargets) ? card.speechTargets : [card.answerText || card.answer || ""].filter(Boolean),
+    accuracyThreshold: typeof card.accuracyThreshold === "number" ? card.accuracyThreshold : 0.67,
+    badgeLabel: card.badgeLabel || card.title || sourceLabel,
+  };
+}
+
+function flattenSinglePassDeck(data) {
+  if (!data || !Array.isArray(data.packs)) return [];
+
+  return data.packs.flatMap(pack =>
+    (Array.isArray(pack.cards) ? pack.cards : []).map(card => transformLegacyCard({
+      id: card.id,
+      packId: pack.packId || "",
+      deckName: pack.deckName || data.deckName || "",
+      cat: card.category,
+      pts: Number(card.difficulty ?? 1),
+      subTheme: card.subTheme || pack.packName || "Knowledge",
+      question: card.question || "",
+      answer: card.answer || "",
+      referenceHint: card.referenceHint || "",
+      referenceText: card.referenceHint || "",
+      sourceTitle: card.referenceHint || pack.packName || data.deckName || "HikahQuest",
+      nameOfAllah: card.nameOfAllah || "",
+      nameMeaning: card.nameMeaning || "",
+      explanation: card.formula || "",
+      themeOutcome: card.themeOutcome || "",
+    }))
+  );
+}
+
+function transformFinaleNameCard(card) {
+  return {
+    id: String(card.id),
+    type: "name-finale",
+    packId: "allah-names-finale",
+    deckName: "Ultimate",
+    category: "names",
+    title: "Allah's Names Finale",
+    badgeLabel: "Allah's Names Finale",
+    promptText: card.promptText || `Say the Name of Allah that means "${card.meaning}".`,
+    answerText: `${card.transliteration} — ${card.meaning}`,
+    sourceTitle: "99 Names of Allah",
+    sourceUrl: "",
+    explanation: card.reflectionPrompt || "",
+    difficulty: "medium",
+    points: 2,
+    questionType: "speech",
+    arabicText: card.arabic || "",
+    transliterationText: card.transliteration || "",
+    translationText: card.reflectionPrompt || "",
+    themeAnchorText: card.meaning || "",
+    options: null,
+    correctIndex: null,
+    sequenceSteps: null,
+    sequenceOptions: null,
+    matchPairs: null,
+    matchLeftOptions: null,
+    matchRightOptions: null,
+    speechTargets: [card.transliteration || "", card.meaning || ""].filter(Boolean),
+    accuracyThreshold: 0.67,
+  };
+}
+
+async function fetchJson(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+
 // ─── Main loaders ────────────────────────────────────────────────────────────
 
 export async function loadDeck(config, difficulty = "medium") {
   try {
-    const res = await fetch(config.deckUrl);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
+    if (config.deckType === "bank99") {
+      const urls = Array.isArray(config.deckUrls) ? config.deckUrls : [config.deckUrl].filter(Boolean);
+      const fetched = await Promise.all(urls.map(fetchJson));
+      const all = fetched.flatMap(data => Array.isArray(data) ? data.map(transformLegacyCard) : []);
+      const selected = config.id === "jami"
+        ? pickJamiBank(all, difficulty)
+        : pickByDifficulty(all, difficulty);
+      return shapeLegacyDeck(selected, all, difficulty);
+    }
+
+    if (config.deckType === "single-pass-deck") {
+      const urls = Array.isArray(config.deckUrls) ? config.deckUrls : [config.deckUrl].filter(Boolean);
+      const decks = await Promise.all(urls.map(fetchJson));
+      const all = decks.flatMap(flattenSinglePassDeck);
+      const selected = config.id === "jami"
+        ? pickUltimate(all, difficulty)
+        : pickRealmDeck(all, config.id, difficulty);
+      return shapeLegacyDeck(selected, all, difficulty);
+    }
+
+    if (config.deckType === "seasonal-pack") {
+      const data = await fetchJson(config.deckUrl);
+      const triviaCards = Array.isArray(data)
+        ? (config.id === "bonus"
+          ? data.map(transformFinaleNameCard)
+          : data.map(card => normalizeSeasonalCard(card, config, difficulty)))
+        : [];
+
+      if (!config.finaleDeckUrl) return triviaCards;
+
+      const finaleData = await fetchJson(config.finaleDeckUrl);
+      const finaleCards = Array.isArray(finaleData)
+        ? finaleData.map(transformFinaleNameCard)
+        : [];
+      return [...triviaCards, ...finaleCards];
+    }
+
+    const data = await fetchJson(config.deckUrl);
 
     if (config.deckType === "cards99") {
       const all = Array.isArray(data) ? data.map(transformLegacyCard) : [];

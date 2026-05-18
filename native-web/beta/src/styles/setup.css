@@ -1,0 +1,801 @@
+/* ==========================================================================
+   setup.css — Hikmah Quest Beta
+   Header utilities, chip groups, results page, source selector tile styles.
+   Import after base.css + tiles.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Right tile on the index page — push content to lower half so the
+   title/mode/difficulty cluster sits near the bottom of the scene.
+   -------------------------------------------------------------------------- */
+#iq-tile-setup {
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4rem;
+}
+
+#iq-tile-setup .iq-tile-body {
+  flex: 0 0 auto;
+  gap: var(--iq-space-1);
+  max-width: 480px;
+}
+
+/* --------------------------------------------------------------------------
+   Setup group — chip label + chip row, used inside right tile
+   -------------------------------------------------------------------------- */
+.iq-setup-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+/* Difficulty + Begin Journey — 3-col grid so button spans exact chip-row width */
+.iq-difficulty-stack {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.iq-difficulty-stack .iq-medallion-btn {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: var(--iq-space-2);
+}
+
+/* Inside the right tile, left-align but keep compact */
+.iq-setup-group--tile {
+  margin-top: var(--iq-space-2);
+}
+
+/* --------------------------------------------------------------------------
+   Support panel (index right tile) — donation/gift + legal quick links
+   -------------------------------------------------------------------------- */
+.iq-support-panel {
+  margin-top: var(--iq-space-2);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 14px;
+  padding: 0.8rem 0.9rem;
+  width: min(100%, 520px);
+  background: linear-gradient(180deg, rgba(7, 14, 27, 0.48), rgba(7, 14, 27, 0.3));
+}
+
+.iq-support-panel__title {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--theme-accent);
+  margin-bottom: 0.32rem;
+  text-transform: uppercase;
+}
+
+.iq-support-panel__text,
+.iq-support-panel__promise {
+  font-size: 0.73rem;
+  color: rgba(240, 232, 213, 0.82);
+  line-height: 1.45;
+}
+
+.iq-support-panel__promise {
+  margin-top: 0.34rem;
+}
+
+.iq-support-panel__qr-wrap {
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.iq-support-panel__qr {
+  width: 88px;
+  height: 88px;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: #fff;
+}
+
+.iq-support-panel__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.iq-support-link {
+  color: rgba(240, 232, 213, 0.9);
+  font-size: 0.73rem;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(212, 175, 55, 0.45);
+  width: fit-content;
+}
+
+.iq-support-link:hover {
+  color: var(--theme-accent);
+  border-bottom-color: var(--theme-accent);
+}
+
+.iq-legal-links {
+  margin-top: 0.62rem;
+  display: flex;
+  gap: 0.4rem 0.7rem;
+  flex-wrap: wrap;
+}
+
+.iq-legal-links a {
+  color: rgba(240, 232, 213, 0.74);
+  font-size: 0.68rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid transparent;
+}
+
+.iq-legal-links a:hover {
+  color: var(--theme-accent);
+  border-bottom-color: rgba(212, 175, 55, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   Chip group — flex row of radio-style toggle chips
+   -------------------------------------------------------------------------- */
+.iq-chip-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.iq-setup-label {
+  font-family: "Cinzel Decorative", "Palatino Linotype", serif;
+  font-size: 0.62rem;
+  color: var(--iq-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* --------------------------------------------------------------------------
+   Source list — draggable text items on left tile (index page)
+   No icons/emoji — text floats in the scene like the gameplay left tile.
+   -------------------------------------------------------------------------- */
+.iq-source-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--iq-space-2) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  width: 100%;
+}
+
+.iq-source-item {
+  padding: 0.7rem 0 0.7rem 1rem;
+  border-left: 2px solid transparent;
+  font-family: "Cinzel Decorative", "Palatino Linotype", serif;
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  letter-spacing: 0.06em;
+  color: rgba(240, 232, 213, 0.45);
+  cursor: grab;
+  user-select: none;
+  transition: border-color 0.2s, color 0.2s, text-shadow 0.25s, transform 0.15s;
+  border-radius: 0;
+  text-shadow:
+    0 1px 8px rgba(0, 0, 0, 0.85),
+    0 2px 24px rgba(0, 0, 0, 0.65);
+}
+
+.iq-source-item:hover {
+  border-left-color: var(--theme-panel-edge);
+  color: rgba(240, 232, 213, 0.75);
+}
+
+.iq-source-item:focus-visible {
+  outline: none;
+  border-left-color: var(--theme-accent);
+  color: rgba(240, 232, 213, 0.85);
+}
+
+.iq-source-item.is-selected {
+  border-left-color: var(--theme-accent);
+  color: var(--theme-accent);
+  text-shadow:
+    0 0 20px var(--theme-glow),
+    0 0 40px var(--theme-glow),
+    0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.iq-source-item.is-dragging {
+  opacity: 0.3;
+  cursor: grabbing;
+}
+
+.iq-source-item.drag-over {
+  transform: translateY(-3px);
+  border-left-color: var(--theme-accent);
+  color: rgba(240, 232, 213, 0.85);
+}
+
+/* --------------------------------------------------------------------------
+   Header logo — brand mark in the top-left
+   -------------------------------------------------------------------------- */
+.iq-header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.iq-header-logo__symbol {
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--iq-gold-pale);
+  filter: drop-shadow(0 0 6px var(--theme-glow));
+}
+
+.iq-header-logo__name {
+  font-family: "Cinzel Decorative", "Palatino Linotype", serif;
+  font-size: clamp(0.65rem, 2vw, 0.85rem);
+  letter-spacing: 0.1em;
+  color: var(--iq-gold-pale);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Header centre slot — realm label in gameplay
+   -------------------------------------------------------------------------- */
+.iq-header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Header spacer — invisible right-side counterweight for visual balance
+   -------------------------------------------------------------------------- */
+.iq-header-spacer {
+  min-width: 4rem;
+  visibility: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Score bar — right slot in gameplay header
+   -------------------------------------------------------------------------- */
+.iq-scorebar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 0.65rem;
+  font-family: "Cinzel Decorative", serif;
+  font-size: 0.75rem;
+  color: var(--iq-gold-pale);
+  white-space: normal;
+  text-align: right;
+  max-width: min(42rem, 58vw);
+}
+
+.iq-scorebar--solo,
+.iq-scorebar--team {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 16px;
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  background: linear-gradient(180deg, rgba(7, 14, 27, 0.8), rgba(7, 14, 27, 0.56));
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.32),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px) saturate(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
+}
+
+.iq-scorebar__meta,
+.iq-scorebar__teams,
+.iq-scorebar__deck,
+.iq-scorebar__status {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.iq-scorebar__team,
+.iq-scorebar__chip,
+.iq-scorebar__score,
+.iq-scorebar__streak,
+.iq-scorebar__amplifier,
+.iq-scorebar__event {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 28px;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.iq-scorebar__team strong {
+  font-size: 0.78rem;
+}
+
+.iq-scorebar__team--active {
+  border-color: rgba(212, 175, 55, 0.58);
+  color: var(--theme-accent);
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.2);
+}
+
+.iq-scorebar__chip--good,
+.iq-scorebar__event--good {
+  border-color: rgba(118, 223, 176, 0.32);
+  color: #b9ffd8;
+}
+
+.iq-scorebar__chip--miss,
+.iq-scorebar__event--miss {
+  border-color: rgba(255, 132, 132, 0.28);
+  color: #ffc5c5;
+}
+
+.iq-scorebar__event--mute {
+  color: rgba(240, 232, 213, 0.6);
+}
+
+.iq-scorebar__amplifier.is-live,
+.iq-scorebar--streak-5 .iq-scorebar__streak,
+.iq-scorebar--streak-10 .iq-scorebar__streak {
+  border-color: rgba(212, 175, 55, 0.48);
+  color: var(--theme-accent);
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.24);
+}
+
+.iq-scorebar--streak-5,
+.iq-scorebar--streak-10 {
+  animation: iqScorebarPulse 1.8s ease-in-out infinite;
+}
+
+.iq-scorebar--streak-10 {
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.38),
+    0 0 34px rgba(212, 175, 55, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Gameplay header uses a compact single-row scorebar.
+   Scope these overrides to gameplay so setup/results keep their card layout. */
+#page-gameplay .iq-header {
+  gap: 0.4rem;
+}
+
+#page-gameplay .iq-header-center {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+#page-gameplay .iq-header-center .iq-title--sm {
+  max-width: 16vw;
+}
+
+#page-gameplay #iq-scorebar {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: none;
+}
+
+#page-gameplay #iq-scorebar .iq-scorebar--inline {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+#page-gameplay #iq-scorebar .iq-scorebar--inline::-webkit-scrollbar {
+  display: none;
+}
+
+#page-gameplay #iq-scorebar .iq-scorebar--solo,
+#page-gameplay #iq-scorebar .iq-scorebar--team {
+  display: inline-flex;
+  grid-template-columns: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+#page-gameplay #iq-scorebar .iq-scorebar__pill,
+#page-gameplay #iq-scorebar .iq-scorebar__team {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 900px) {
+  #page-gameplay .iq-header-center .iq-title--sm {
+    max-width: 24vw;
+  }
+}
+
+#page-gameplay .iq-bg-layer {
+  transition: filter 0.45s ease, transform 0.45s ease, opacity 0.45s ease;
+}
+
+#page-gameplay.iq-page--amp-5 .iq-bg-layer {
+  filter: saturate(1.18) brightness(1.04);
+}
+
+#page-gameplay.iq-page--amp-10 .iq-bg-layer {
+  filter: saturate(1.34) brightness(1.09);
+}
+
+#page-gameplay.iq-page--amp-5::after,
+#page-gameplay.iq-page--amp-10::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(212, 175, 55, 0.14), transparent 40%),
+    radial-gradient(circle at 82% 32%, rgba(212, 175, 55, 0.12), transparent 42%),
+    radial-gradient(circle at 50% 84%, rgba(255, 209, 102, 0.1), transparent 36%);
+  animation: iqAmplifierGlow 2.4s ease-in-out infinite;
+}
+
+#page-gameplay.iq-page--amp-10::after {
+  background:
+    radial-gradient(circle at 18% 24%, rgba(212, 175, 55, 0.22), transparent 44%),
+    radial-gradient(circle at 82% 32%, rgba(212, 175, 55, 0.18), transparent 46%),
+    radial-gradient(circle at 50% 84%, rgba(255, 209, 102, 0.15), transparent 40%);
+}
+
+@keyframes iqScorebarPulse {
+  0%,
+  100% { transform: translateY(0); }
+  50% { transform: translateY(-1px); }
+}
+
+@keyframes iqAmplifierGlow {
+  0%,
+  100% { opacity: 0.55; }
+  50% { opacity: 0.95; }
+}
+
+/* --------------------------------------------------------------------------
+   Title size modifier — smaller title for gameplay header
+   -------------------------------------------------------------------------- */
+.iq-title--sm {
+  font-family: "Cinzel Decorative", "Palatino Linotype", serif;
+  color: var(--iq-gold-pale);
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
+}
+
+/* --------------------------------------------------------------------------
+   Button size modifier — compact variant for toolbar buttons
+   -------------------------------------------------------------------------- */
+.iq-btn--sm {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.72rem;
+  min-height: 36px;
+}
+
+/* --------------------------------------------------------------------------
+   Results main — full-width flex column, centred
+   -------------------------------------------------------------------------- */
+.iq-results-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  padding: var(--iq-space-4) var(--iq-space-3);
+  overflow-y: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Results emblem — trophy icon + title
+   -------------------------------------------------------------------------- */
+.iq-results-emblem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.iq-results-icon {
+  font-size: clamp(3rem, 8vw, 5rem);
+  line-height: 1;
+  filter: drop-shadow(0 0 16px var(--theme-glow));
+}
+
+/* --------------------------------------------------------------------------
+   Results score — 3-column stat grid
+   -------------------------------------------------------------------------- */
+.iq-results-score {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  background: var(--theme-panel-fill);
+  border: 1px solid var(--theme-panel-edge);
+  border-radius: var(--iq-radius-md);
+  padding: var(--iq-space-3) var(--iq-space-2);
+  width: 100%;
+  max-width: 24rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.iq-results-score__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0 var(--iq-space-1);
+}
+
+.iq-results-score__cell + .iq-results-score__cell {
+  border-left: 1px solid var(--theme-panel-edge);
+}
+
+.iq-results-score__value {
+  font-family: "Cinzel Decorative", serif;
+  font-size: clamp(1.2rem, 3.5vw, 1.75rem);
+  color: var(--iq-gold-pale);
+  line-height: 1;
+}
+
+.iq-results-score__label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--iq-text-muted);
+  font-family: "Cinzel Decorative", serif;
+}
+
+/* --------------------------------------------------------------------------
+   Results review section — missed cards
+   -------------------------------------------------------------------------- */
+.iq-results-review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--iq-space-2);
+  width: 100%;
+  max-width: 28rem;
+}
+
+.iq-missed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 28rem;
+}
+
+.iq-missed-card {
+  background: var(--theme-panel-fill);
+  border: 1px solid var(--theme-panel-edge);
+  border-radius: var(--iq-radius-sm);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.iq-missed-card__question {
+  font-size: 0.85rem;
+  color: var(--iq-text);
+  line-height: 1.4;
+  margin-bottom: 0.35rem;
+}
+
+.iq-missed-card__answer {
+  font-size: 0.8rem;
+  color: var(--theme-accent);
+  font-style: italic;
+}
+
+.iq-missed-card__source {
+  font-size: 0.72rem;
+  color: var(--iq-text-muted);
+  margin-top: 0.25rem;
+}
+
+.iq-missed-empty {
+  font-size: 0.9rem;
+  color: var(--theme-accent);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   Display options toggle — small icon button in the header
+   -------------------------------------------------------------------------- */
+.iq-display-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--theme-panel-edge);
+  border-radius: 7px;
+  color: var(--iq-text-muted);
+  font-size: 1rem;
+  padding: 0.28rem 0.5rem;
+  cursor: pointer;
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+  min-height: 32px;
+  min-width: 32px;
+  line-height: 1;
+}
+
+.iq-display-toggle:hover,
+.iq-display-toggle.is-active {
+  border-color: var(--theme-accent);
+  color: var(--theme-accent);
+  background: var(--theme-accent-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Display options panel — floating glass card
+   -------------------------------------------------------------------------- */
+.iq-display-panel {
+  position: fixed;
+  top: 3.75rem;
+  right: 0.75rem;
+  z-index: 200;
+  min-width: 188px;
+  background: rgba(7, 14, 27, 0.92);
+  border: 1px solid var(--theme-panel-edge);
+  border-radius: var(--iq-radius-md);
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px) scale(0.97);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.iq-display-panel.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.iq-display-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.75rem 0.4rem;
+  border-bottom: 1px solid var(--theme-panel-edge);
+}
+
+.iq-display-panel__title {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--theme-accent);
+}
+
+.iq-display-panel__close {
+  background: none;
+  border: none;
+  color: var(--iq-text-muted);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.2rem;
+  transition: color 0.15s;
+}
+
+.iq-display-panel__close:hover { color: var(--iq-text); }
+
+.iq-display-panel__body {
+  padding: 0.6rem 0.75rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+/* --------------------------------------------------------------------------
+   Display group — label + control row
+   -------------------------------------------------------------------------- */
+.iq-display-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.iq-display-label {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--iq-text-muted);
+}
+
+/* Zoom row: [−] 100% [+] */
+.iq-display-zoom {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.iq-display-zoom__value {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 0.7rem;
+  color: var(--iq-gold-pale);
+  min-width: 3.2rem;
+  text-align: center;
+}
+
+/* D-pad grid: up / left center right / down */
+.iq-display-dpad {
+  display: grid;
+  grid-template-columns: 30px 30px 30px;
+  grid-template-rows: 30px 30px 30px;
+  gap: 3px;
+}
+
+.iq-display-ctrl--up     { grid-column: 2; grid-row: 1; }
+.iq-display-ctrl--left   { grid-column: 1; grid-row: 2; }
+.iq-display-ctrl--center { grid-column: 2; grid-row: 2; }
+.iq-display-ctrl--right  { grid-column: 3; grid-row: 2; }
+.iq-display-ctrl--down   { grid-column: 2; grid-row: 3; }
+
+/* --------------------------------------------------------------------------
+   Display control button — shared style for zoom ± and dpad
+   -------------------------------------------------------------------------- */
+.iq-display-ctrl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid var(--theme-panel-edge);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--iq-text-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.14s, color 0.14s, border-color 0.14s;
+  font: inherit;
+  line-height: 1;
+}
+
+.iq-display-ctrl:hover {
+  background: var(--theme-accent-soft);
+  color: var(--theme-accent);
+  border-color: var(--theme-accent);
+}
+
+/* Wide "Reset View" button spans full width */
+.iq-display-ctrl--reset {
+  width: 100%;
+  height: 28px;
+  font-size: 0.58rem;
+  font-family: "Cinzel Decorative", serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 8px;
+  color: var(--iq-text-muted);
+}

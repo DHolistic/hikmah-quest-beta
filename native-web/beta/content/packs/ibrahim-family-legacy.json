@@ -1,0 +1,134 @@
+[
+  {
+    "id": "ibrahim-family-legacy-01",
+    "packId": "ibrahim-family-legacy",
+    "category": "quran",
+    "title": "Khalilullah",
+    "promptText": "What title is given to Prophet Ibrahim?",
+    "answerText": "Khalilullah, the Friend of Allah.",
+    "sourceTitle": "Quran 4:125",
+    "explanation": "Ibrahim is remembered for intimate closeness to Allah and deep trust in Him.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ibrahim-family-legacy-02",
+    "packId": "ibrahim-family-legacy",
+    "category": "quran",
+    "title": "Hanif",
+    "promptText": "What did Ibrahim model in worship?",
+    "answerText": "Being a hanif, turning away from shirk to pure tawhid.",
+    "sourceTitle": "Quran 3:67",
+    "explanation": "His example is pure monotheism and refusal of idolatry.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ibrahim-family-legacy-03",
+    "packId": "ibrahim-family-legacy",
+    "category": "quran",
+    "title": "Broken Idols",
+    "promptText": "What did Ibrahim do to the idols of his people?",
+    "answerText": "He showed they had no power and called people to worship Allah alone.",
+    "sourceTitle": "Quran 21:57-67",
+    "explanation": "The story exposes false gods and the weakness of shirk.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ibrahim-family-legacy-04",
+    "packId": "ibrahim-family-legacy",
+    "category": "quran",
+    "title": "Cool Fire",
+    "promptText": "What happened when Ibrahim was thrown into the fire?",
+    "answerText": "Allah made it cool and safe for him.",
+    "sourceTitle": "Quran 21:69",
+    "explanation": "Allah protected Ibrahim and turned a punishment into a sign.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ibrahim-family-legacy-05",
+    "packId": "ibrahim-family-legacy",
+    "category": "quran",
+    "title": "Building the Kaaba",
+    "promptText": "Who built the Kaaba with Ibrahim?",
+    "answerText": "His son Ismail.",
+    "sourceTitle": "Quran 2:127",
+    "explanation": "Father and son raised the House of Allah together in Makkah.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ibrahim-family-legacy-06",
+    "packId": "ibrahim-family-legacy",
+    "category": "quran",
+    "title": "Accepted Work",
+    "promptText": "What dua did Ibrahim make after building the Kaaba?",
+    "answerText": "He asked Allah to accept the work and raise a messenger among the descendants.",
+    "sourceTitle": "Quran 2:127-129",
+    "explanation": "The prayer links worship, future guidance, and the coming of the Prophet Muhammad.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ibrahim-family-legacy-07",
+    "packId": "ibrahim-family-legacy",
+    "category": "quran",
+    "title": "Zamzam",
+    "promptText": "How did Zamzam appear?",
+    "answerText": "Allah provided water for Hajar and Ismail in the valley of Makkah.",
+    "sourceTitle": "Seerah / Hajj tradition",
+    "explanation": "The well became a sign of Allah's mercy and provision.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ibrahim-family-legacy-08",
+    "packId": "ibrahim-family-legacy",
+    "category": "quran",
+    "title": "Running Between Hills",
+    "promptText": "Which action of Hajar is remembered in Sa'i?",
+    "answerText": "Her search for water between Safa and Marwah.",
+    "sourceTitle": "Quran 2:158",
+    "explanation": "Sa'i preserves the memory of trust, effort, and divine care.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ibrahim-family-legacy-09",
+    "packId": "ibrahim-family-legacy",
+    "category": "quran",
+    "title": "Sacrifice Test",
+    "promptText": "What was Ibrahim asked to do in the great test?",
+    "answerText": "Sacrifice his son in obedience to Allah.",
+    "sourceTitle": "Quran 37:102-107",
+    "explanation": "The story shows complete submission before Allah's command.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ibrahim-family-legacy-10",
+    "packId": "ibrahim-family-legacy",
+    "category": "quran",
+    "title": "Glad Tidings",
+    "promptText": "What children were given to Ibrahim?",
+    "answerText": "Ismail and Ishaq.",
+    "sourceTitle": "Quran 37:100-113",
+    "explanation": "Both sons become part of a lasting prophetic legacy.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ibrahim-family-legacy-11",
+    "packId": "ibrahim-family-legacy",
+    "category": "quran",
+    "title": "Prayer for Descendants",
+    "promptText": "What kind of family did Ibrahim ask Allah for?",
+    "answerText": "A family that keeps prayer and remains righteous.",
+    "sourceTitle": "Quran 14:40",
+    "explanation": "His dua asks for worship, steadiness, and moral strength across generations.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "ibrahim-family-legacy-12",
+    "packId": "ibrahim-family-legacy",
+    "category": "quran",
+    "title": "Lasting Legacy",
+    "promptText": "What is the lasting lesson of Ibrahim's family?",
+    "answerText": "Faith, sacrifice, patience, and pure monotheism.",
+    "sourceTitle": "Quran 16:120-123",
+    "explanation": "Their story is a model of steadfast belief passed through generations.",
+    "difficulty": "easy"
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-05-18T07:15:12.570Z",
+  "source": {
+    "legacy297": "/home/matt/DProjects/ilm-quest/cards-297-theme-template.json",
+    "seasonalDir": "/home/matt/DProjects/hikmah-quest-beta/beta/content/packs"
+  },
+  "banks": {
+    "quran": {
+      "total": 99,
+      "byPts": {
+        "1": 33,
+        "2": 33,
+        "3": 33
+      }
+    },
+    "sunnah": {
+      "total": 99,
+      "byPts": {
+        "1": 33,
+        "2": 33,
+        "3": 33
+      }
+    },
+    "ummah": {
+      "total": 99,
+      "byPts": {
+        "1": 33,
+        "2": 33,
+        "3": 33
+      }
+    },
+    "hidayah": {
+      "total": 99,
+      "byPts": {
+        "1": 33,
+        "2": 33,
+        "3": 33
+      }
+    }
+  }
+}

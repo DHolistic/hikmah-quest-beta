@@ -1,0 +1,140 @@
+[
+  {
+    "id": "eid-al-adha-01",
+    "packId": "eid-al-adha",
+    "category": "sunnah",
+    "title": "Festival of Sacrifice",
+    "promptText": "What is Eid al-Adha remembered for?",
+    "answerText": "The sacrifice and the faith of Ibrahim عليه السلام.",
+    "sourceTitle": "Quran 37:102-107",
+    "explanation": "The festival remembers Ibrahim's obedience and Allah's mercy.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "eid-al-adha-02",
+    "packId": "eid-al-adha",
+    "category": "sunnah",
+    "title": "Eid Date",
+    "promptText": "On which Islamic date does Eid al-Adha begin?",
+    "answerText": "10 Dhul Hijjah.",
+    "sourceTitle": "Islamic calendar",
+    "explanation": "It begins right after the Day of Arafah and the main Hajj rites.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "eid-al-adha-03",
+    "packId": "eid-al-adha",
+    "category": "sunnah",
+    "title": "Two Rak'ahs",
+    "promptText": "How many rak'ahs is the Eid al-Adha prayer?",
+    "answerText": "Two rak'ahs.",
+    "sourceTitle": "Sahih al-Bukhari",
+    "explanation": "The Eid prayer is a short communal prayer before the khutbah.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "eid-al-adha-04",
+    "packId": "eid-al-adha",
+    "category": "sunnah",
+    "title": "Hajj Connection",
+    "promptText": "Which major pilgrimage season overlaps with Eid al-Adha?",
+    "answerText": "Hajj.",
+    "sourceTitle": "Quran 2:197",
+    "explanation": "The final rites of Hajj take place in Dhul Hijjah.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "eid-al-adha-05",
+    "packId": "eid-al-adha",
+    "category": "sunnah",
+    "title": "Udhiyah",
+    "promptText": "What is the sacrificial offering called?",
+    "answerText": "Udhiyah or qurbani.",
+    "sourceTitle": "Sunnah",
+    "explanation": "It commemorates Ibrahim's willingness to obey Allah.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "eid-al-adha-06",
+    "packId": "eid-al-adha",
+    "category": "sunnah",
+    "title": "Sharing Meat",
+    "promptText": "How is the meat of the sacrifice meant to be treated?",
+    "answerText": "Shared with family, friends, and the needy.",
+    "sourceTitle": "General Islamic practice",
+    "explanation": "The sacrifice is not only personal worship; it also feeds others.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "eid-al-adha-07",
+    "packId": "eid-al-adha",
+    "category": "sunnah",
+    "title": "Takbir Days",
+    "questionType": "match",
+    "promptText": "Match the Eid al-Adha term to the correct meaning.",
+    "answerText": "Takbir after the prayers during the days of Tashreeq.",
+    "matchPairs": [
+      { "left": "Udhiyah", "right": "Sacrificial offering" },
+      { "left": "Tashreeq", "right": "The days after Eid al-Adha" },
+      { "left": "Takbir", "right": "Public glorification of Allah" }
+    ],
+    "sourceTitle": "Sunnah",
+    "explanation": "These days are filled with remembrance, gratitude, and public glorification of Allah.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "eid-al-adha-08",
+    "packId": "eid-al-adha",
+    "category": "sunnah",
+    "title": "Sacred Month",
+    "promptText": "Which month contains Hajj and Eid al-Adha?",
+    "answerText": "Dhul Hijjah.",
+    "sourceTitle": "Islamic calendar",
+    "explanation": "It is the final month of the Islamic year and the month of pilgrimage.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "eid-al-adha-09",
+    "packId": "eid-al-adha",
+    "category": "sunnah",
+    "title": "Ibrahim's Test",
+    "promptText": "What was the test given to Ibrahim in the dream?",
+    "answerText": "To sacrifice his son as an act of obedience to Allah.",
+    "sourceTitle": "Quran 37:102",
+    "explanation": "The dream became a test of submission, trust, and devotion.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "eid-al-adha-10",
+    "packId": "eid-al-adha",
+    "category": "sunnah",
+    "title": "Mercy Replaced",
+    "promptText": "What did Allah provide instead of the sacrifice?",
+    "answerText": "A great ransom sacrifice.",
+    "sourceTitle": "Quran 37:107",
+    "explanation": "Allah replaced the son with mercy and accepted Ibrahim's submission.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "eid-al-adha-11",
+    "packId": "eid-al-adha",
+    "category": "sunnah",
+    "title": "Community Lesson",
+    "promptText": "What does Eid al-Adha remind Muslims to do as a community?",
+    "answerText": "Submit to Allah and share generously with others.",
+    "sourceTitle": "General Islamic practice",
+    "explanation": "The day connects worship, sacrifice, and social care.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "eid-al-adha-12",
+    "packId": "eid-al-adha",
+    "category": "sunnah",
+    "title": "Pilgrim's Place",
+    "promptText": "Where are many pilgrims on the day of Eid al-Adha?",
+    "answerText": "In Mina, completing the Hajj rites.",
+    "sourceTitle": "Quran 2:203",
+    "explanation": "Pilgrims remember Allah, stone the Jamarat, and continue the rites in Mina.",
+    "difficulty": "hard"
+  }
+]

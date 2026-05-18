@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ultimate" data-variant="night">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="copyright" content="© 2026 Donya G. Berhan, LPC. All Rights Reserved.">
+  <meta name="author" content="Donya G. Berhan, LPC">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="description" content="Hikmah Quest — Islamic trivia gameplay. Two-tile challenge with the 99 Names of Allah and Q&amp;A." />
+  <meta name="theme-color" content="#07111a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Hikmah Quest" />
+
+  <link rel="manifest" href="../manifest.json" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Scheherazade+New:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="src/styles/tokens.css" />
+  <link rel="stylesheet" href="src/styles/base.css" />
+  <link rel="stylesheet" href="src/styles/tiles.css" />
+  <link rel="stylesheet" href="src/styles/skins.css" />
+  <link rel="stylesheet" href="src/styles/setup.css" />
+  <link rel="stylesheet" href="src/styles/buttons.css" />
+
+  <title>Hikmah Quest — Gameplay</title>
+</head>
+<body>
+
+  <div class="iq-app">
+    <div class="iq-page" id="page-gameplay">
+
+      <!-- ── Zoomable background layer (JS controls --bg-zoom/tx/ty) ─────────── -->
+      <div class="iq-bg-layer" aria-hidden="true"></div>
+
+      <!-- ── Background display options panel ─────────────────────────────────── -->
+      <div
+        class="iq-display-panel"
+        id="iq-display-panel"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Background display options"
+      >
+        <div class="iq-display-panel__head">
+          <span class="iq-display-panel__title">Display</span>
+          <button class="iq-display-panel__close" id="iq-display-close" aria-label="Close">×</button>
+        </div>
+        <div class="iq-display-panel__body">
+          <div class="iq-display-group">
+            <span class="iq-display-label">Zoom</span>
+            <div class="iq-display-zoom">
+              <button class="iq-display-ctrl" data-display-action="zoom-out" aria-label="Zoom out">−</button>
+              <span class="iq-display-zoom__value" id="iq-zoom-value">100%</span>
+              <button class="iq-display-ctrl" data-display-action="zoom-in" aria-label="Zoom in">+</button>
+            </div>
+          </div>
+          <div class="iq-display-group">
+            <span class="iq-display-label">Shift</span>
+            <div class="iq-display-dpad">
+              <button class="iq-display-ctrl iq-display-ctrl--up"     data-display-action="pan-up"    aria-label="Pan up">↑</button>
+              <button class="iq-display-ctrl iq-display-ctrl--left"   data-display-action="pan-left"  aria-label="Pan left">←</button>
+              <button class="iq-display-ctrl iq-display-ctrl--center" data-display-action="reset-pan" aria-label="Center" title="Center pan">○</button>
+              <button class="iq-display-ctrl iq-display-ctrl--right"  data-display-action="pan-right" aria-label="Pan right">→</button>
+              <button class="iq-display-ctrl iq-display-ctrl--down"   data-display-action="pan-down"  aria-label="Pan down">↓</button>
+            </div>
+          </div>
+          <button class="iq-display-ctrl iq-display-ctrl--reset" data-display-action="reset-all">Reset View</button>
+        </div>
+      </div>
+
+      <!-- ── Progress bar ────────────────────────────────────────────────────── -->
+      <div
+        class="iq-progress"
+        role="progressbar"
+        aria-label="Round progress"
+        aria-valuenow="0"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      >
+        <div class="iq-progress__fill" id="iq-progress"></div>
+      </div>
+
+      <!-- ── Header toolbar ─────────────────────────────────────────────────── -->
+      <header class="iq-header" role="banner">
+        <a
+          href="index.html"
+          class="iq-btn iq-btn--ghost iq-btn--sm"
+          aria-label="Exit game and return to home"
+        >← Exit</a>
+
+        <div class="iq-header-center" aria-live="polite">
+          <span
+            class="iq-title iq-title--sm"
+            id="realm-label"
+            aria-label="Current realm"
+          >Loading…</span>
+        </div>
+
+        <div
+          class="iq-scorebar"
+          id="iq-scorebar"
+          role="status"
+          aria-label="Current score"
+          aria-live="polite"
+        >
+          <!-- Score rendered by JS -->
+        </div>
+
+        <button
+          class="iq-display-toggle"
+          id="iq-display-toggle"
+          aria-label="Background display options"
+          aria-expanded="false"
+          aria-controls="iq-display-panel"
+          title="Background display options"
+        >⛶</button>
+      </header>
+
+      <!-- ── Game board: two tiles ───────────────────────────────────────────── -->
+      <main class="iq-board" id="game-board" aria-label="Game board">
+        <div class="iq-tile-row">
+
+          <!-- Left side rail: Reveal Name (top) → ✗/✓ name bonus (after reveal) -->
+          <div class="iq-side-rail iq-side-rail--left" id="iq-side-left" aria-label="Name actions">
+            <button class="iq-rail-reveal" data-action="revealName" id="iq-rail-reveal-name" aria-label="Reveal name">Reveal Name</button>
+            <button class="iq-medallion iq-medallion--x"     data-action="nameIncorrect" disabled aria-label="Missed name" style="display:none">✗</button>
+            <button class="iq-medallion iq-medallion--check"  data-action="nameCorrect"   disabled aria-label="Got name"   style="display:none">✓</button>
+          </div>
+
+          <!-- Left tile: 99 Names of Allah -->
+          <div
+            class="iq-tile iq-tile--left"
+            id="iq-tile-left"
+            role="region"
+            aria-label="Name of Allah challenge"
+            aria-live="polite"
+          >
+            <div class="iq-tile-loading" aria-hidden="true">Loading Names…</div>
+          </div>
+
+          <!-- Right tile: Q&A -->
+          <div
+            class="iq-tile iq-tile--right"
+            id="iq-tile-right"
+            role="region"
+            aria-label="Question and Answer"
+            aria-live="polite"
+          >
+            <div class="iq-tile-loading" aria-hidden="true">Loading Question…</div>
+          </div>
+
+          <!-- Right side rail: Reveal Answer (top) → ✗/✓ scoring (after reveal) -->
+          <div class="iq-side-rail iq-side-rail--right" id="iq-side-right" aria-label="Score actions">
+            <button class="iq-rail-reveal" data-action="revealAnswer" id="iq-rail-reveal-answer" aria-label="Reveal answer">Reveal Answer</button>
+            <button class="iq-medallion iq-medallion--x"    data-action="incorrect" disabled aria-label="Incorrect" style="display:none">✗</button>
+            <button class="iq-medallion iq-medallion--check" data-action="correct"   disabled aria-label="Correct"   style="display:none">✓</button>
+          </div>
+
+        </div>
+      </main>
+
+    </div><!-- /#page-gameplay -->
+  </div><!-- /.iq-app -->
+
+  <!-- Score float popup -->
+  <div class="iq-toast" id="iq-toast" aria-live="assertive" aria-atomic="true"></div>
+
+  <!-- Draggable action dock — ✗/✓ scoring buttons, drag grip to reposition -->
+  <div class="iq-action-dock" id="iq-action-dock">
+    <div class="iq-action-dock__grip" id="iq-dock-grip" title="Drag to move">
+      <span>⠿</span>
+    </div>
+    <!-- Allah Name bonus row (left tile) -->
+    <div class="iq-ghost-row" id="iq-dock-name-row">
+      <button class="iq-ghost-pill iq-ghost-pill--x"    data-dock-action="nameIncorrect" aria-label="Missed name">✗ Missed It</button>
+      <button class="iq-ghost-pill iq-ghost-pill--check" data-dock-action="nameCorrect"   aria-label="Got name">✓ Got It <em>+1</em></button>
+    </div>
+    <!-- Main score row (right tile) -->
+    <div class="iq-ghost-row" id="iq-dock-score-row">
+      <button class="iq-ghost-pill iq-ghost-pill--x"    data-dock-action="incorrect" aria-label="Incorrect">✗ Missed It</button>
+      <button class="iq-ghost-pill iq-ghost-pill--check" data-dock-action="correct"   aria-label="Correct">✓ Got It</button>
+    </div>
+  </div>
+
+  <noscript>
+    <p style="padding:2rem;text-align:center;font-family:serif;color:#f0e8d5;">
+      Hikmah Quest requires JavaScript to run. Please enable JavaScript in your browser.
+    </p>
+  </noscript>
+
+  <script type="module" src="src/app/bootstrap.js"></script>
+</body>
+</html>

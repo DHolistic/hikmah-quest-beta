@@ -1,0 +1,142 @@
+[
+  {
+    "id": "eid-al-fitr-01",
+    "packId": "eid-al-fitr",
+    "category": "sunnah",
+    "title": "End of Fasting",
+    "promptText": "What does Eid al-Fitr mark at the end of Ramadan?",
+    "answerText": "The breaking of the fast and the completion of Ramadan.",
+    "sourceTitle": "Quran 2:185",
+    "explanation": "Eid al-Fitr comes after a month of fasting, gratitude, and spiritual renewal.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "eid-al-fitr-02",
+    "packId": "eid-al-fitr",
+    "category": "sunnah",
+    "title": "Zakat al-Fitr",
+    "promptText": "What charity should be given before the Eid prayer?",
+    "answerText": "Zakat al-Fitr.",
+    "sourceTitle": "Sahih al-Bukhari / Sahih Muslim",
+    "explanation": "It helps purify the fast and makes sure the needy can share the celebration.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "eid-al-fitr-03",
+    "packId": "eid-al-fitr",
+    "category": "sunnah",
+    "title": "Two Rak'ahs",
+    "promptText": "How many rak'ahs is the Eid prayer?",
+    "answerText": "Two rak'ahs.",
+    "sourceTitle": "Sahih al-Bukhari",
+    "explanation": "The Eid prayer is short, communal, and followed by the khutbah.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "eid-al-fitr-04",
+    "packId": "eid-al-fitr",
+    "category": "sunnah",
+    "title": "Prayer First",
+    "promptText": "What comes first on Eid morning: the prayer or the khutbah?",
+    "answerText": "The prayer comes first, then the khutbah.",
+    "sourceTitle": "Sahih al-Bukhari",
+    "explanation": "This is one of the practical differences between Eid and Jumu'ah.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "eid-al-fitr-05",
+    "packId": "eid-al-fitr",
+    "category": "sunnah",
+    "title": "No Adhan",
+    "promptText": "Do Muslims call adhan and iqamah for the Eid prayer?",
+    "answerText": "No. The Eid prayer is performed without adhan or iqamah.",
+    "sourceTitle": "Sahih al-Bukhari",
+    "explanation": "The congregation gathers directly for the special prayer.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "eid-al-fitr-06",
+    "packId": "eid-al-fitr",
+    "category": "sunnah",
+    "title": "Takbir",
+    "questionType": "multiple-choice",
+    "promptText": "Complete the Eid phrase: ___ Akbar.",
+    "answerText": "The takbir: Allahu Akbar.",
+    "options": [
+      "Allahu",
+      "Subhan",
+      "Rabbuna",
+      "Rahmanu"
+    ],
+    "correctIndex": 0,
+    "sourceTitle": "Quran 2:185",
+    "explanation": "Takbir expresses gratitude and glorifies Allah after completing Ramadan.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "eid-al-fitr-07",
+    "packId": "eid-al-fitr",
+    "category": "sunnah",
+    "title": "Morning Sunnah",
+    "promptText": "What is a simple Sunnah before Eid al-Fitr prayer?",
+    "answerText": "Eat something first, often an odd number of dates.",
+    "sourceTitle": "Sahih al-Bukhari",
+    "explanation": "It shows the fast has ended before the prayer begins.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "eid-al-fitr-08",
+    "packId": "eid-al-fitr",
+    "category": "sunnah",
+    "title": "Month of Eid",
+    "promptText": "Which Islamic month begins with Eid al-Fitr?",
+    "answerText": "Shawwal.",
+    "sourceTitle": "Islamic calendar",
+    "explanation": "Eid al-Fitr is celebrated on 1 Shawwal, right after Ramadan.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "eid-al-fitr-09",
+    "packId": "eid-al-fitr",
+    "category": "sunnah",
+    "title": "Joy With Gratitude",
+    "promptText": "What balance should Eid celebrations keep?",
+    "answerText": "Joy with gratitude, generosity, and remembrance of Allah.",
+    "sourceTitle": "General Islamic practice",
+    "explanation": "Celebration is meant to be thankful, not wasteful.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "eid-al-fitr-10",
+    "packId": "eid-al-fitr",
+    "category": "sunnah",
+    "title": "Family Visit",
+    "promptText": "Why do many Muslims visit relatives on Eid?",
+    "answerText": "To strengthen family ties and share the celebration.",
+    "sourceTitle": "General Islamic practice",
+    "explanation": "Eid is a time for reconciliation, affection, and community.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "eid-al-fitr-11",
+    "packId": "eid-al-fitr",
+    "category": "sunnah",
+    "title": "Shared Charity",
+    "promptText": "Who benefits from giving on Eid?",
+    "answerText": "The poor and needy, especially through zakat and gifts.",
+    "sourceTitle": "Sunnah",
+    "explanation": "Eid should include care for those who have less.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "eid-al-fitr-12",
+    "packId": "eid-al-fitr",
+    "category": "sunnah",
+    "title": "Completion Verse",
+    "promptText": "Which Quran verse points to completing the fast and glorifying Allah?",
+    "answerText": "Quran 2:185.",
+    "sourceTitle": "Quran 2:185",
+    "explanation": "The verse links fasting, gratitude, and takbir together.",
+    "difficulty": "hard"
+  }
+]

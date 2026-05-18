@@ -1,0 +1,694 @@
+/* ==========================================================================
+   tiles.css — Hikmah Quest Beta Floating Text Layout
+   No card panels. Text floats in the backdrop scene.
+   Asymmetric two-column split. Divider line is the only structural edge.
+   ========================================================================== */
+
+@import "./tokens.css";
+
+/* --------------------------------------------------------------------------
+   Progress bar — thin strip at very top
+   -------------------------------------------------------------------------- */
+.iq-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.iq-progress__fill {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: calc(var(--progress, 0) * 1%);
+  background: var(--theme-accent);
+  transition: width 0.4s ease;
+  box-shadow: 0 0 8px var(--theme-glow);
+}
+
+/* --------------------------------------------------------------------------
+   Board — full viewport canvas below header
+   -------------------------------------------------------------------------- */
+.iq-board {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Tile row — full bleed, no gap, divided by a single line
+   -------------------------------------------------------------------------- */
+.iq-tile-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  position: relative;
+}
+
+/* The only structural element: a vertical divider, slightly left of center */
+.iq-tile-row::before {
+  content: "";
+  position: absolute;
+  top: 8%;
+  bottom: 8%;
+  left: 38%;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--theme-accent) 20%,
+    var(--theme-panel-edge) 50%,
+    var(--theme-accent) 80%,
+    transparent
+  );
+  opacity: 0.45;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Individual tile — completely transparent, text floats in scene
+   -------------------------------------------------------------------------- */
+.iq-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: var(--iq-space-4) var(--iq-space-3);
+
+  /* No background, no border, no shadow — pure scene */
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+/* Left tile: Name of Allah — narrower column */
+.iq-tile--left {
+  flex: 38 1 0;
+  min-width: 0;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  padding-right: calc(var(--iq-space-3) + 1rem);
+}
+
+/* Right tile: Q&A — wider column */
+.iq-tile--right {
+  flex: 62 1 0;
+  min-width: 0;
+  height: 100%;
+  align-items: flex-start;
+  text-align: left;
+  padding-left: calc(var(--iq-space-3) + 1rem);
+}
+
+/* --------------------------------------------------------------------------
+   All text gets strong drop-shadow for legibility over backdrop
+   -------------------------------------------------------------------------- */
+.iq-tile * {
+  text-shadow:
+    0 1px 8px rgba(0, 0, 0, 0.85),
+    0 2px 24px rgba(0, 0, 0, 0.65);
+}
+
+/* --------------------------------------------------------------------------
+   Tile header — label only, minimal, no border
+   -------------------------------------------------------------------------- */
+.iq-tile-header {
+  margin-bottom: var(--iq-space-2);
+  flex-shrink: 0;
+}
+
+.iq-tile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: "Cinzel Decorative", serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--theme-accent);
+  opacity: 0.75;
+}
+
+/* --------------------------------------------------------------------------
+   Tile body — stacked content (scrolls when reveal makes it overflow)
+   -------------------------------------------------------------------------- */
+.iq-tile-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--iq-space-2);
+  flex: 1;
+  min-height: 0;          /* allows child overflow inside flex parent */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-accent) transparent;
+  padding-right: 0.25rem; /* gap for scrollbar so text doesn't jam against it */
+}
+
+.iq-tile-body::-webkit-scrollbar { width: 4px; }
+.iq-tile-body::-webkit-scrollbar-thumb {
+  background: var(--theme-accent);
+  border-radius: 2px;
+  opacity: 0.5;
+}
+
+/* Arabic calligraphy — the most prominent element on the LEFT tile (Allah Name).
+   On the right tile (Q&A reveal) we override to a smaller, tighter size so the
+   question + transliteration stay visible alongside it. */
+.iq-tile-arabic {
+  font-family: "Scheherazade New", "Amiri", "Traditional Arabic", "Arial Unicode MS", serif;
+  direction: rtl;
+  unicode-bidi: isolate;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  line-height: 1.7;
+  color: var(--theme-script);
+  text-shadow:
+    0 0 32px var(--theme-glow),
+    0 0 64px var(--theme-glow),
+    0 2px 16px rgba(0, 0, 0, 0.9);
+}
+
+/* Match the question Arabic size — keeps Q&A typographically consistent
+   so the eye doesn't have to retune between asking and answer. */
+.iq-tile--right .iq-tile-arabic {
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.8;
+  text-shadow: 0 0 12px var(--theme-glow), 0 2px 12px rgba(0, 0, 0, 0.85);
+}
+
+.iq-tile-name {
+  font-family: "Cinzel Decorative", serif;
+  font-size: clamp(0.95rem, 2vw, 1.25rem);
+  color: var(--theme-accent);
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+}
+
+.iq-tile-meaning {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: clamp(0.78rem, 1.6vw, 0.9rem);
+  color: rgba(240, 232, 213, 0.65);
+  line-height: 1.5;
+}
+
+/* Symbol glyph on right tile */
+.iq-tile-symbol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: var(--iq-space-1);
+}
+
+.iq-tile-symbol__glyph {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1;
+  filter: drop-shadow(0 0 16px var(--theme-glow));
+}
+
+.iq-tile-symbol__name {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 0.65rem;
+  color: var(--theme-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.iq-tile-question {
+  font-family: "Lora", serif;
+  font-size: clamp(0.95rem, 2.1vw, 1.15rem);
+  color: rgba(240, 232, 213, 0.96);
+  line-height: 1.65;
+}
+
+.iq-tile-anchor {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 0.84rem;
+  color: rgba(240, 232, 213, 0.82);
+  line-height: 1.55;
+  margin-bottom: 0.35rem;
+}
+
+.iq-tile-prompt-arabic {
+  font-family: "Scheherazade New", "Amiri", serif;
+  direction: rtl;
+  unicode-bidi: isolate;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.8;
+  color: var(--theme-script);
+  margin-bottom: 0.35rem;
+  text-shadow:
+    0 0 20px var(--theme-glow),
+    0 2px 16px rgba(0, 0, 0, 0.9);
+}
+
+/* --------------------------------------------------------------------------
+   Reveal section — fades in, no panel
+   -------------------------------------------------------------------------- */
+.iq-tile-reveal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--iq-space-1);
+  padding-top: var(--iq-space-2);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+}
+
+.iq-tile.is-revealed .iq-tile-reveal {
+  opacity: 1;
+  max-height: 24rem;
+  pointer-events: auto;
+}
+
+.iq-tile-answer {
+  font-family: "Cinzel Decorative", serif;
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  color: var(--theme-accent);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-shadow:
+    0 0 20px var(--theme-glow),
+    0 2px 12px rgba(0, 0, 0, 0.9);
+}
+
+.iq-tile-clue {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: rgba(240, 232, 213, 0.75);
+  line-height: 1.55;
+}
+
+.iq-tile-source {
+  font-size: 0.7rem;
+  color: rgba(240, 232, 213, 0.38);
+  font-style: italic;
+  margin-top: var(--iq-space-1);
+}
+
+.iq-tile-transliteration {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: clamp(0.78rem, 1.6vw, 0.9rem);
+  color: rgba(240, 232, 213, 0.55);
+  letter-spacing: 0.03em;
+}
+
+/* --------------------------------------------------------------------------
+   Footer / button rail — floats at bottom of tile, no border
+   -------------------------------------------------------------------------- */
+.iq-tile-footer {
+  margin-top: var(--iq-space-3);
+  flex-shrink: 0;
+}
+
+.iq-tile-btn-rail {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.iq-tile--left .iq-tile-btn-rail {
+  justify-content: center;
+}
+
+.iq-tile--right .iq-tile-btn-rail {
+  justify-content: flex-start;
+}
+
+.iq-tile-btn-rail .iq-btn {
+  font-size: 0.72rem;
+  padding: 0.55rem 1rem;
+  min-height: 40px;
+  /* Ghost-only style — no fill, just text + accent border floats in scene */
+  background: rgba(7, 14, 27, 0.48) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* --------------------------------------------------------------------------
+   Locked state — right tile before left is resolved
+   -------------------------------------------------------------------------- */
+.iq-tile--locked {
+  opacity: 0.22;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* --------------------------------------------------------------------------
+   Tile state glows — accent line at bottom of text stack
+   -------------------------------------------------------------------------- */
+.iq-tile.is-revealed .iq-tile-name,
+.iq-tile.is-revealed .iq-tile-arabic {
+  text-shadow:
+    0 0 32px var(--theme-glow),
+    0 0 64px var(--theme-glow),
+    0 2px 16px rgba(0, 0, 0, 0.9);
+}
+
+.iq-tile.is-correct .iq-tile-answer {
+  color: var(--theme-success);
+  text-shadow: 0 0 20px rgba(168, 211, 118, 0.6), 0 2px 12px rgba(0,0,0,0.9);
+}
+
+.iq-tile.is-incorrect .iq-tile-answer {
+  color: var(--theme-danger);
+}
+
+/* --------------------------------------------------------------------------
+   Fill-in-the-blank highlight
+   -------------------------------------------------------------------------- */
+.iq-tile-blank {
+  display: inline-block;
+  min-width: 3.5rem;
+  border-bottom: 1.5px solid var(--theme-accent);
+  color: var(--theme-accent);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin: 0 0.12em;
+  text-shadow: 0 0 12px var(--theme-glow);
+}
+
+/* --------------------------------------------------------------------------
+   Options list — minimal floating list, no panel fill
+   -------------------------------------------------------------------------- */
+.iq-options {
+  list-style: none;
+  margin: var(--iq-space-2) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.iq-options li {
+  padding: 0.4rem 0;
+  font-family: "Lora", serif;
+  font-size: 0.9rem;
+  color: rgba(240, 232, 213, 0.82);
+  border-left: 2px solid transparent;
+  padding-left: 0.75rem;
+  transition: border-color 0.15s, color 0.15s;
+  cursor: pointer;
+}
+
+.iq-options li:hover {
+  border-left-color: var(--theme-accent);
+  color: var(--iq-text);
+}
+
+.iq-options li.is-correct {
+  border-left-color: var(--theme-success);
+  color: var(--theme-success);
+}
+
+#page-gameplay.iq-page--single-trivia .iq-tile-row::before,
+.iq-tile-row--single::before {
+  content: none;
+}
+
+#page-gameplay.iq-page--single-trivia .iq-tile--right,
+.iq-tile-row--single .iq-tile--right {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding-left: var(--iq-space-3);
+  padding-right: var(--iq-space-3);
+}
+
+.iq-match-grid,
+.iq-match-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  width: min(100%, 44rem);
+}
+
+.iq-match-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: min(100%, 44rem);
+}
+
+.iq-match-option {
+  border: 1px solid rgba(212, 175, 55, 0.24);
+  border-radius: 12px;
+  background: rgba(7, 14, 27, 0.58);
+  color: rgba(240, 232, 213, 0.92);
+  font-family: "Lora", serif;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  text-align: left;
+  padding: 0.8rem 0.95rem;
+  cursor: pointer;
+}
+
+.iq-match-option.is-active {
+  border-color: var(--theme-accent);
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.2);
+}
+
+.iq-match-option.is-locked,
+.iq-match-option:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* MCQ mode — options become tap targets, self-score buttons hide.
+   Toggled via [data-answer-style="mcq"] on <html> by bootstrap.js. */
+html[data-answer-style="mcq"] .iq-options li {
+  background: rgba(7, 14, 27, 0.45);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-left: 2px solid rgba(212, 175, 55, 0.35);
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+  min-height: 2.4rem;
+  display: flex;
+  align-items: center;
+}
+
+html[data-answer-style="mcq"] .iq-options li:hover {
+  background: rgba(212, 175, 55, 0.12);
+  border-color: var(--theme-accent);
+  color: var(--iq-text);
+}
+
+html[data-answer-style="mcq"] .iq-options li.iq-option--correct {
+  background: rgba(120, 200, 120, 0.18);
+  border-color: var(--theme-success);
+  color: var(--theme-success);
+}
+
+/* Hide self-score pills + dock when MCQ auto-decides */
+html[data-answer-style="mcq"] .iq-tile-btn-rail--right .iq-ghost-row,
+html[data-answer-style="mcq"] #iq-dock-score-row {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Portrait mobile — stack vertically, remove divider
+   -------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .iq-tile-row {
+    flex-direction: column;
+  }
+
+  /* Hide vertical divider on mobile, use a horizontal one instead */
+  .iq-tile-row::before {
+    top: 38%;
+    bottom: auto;
+    left: 8%;
+    right: 8%;
+    width: auto;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--theme-accent) 20%,
+      var(--theme-panel-edge) 50%,
+      var(--theme-accent) 80%,
+      transparent
+    );
+  }
+
+  .iq-tile--left,
+  .iq-tile--right {
+    flex: 0 0 auto;
+    min-width: 0;
+    width: 100%;
+    padding: var(--iq-space-3) var(--iq-space-3);
+    align-items: center;
+    text-align: center;
+  }
+
+  .iq-tile--right {
+    padding-top: var(--iq-space-4);
+  }
+
+  .iq-tile--right .iq-tile-btn-rail {
+    justify-content: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Loading placeholder
+   -------------------------------------------------------------------------- */
+.iq-tile-loading {
+  padding: var(--iq-space-4);
+  text-align: center;
+  color: rgba(240, 232, 213, 0.35);
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------------
+   List-style answers — when the answer text is naturally a list,
+   render-helpers in render.js convert it to <ul> / <ol>.
+   -------------------------------------------------------------------------- */
+.iq-list-answer {
+  margin: 0.4rem 0 0;
+  padding-left: 1.4rem;
+  font-family: "Cinzel Decorative", serif;
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  color: var(--theme-accent);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+}
+
+.iq-list-answer li {
+  margin: 0.2rem 0;
+  padding-left: 0.3rem;
+}
+
+/* When the prose body itself contains a list (clue/explanation), use Lora */
+.iq-list-prose {
+  margin: 0.3rem 0 0;
+  padding-left: 1.3rem;
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: rgba(240, 232, 213, 0.78);
+  line-height: 1.55;
+}
+
+.iq-list-prose li { margin: 0.18rem 0; }
+
+/* ==========================================================================
+   Left Tile — Ornate Arch Frame
+   Replaces the plain transparent float with a CSS mihrab arch.
+   The arch-top uses a border-radius arc; arch-base is a flat panel below.
+   ========================================================================== */
+
+/* Override left tile default padding — arch provides its own spacing */
+.iq-tile--left {
+  padding: var(--iq-space-2) var(--iq-space-1);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Wrapper — constrains arch width */
+.iq-arch-wrap {
+  position: relative;
+  width: 90%;
+  max-width: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Arch top — content area with arched top border via border-radius */
+.iq-arch-top {
+  position: relative;
+  width: 100%;
+  padding: 1.5rem 1.1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.48rem;
+}
+
+/* Arch top background and border shape */
+.iq-arch-top::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--theme-panel-edge);
+  border-bottom: none;
+  border-radius: 50% 50% 0 0 / 44% 44% 0 0;
+  background: var(--theme-panel-fill);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Radial noor glow behind Arabic */
+.iq-arch-halo {
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--theme-glow) 0%, transparent 68%);
+  filter: blur(14px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Content stack inside arch top */
+.iq-arch-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.44rem;
+  text-align: center;
+}
+
+/* Decorative ornament line */
+.iq-arch-ornament {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 0.44rem;
+  letter-spacing: 0.28em;
+  color: var(--theme-accent);
+  opacity: 0.55;
+  text-shadow: none;
+}
+
+/* Arch base — flat panel below the arch, holds meaning / reveal button */
+.iq-arch-base {
+  width: 100%;
+  background: var(--theme-panel-fill);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--theme-panel-edge);
+  border-top: none;
+  padding: 0.58rem 1.1rem 0.76rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.32rem;
+  text-align: center;
+}

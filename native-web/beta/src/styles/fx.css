@@ -1,0 +1,595 @@
+/* ═══════════════════════════════════════════════════════════════
+   ILM QUEST · FX SYSTEM
+   Noor Pulse · Knowledge Chain · Barakah Card · Backdrop Evolution
+   Sound Panel · Accessibility Panel
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── CSS Custom Properties for FX ───────────────────────────────────────── */
+:root {
+  --fx-noor-color:    212, 175, 55;      /* gold */
+  --fx-chain-color:   212, 175, 55;      /* gold thread */
+  --fx-barakah-color: 120, 200, 120;     /* soft green blessing */
+  --fx-pulse-dur:     700ms;
+  --scene-luminance:  0;                 /* 0–1, updated by fx.js */
+}
+
+/* ── Backdrop Evolution ──────────────────────────────────────────────────── */
+/* The .iq-bg-layer gently brightens as --scene-luminance increases */
+.iq-bg-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 40%,
+    rgba(212, 175, 55, calc(var(--scene-luminance) * 0.18)),
+    transparent 70%
+  );
+  transition: opacity 1.2s ease;
+  z-index: 0;
+}
+
+/* ── Noor Pulse ──────────────────────────────────────────────────────────── */
+/* Injected by fx.js as a .fx-noor-pulse element into the page root */
+.fx-noor-pulse {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 8000;
+  border-radius: 0;
+  animation: noor-pulse var(--fx-pulse-dur) ease-out forwards;
+}
+
+@keyframes noor-pulse {
+  0%   { background: radial-gradient(ellipse 40% 30% at 50% 50%, rgba(var(--fx-noor-color), 0.28) 0%, transparent 70%); opacity: 1; }
+  60%  { background: radial-gradient(ellipse 90% 70% at 50% 50%, rgba(var(--fx-noor-color), 0.10) 0%, transparent 70%); opacity: 1; }
+  100% { background: radial-gradient(ellipse 120% 100% at 50% 50%, rgba(var(--fx-noor-color), 0) 0%, transparent 100%); opacity: 0; }
+}
+
+/* Streak amplifier — longer, richer pulse every 3 correct in a row */
+.fx-noor-pulse--streak {
+  --fx-pulse-dur: 1100ms;
+  animation: noor-pulse-streak var(--fx-pulse-dur) ease-out forwards;
+}
+
+@keyframes noor-pulse-streak {
+  0%   { background: radial-gradient(ellipse 35% 25% at 50% 50%, rgba(var(--fx-noor-color), 0.45) 0%, transparent 60%); opacity: 1; }
+  40%  { background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(var(--fx-noor-color), 0.22) 0%, transparent 70%); opacity: 1; }
+  80%  { background: radial-gradient(ellipse 110% 90% at 50% 50%, rgba(var(--fx-noor-color), 0.06) 0%, transparent 90%); opacity: 0.6; }
+  100% { background: radial-gradient(ellipse 130% 110% at 50% 50%, rgba(var(--fx-noor-color), 0) 0%, transparent 100%); opacity: 0; }
+}
+
+/* ── Barakah Card ─────────────────────────────────────────────────────────── */
+/* Applied to the right tile when a Barakah card is drawn */
+.fx-barakah-active {
+  position: relative;
+  overflow: hidden;
+}
+
+.fx-barakah-active::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg,
+    rgba(var(--fx-barakah-color), 0.0) 0%,
+    rgba(var(--fx-barakah-color), 0.4) 50%,
+    rgba(var(--fx-barakah-color), 0.0) 100%
+  );
+  background-size: 200% 200%;
+  animation: barakah-shimmer 2.4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes barakah-shimmer {
+  0%   { background-position: 200% 200%; }
+  50%  { background-position: 0% 0%; }
+  100% { background-position: 200% 200%; }
+}
+
+.fx-barakah-active::after {
+  content: "✦ بَرَكَة";
+  position: absolute;
+  top: .5rem;
+  right: .75rem;
+  font-family: 'Scheherazade New', serif;
+  font-size: .85rem;
+  color: rgba(var(--fx-barakah-color), 0.85);
+  letter-spacing: .06em;
+  animation: barakah-label-fade 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+  text-shadow: 0 0 12px rgba(var(--fx-barakah-color), 0.6);
+}
+
+@keyframes barakah-label-fade {
+  0%, 100% { opacity: 0.5; transform: translateY(0); }
+  50%       { opacity: 1;   transform: translateY(-2px); }
+}
+
+/* Barakah particles — injected divs */
+.fx-barakah-particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(var(--fx-barakah-color), 0.85);
+  pointer-events: none;
+  z-index: 8001;
+  animation: barakah-particle-drift var(--dur, 1.6s) ease-out forwards;
+}
+
+@keyframes barakah-particle-drift {
+  0%   { opacity: 1;   transform: translate(0, 0) scale(1); }
+  100% { opacity: 0;   transform: translate(var(--tx, 0px), var(--ty, -60px)) scale(0.3); }
+}
+
+/* ── Knowledge Chain ─────────────────────────────────────────────────────── */
+/* SVG overlay injected by fx.js, positioned absolutely over game board */
+.fx-chain-svg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 7999;
+  overflow: visible;
+}
+
+.fx-chain-path {
+  fill: none;
+  stroke: rgba(212, 175, 55, 0.7);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.5));
+  animation: chain-draw 0.8s ease-out forwards;
+}
+
+@keyframes chain-draw {
+  to { stroke-dashoffset: 0; opacity: 0.8; }
+}
+
+/* ── Sound Panel ─────────────────────────────────────────────────────────── */
+.iq-sound-panel {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: .5rem;
+}
+
+.iq-sound-toggle {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, .35);
+  background: rgba(7, 17, 26, .88);
+  color: rgba(212, 175, 55, .8);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .2s, box-shadow .2s;
+  backdrop-filter: blur(6px);
+}
+
+.iq-sound-toggle:hover {
+  border-color: rgba(212, 175, 55, .7);
+  box-shadow: 0 0 12px rgba(212, 175, 55, .2);
+}
+
+.iq-sound-drawer {
+  display: none;
+  flex-direction: column;
+  gap: .3rem;
+  background: rgba(7, 17, 26, .94);
+  border: 1px solid rgba(212, 175, 55, .22);
+  border-radius: 10px;
+  padding: .6rem .7rem;
+  min-width: 130px;
+  backdrop-filter: blur(8px);
+}
+
+.iq-sound-drawer.is-open { display: flex; }
+
+.iq-sound-drawer__label {
+  font-family: 'Lora', serif;
+  font-size: .65rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(240, 232, 213, .4);
+  margin-bottom: .15rem;
+}
+
+.iq-sound-mode-btn {
+  background: transparent;
+  border: 1px solid rgba(240, 232, 213, .12);
+  border-radius: 6px;
+  color: rgba(240, 232, 213, .7);
+  font-family: 'Lora', serif;
+  font-size: .75rem;
+  padding: .3rem .6rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background .15s, border-color .15s, color .15s;
+}
+
+.iq-sound-mode-btn:hover,
+.iq-sound-mode-btn.is-active {
+  background: rgba(212, 175, 55, .12);
+  border-color: rgba(212, 175, 55, .4);
+  color: rgba(212, 175, 55, .95);
+}
+
+/* ── Accessibility Panel ─────────────────────────────────────────────────── */
+.iq-a11y-panel {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .5rem;
+}
+
+.iq-a11y-toggle {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, .25);
+  background: rgba(7, 17, 26, .88);
+  color: rgba(240, 232, 213, .65);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .2s;
+  backdrop-filter: blur(6px);
+}
+
+.iq-a11y-toggle:hover { border-color: rgba(212, 175, 55, .5); }
+
+.iq-a11y-drawer {
+  display: none;
+  flex-direction: column;
+  gap: .3rem;
+  background: rgba(7, 17, 26, .94);
+  border: 1px solid rgba(212, 175, 55, .22);
+  border-radius: 10px;
+  padding: .6rem .75rem;
+  min-width: 155px;
+  backdrop-filter: blur(8px);
+}
+
+.iq-a11y-drawer.is-open { display: flex; }
+
+.iq-a11y-drawer__label {
+  font-family: 'Lora', serif;
+  font-size: .65rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(240, 232, 213, .4);
+  margin-bottom: .1rem;
+}
+
+.iq-a11y-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+}
+
+.iq-a11y-row span {
+  font-family: 'Lora', serif;
+  font-size: .74rem;
+  color: rgba(240, 232, 213, .75);
+}
+
+/* Toggle switch */
+.iq-a11y-switch {
+  position: relative;
+  width: 2.4rem;
+  height: 1.3rem;
+  flex-shrink: 0;
+}
+
+.iq-a11y-switch input { opacity: 0; width: 0; height: 0; }
+
+.iq-a11y-switch__slider {
+  position: absolute;
+  inset: 0;
+  background: rgba(240, 232, 213, .12);
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.iq-a11y-switch__slider::before {
+  content: "";
+  position: absolute;
+  left: .15rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: .95rem;
+  height: .95rem;
+  border-radius: 50%;
+  background: rgba(240, 232, 213, .5);
+  transition: transform .2s, background .2s;
+}
+
+.iq-a11y-switch input:checked + .iq-a11y-switch__slider {
+  background: rgba(212, 175, 55, .45);
+}
+
+.iq-a11y-switch input:checked + .iq-a11y-switch__slider::before {
+  transform: translateY(-50%) translateX(1.1rem);
+  background: rgba(212, 175, 55, .95);
+}
+
+/* ── High Contrast mode ──────────────────────────────────────────────────── */
+html[data-high-contrast="1"] {
+  --theme-accent:      #FFD700;
+  --theme-fg:          #FFFFFF;
+  --theme-bg:          #000000;
+  filter: contrast(1.3);
+}
+
+html[data-high-contrast="1"] .iq-tile {
+  border-color: rgba(255, 215, 0, .8) !important;
+  background: rgba(0, 0, 0, .95) !important;
+}
+
+html[data-high-contrast="1"] .iq-tile-body {
+  color: #FFFFFF !important;
+}
+
+/* ── Reduce Motion ───────────────────────────────────────────────────────── */
+html[data-reduce-motion="1"] *,
+html[data-reduce-motion="1"] *::before,
+html[data-reduce-motion="1"] *::after {
+  animation-duration: 0.001ms !important;
+  transition-duration: 0.001ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-noor-pulse,
+  .fx-barakah-particle,
+  .fx-chain-path {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+}
+
+/* ── Arabic Encouragement Ribbon ─────────────────────────────────────────── */
+/* Compact pill that drops in just below the header — never overlaps the
+   question or answer text. Opaque background + drop-shadow for legibility.
+   Pairs with the synthesised oud/ney chime — text-only, no audio file. */
+.iq-encouragement {
+  position: fixed;
+  top: calc(var(--iq-safe-top, 0px) + 2.6rem);
+  left: 50%;
+  transform: translate(-50%, -10px);
+  z-index: 8500;
+  pointer-events: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  white-space: nowrap;
+  max-width: min(92vw, 26rem);
+  padding: 0.42rem 1rem;
+  border-radius: 999px;
+  background: rgba(7, 17, 26, 0.94);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transition: opacity 280ms ease, transform 280ms ease;
+}
+
+.iq-encouragement.is-show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.iq-encouragement__ar {
+  font-family: "Scheherazade New", serif;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: #f0e8d5;
+  letter-spacing: 0.02em;
+  /* No glow — over a solid pill it's not needed and hurt legibility. */
+}
+
+.iq-encouragement__en {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(212, 175, 55, 0.85);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iq-encouragement { transition: opacity 120ms linear; transform: translate(-50%, 0); }
+}
+
+/* ── Team Turn-Switch Banner ─────────────────────────────────────────────── */
+/* Briefly takes over the board on A↔B flips so players know to pass. */
+.iq-turn-banner {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(7, 14, 27, 0.85),
+    rgba(7, 14, 27, 0.55)
+  );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: opacity 220ms ease;
+}
+
+.iq-turn-banner.is-show { opacity: 1; }
+
+/* Subtle tint cue — Team A teal, Team B gold */
+.iq-turn-banner[data-team="A"] {
+  background: radial-gradient(ellipse at center,
+    rgba(80, 180, 200, 0.35),
+    rgba(7, 14, 27, 0.85));
+}
+.iq-turn-banner[data-team="B"] {
+  background: radial-gradient(ellipse at center,
+    rgba(212, 175, 55, 0.32),
+    rgba(7, 14, 27, 0.85));
+}
+
+.iq-turn-banner__inner {
+  text-align: center;
+  transform: scale(0.92);
+  transition: transform 320ms ease;
+  padding: 1.2rem 2rem;
+}
+
+.iq-turn-banner.is-show .iq-turn-banner__inner { transform: scale(1); }
+
+.iq-turn-banner__sub {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: rgba(240, 232, 213, 0.6);
+  margin-bottom: 0.4rem;
+}
+
+.iq-turn-banner__title {
+  font-family: "Cinzel Decorative", serif;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  letter-spacing: 0.08em;
+  color: #f0e8d5;
+  text-shadow: 0 0 24px rgba(212, 175, 55, 0.5), 0 2px 12px rgba(0, 0, 0, 0.85);
+}
+
+.iq-turn-banner__suffix { opacity: 0.7; font-size: 0.6em; }
+
+.iq-turn-banner__ar {
+  font-family: "Scheherazade New", serif;
+  font-size: 1.2rem;
+  color: rgba(212, 175, 55, 0.78);
+  margin-top: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+/* ── Q&A Verification Chip (subtle ✓ toggle) ─────────────────────────────── */
+/* Lives bottom-left, opposite the action dock. Donya marks each card
+   she's reviewed; count badge shows total reviewed across the session. */
+.iq-verify-chip {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  z-index: 7500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.55rem 0.32rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(7, 17, 26, 0.55);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  color: rgba(240, 232, 213, 0.55);
+  font-family: "Lora", serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease, opacity 180ms ease;
+  opacity: 0.55;
+}
+
+.iq-verify-chip:hover { opacity: 1; }
+
+.iq-verify-chip:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.iq-verify-chip.is-on {
+  background: rgba(120, 200, 120, 0.16);
+  border-color: rgba(120, 200, 120, 0.55);
+  color: #d6f0d6;
+  opacity: 1;
+}
+
+.iq-verify-chip__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.18);
+  font-size: 0.78rem;
+  line-height: 1;
+  color: rgba(240, 232, 213, 0.7);
+}
+
+.iq-verify-chip.is-on .iq-verify-chip__icon {
+  background: rgba(120, 200, 120, 0.45);
+  color: #07111a;
+}
+
+.iq-verify-chip__count {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.7rem;
+  opacity: 0.85;
+}
+
+.iq-verify-chip__sr {
+  position: absolute;
+  width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+@media (max-width: 600px) {
+  .iq-toast {
+    bottom: calc(var(--iq-safe-bottom, 0px) + 8.2rem);
+  }
+
+  .iq-encouragement {
+    top: calc(var(--iq-safe-top, 0px) + 3.1rem);
+    max-width: calc(100vw - 1.5rem);
+    padding: 0.4rem 0.75rem;
+  }
+
+  .iq-sound-panel,
+  .iq-a11y-panel {
+    bottom: calc(var(--iq-safe-bottom, 0px) + 8rem);
+    gap: 0.35rem;
+  }
+
+  .iq-sound-panel { right: 0.75rem; }
+  .iq-a11y-panel { left: 0.75rem; }
+
+  .iq-sound-drawer,
+  .iq-a11y-drawer {
+    max-width: min(11.5rem, calc(100vw - 1.5rem));
+    padding: 0.55rem 0.65rem;
+  }
+
+  .iq-verify-chip {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(var(--iq-safe-bottom, 0px) + 5.5rem);
+    opacity: 0.92;
+  }
+}

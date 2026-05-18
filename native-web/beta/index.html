@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ultimate" data-variant="night">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="copyright" content="© 2026 Donya G. Berhan, LPC. All Rights Reserved.">
+  <meta name="author" content="Donya G. Berhan, LPC">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="description" content="HikahQuest — Choose your source of Islamic knowledge and begin your trivia journey." />
+  <meta name="theme-color" content="#07111a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="HikahQuest" />
+
+  <link rel="manifest" href="../manifest.json" />
+
+  <link rel="stylesheet" href="src/styles/tokens.css" />
+  <link rel="stylesheet" href="src/styles/base.css" />
+  <link rel="stylesheet" href="src/styles/tiles.css" />
+  <link rel="stylesheet" href="src/styles/skins.css" />
+  <link rel="stylesheet" href="src/styles/setup.css" />
+  <link rel="stylesheet" href="src/styles/buttons.css" />
+  <link rel="stylesheet" href="src/styles/mobile.css" />
+
+  <title>HikahQuest — Choose Your Path</title>
+</head>
+<body>
+
+  <div class="iq-app">
+    <div class="iq-page" id="page-home">
+
+      <!-- ── Zoomable background layer (JS controls --bg-zoom/tx/ty) ─────────── -->
+      <div class="iq-bg-layer" aria-hidden="true"></div>
+
+      <!-- ── Background display options panel ─────────────────────────────────── -->
+      <div
+        class="iq-display-panel"
+        id="iq-display-panel"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Background display options"
+      >
+        <div class="iq-display-panel__head">
+          <span class="iq-display-panel__title">Display</span>
+          <button class="iq-display-panel__close" id="iq-display-close" aria-label="Close">×</button>
+        </div>
+        <div class="iq-display-panel__body">
+          <div class="iq-display-group">
+            <span class="iq-display-label">Zoom</span>
+            <div class="iq-display-zoom">
+              <button class="iq-display-ctrl" data-display-action="zoom-out" aria-label="Zoom out">−</button>
+              <span class="iq-display-zoom__value" id="iq-zoom-value">100%</span>
+              <button class="iq-display-ctrl" data-display-action="zoom-in" aria-label="Zoom in">+</button>
+            </div>
+          </div>
+          <div class="iq-display-group">
+            <span class="iq-display-label">Shift</span>
+            <div class="iq-display-dpad">
+              <button class="iq-display-ctrl iq-display-ctrl--up"     data-display-action="pan-up"    aria-label="Pan up">↑</button>
+              <button class="iq-display-ctrl iq-display-ctrl--left"   data-display-action="pan-left"  aria-label="Pan left">←</button>
+              <button class="iq-display-ctrl iq-display-ctrl--center" data-display-action="reset-pan" aria-label="Center" title="Center pan">○</button>
+              <button class="iq-display-ctrl iq-display-ctrl--right"  data-display-action="pan-right" aria-label="Pan right">→</button>
+              <button class="iq-display-ctrl iq-display-ctrl--down"   data-display-action="pan-down"  aria-label="Pan down">↓</button>
+            </div>
+          </div>
+          <button class="iq-display-ctrl iq-display-ctrl--reset" data-display-action="reset-all">Reset View</button>
+        </div>
+      </div>
+
+      <!-- ── Progress bar ─────────────────────────────────────────────────── -->
+      <div class="iq-progress" role="presentation" aria-hidden="true">
+        <div class="iq-progress__fill"></div>
+      </div>
+
+      <!-- ── Header ─────────────────────────────────────────────────────────── -->
+      <header class="iq-header" role="banner">
+        <div class="iq-header-logo" aria-label="HikahQuest">
+          <span class="iq-header-logo__symbol" aria-hidden="true">☪</span>
+          <span class="iq-header-logo__name">HikahQuest</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.5rem;">
+          <button
+            id="bsml-trigger"
+            class="iq-display-toggle"
+            aria-label="Astaghfirullah Correction Space"
+            title="Astaghfirullah Correction Space"
+            style="font-family:'Scheherazade New',serif; font-size:1rem; letter-spacing:.02em; color:var(--theme-accent);"
+          >أستغفر الله</button>
+          <button
+            class="iq-display-toggle"
+            id="iq-display-toggle"
+            aria-label="Background display options"
+            aria-expanded="false"
+            aria-controls="iq-display-panel"
+            title="Background display options"
+          >⛶</button>
+        </div>
+      </header>
+
+      <!-- ── Setup board: two tiles ────────────────────────────────────────── -->
+      <main class="iq-board" id="setup-board" aria-label="Journey setup">
+        <div class="iq-tile-row">
+
+          <!-- Left tile: Source selector (draggable list) -->
+          <div
+            class="iq-tile iq-tile--left"
+            id="iq-tile-sources"
+            role="region"
+            aria-label="Source selection"
+          >
+            <div class="iq-tile-header">
+              <span class="iq-tile-badge">Choose Your Deck</span>
+            </div>
+            <div class="iq-tile-body">
+              <ul
+                class="iq-source-list"
+                id="iq-source-list"
+                role="radiogroup"
+                aria-label="Knowledge source"
+                aria-required="true"
+              >
+                <!-- Rendered by JS — draggable text items, no icons -->
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right tile: Large realm info display -->
+          <div
+            class="iq-tile iq-tile--right"
+            id="iq-tile-realm-info"
+            role="region"
+            aria-label="Realm information"
+          >
+            <div class="iq-tile-header">
+              <span class="iq-tile-badge" id="realm-badge">HikahQuest</span>
+            </div>
+
+            <div class="iq-tile-body">
+              <h1 class="iq-tile-name" id="realm-title">Select a Deck</h1>
+              <p class="iq-tile-meaning" id="realm-desc">
+                Choose a deck on the left to begin your journey
+              </p>
+
+              <!-- Next button to proceed to mode/difficulty page -->
+              <button
+                class="iq-medallion-btn"
+                id="iq-next-btn"
+                disabled
+                aria-disabled="true"
+              >Next →</button>
+
+              <section class="iq-support-panel" aria-label="Support and legal">
+                <h2 class="iq-support-panel__title">Support</h2>
+                <p class="iq-support-panel__text">
+                  Free gameplay stays free. Donations and gifts help maintain and expand decks.
+                </p>
+                <p class="iq-support-panel__promise">
+                  <strong>Yearly Update Promise:</strong> minimum one deck refresh each year, with additional content improvements as supported.
+                </p>
+
+                <div class="iq-support-panel__qr-wrap">
+                  <div class="iq-support-panel__qr" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;color:#07111a;font-weight:700;">OFFLINE</div>
+                  <div class="iq-support-panel__actions">
+                    <a class="iq-support-link" href="donation.html">Donation and Gift Options</a>
+                    <a class="iq-support-link" href="mailto:donyaberhan@gmail.com?subject=HikahQuest%20Donation%20Gift">Email Support Intent</a>
+                  </div>
+                </div>
+
+                <div class="iq-legal-links" aria-label="Legal pages">
+                  <a href="terms.html">Terms of Use</a>
+                  <a href="privacy.html">Privacy Policy</a>
+                  <a href="copyright.html">Copyright Notice</a>
+                  <a href="donation.html">Donation Disclaimer</a>
+                </div>
+              </section>
+            </div>
+
+          </div>
+
+        </div>
+      </main>
+
+    </div><!-- /#page-home -->
+  </div><!-- /.iq-app -->
+
+  <noscript>
+    <p style="padding:2rem;text-align:center;font-family:serif;color:#f0e8d5;">
+      HikahQuest requires JavaScript to run. Please enable JavaScript in your browser.
+    </p>
+  </noscript>
+
+  <script type="module" src="src/app/bootstrap.js?v=20260501"></script>
+  <script>
+    var isNativeShell = typeof window !== 'undefined' && window.Capacitor && typeof window.Capacitor.isNativePlatform === 'function' && window.Capacitor.isNativePlatform();
+    if ('serviceWorker' in navigator && !isNativeShell) {
+      navigator.serviceWorker.register('../sw.js', { scope: '../' }).catch(() => {});
+    }
+  </script>
+
+  <div id="bsml-overlay" aria-modal="true" role="dialog" aria-label="Feedback" style="
+    display:none; position:fixed; inset:0; z-index:9999;
+    background:rgba(0,0,0,.72); backdrop-filter:blur(5px);
+    align-items:center; justify-content:center;">
+    <div style="
+      background:rgba(7,17,26,.96); border:1px solid rgba(212,175,55,.28);
+      border-radius:14px; padding:1.6rem 1.5rem; max-width:370px; width:92%;
+      color:#f0e8d5; font-family:'Lora',serif; box-shadow:0 0 48px rgba(0,0,0,.6);">
+      <!-- DB monogram seal -->
+      <div style="text-align:center; margin-bottom:1rem;">
+        <div style="width:56px; height:56px; border-radius:50%; background:radial-gradient(circle at 35% 35%, rgba(212,175,55,.22), rgba(7,17,26,.9)); border:1.5px solid rgba(212,175,55,.6); box-shadow:0 0 18px rgba(212,175,55,.18), inset 0 0 12px rgba(212,175,55,.08); display:inline-flex; align-items:center; justify-content:center; margin:0 auto;">
+          <span style="font-family:'Cinzel Decorative',serif; font-size:1.1rem; font-weight:700; color:#d4af37; letter-spacing:.04em;">DB</span>
+        </div>
+      </div>
+      <div style="text-align:center; font-family:'Scheherazade New',serif; font-size:1.15rem; color:rgba(212,175,55,.55); margin-bottom:1rem;">بسم الله الرحمن الرحيم</div>
+      <label style="display:block; font-size:.72rem; color:rgba(240,232,213,.5); margin-bottom:.22rem;">Your Name (optional)</label>
+      <input id="bf-name" type="text" placeholder="Anonymous" style="
+        width:100%; box-sizing:border-box; background:rgba(255,255,255,.06);
+        border:1px solid rgba(212,175,55,.18); border-radius:6px;
+        padding:.45rem .7rem; color:#f0e8d5; font-family:'Lora',serif;
+        font-size:.82rem; margin-bottom:.7rem; outline:none;" />
+      <p style="margin:0 0 .8rem; font-size:.7rem; line-height:1.45; color:rgba(240,232,213,.55);">
+        Anonymous is used by default. Feedback is treated as beta review and follows the <a href="terms.html" style="color:rgba(212,175,55,.86);">Terms of Use</a> and <a href="beta-participation.html" style="color:rgba(212,175,55,.86);">Beta Participation</a> notes.
+      </p>
+      <label style="display:block; font-size:.72rem; color:rgba(240,232,213,.5); margin-bottom:.22rem;">Your Feedback</label>
+      <textarea id="bf-text" placeholder="Share your thoughts, any bugs, ideas…" rows="5" style="
+        width:100%; box-sizing:border-box; background:rgba(255,255,255,.06);
+        border:1px solid rgba(212,175,55,.18); border-radius:6px;
+        padding:.45rem .7rem; color:#f0e8d5; font-family:'Lora',serif;
+        font-size:.82rem; margin-bottom:.9rem; outline:none; resize:vertical;"></textarea>
+      <div style="display:flex; gap:.5rem; justify-content:flex-end;">
+        <button id="bf-cancel" style="
+          background:transparent; border:1px solid rgba(240,232,213,.22);
+          border-radius:6px; padding:.4rem .9rem; color:rgba(240,232,213,.55);
+          font-size:.78rem; cursor:pointer; font-family:'Lora',serif;">Cancel</button>
+        <button id="bf-submit" style="
+          background:linear-gradient(135deg,#b8912a,#d4af37); border:none;
+          border-radius:6px; padding:.4rem 1.1rem; color:#07111a;
+          font-size:.78rem; font-weight:700; cursor:pointer; font-family:'Cinzel Decorative',serif;">Submit →</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    var trigger  = document.getElementById('bsml-trigger');
+    var overlay  = document.getElementById('bsml-overlay');
+    var cancelBtn= document.getElementById('bf-cancel');
+    var submitBtn= document.getElementById('bf-submit');
+    var nameEl   = document.getElementById('bf-name');
+    var textEl   = document.getElementById('bf-text');
+    function openFeedback() {
+      nameEl.value = ''; textEl.value = '';
+      overlay.style.display = 'flex';
+      setTimeout(function(){ textEl.focus(); }, 120);
+    }
+    function closeFeedback() { overlay.style.display = 'none'; }
+
+    trigger.addEventListener('click', openFeedback);
+
+    cancelBtn.addEventListener('click', closeFeedback);
+    overlay.addEventListener('click', function(e){ if(e.target===overlay) closeFeedback(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeFeedback(); });
+
+    submitBtn.addEventListener('click', function(){
+      var name = nameEl.value.trim() || 'Anonymous';
+      var text = textEl.value.trim();
+      if (!text){ textEl.focus(); return; }
+      var page = window.location.pathname.split('/').pop() || 'index';
+      var sub  = encodeURIComponent('HikahQuest Beta Feedback — ' + name);
+      var body = encodeURIComponent('From: ' + name + '\nPage: ' + page + '\n\n' + text);
+      window.location.href = 'mailto:donyaberhan@gmail.com?subject=' + sub + '&body=' + body;
+      closeFeedback();
+    });
+  })();
+  </script>
+</body>
+</html>

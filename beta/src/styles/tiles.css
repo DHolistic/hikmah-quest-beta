@@ -229,7 +229,7 @@
 
 .iq-tile-question {
   font-family: "Lora", serif;
-  font-size: clamp(0.95rem, 2.1vw, 1.15rem);
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
   color: rgba(240, 232, 213, 0.96);
   line-height: 1.65;
 }
@@ -279,7 +279,7 @@
 
 .iq-tile-answer {
   font-family: "Cinzel Decorative", serif;
-  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
   color: var(--theme-accent);
   letter-spacing: 0.04em;
   line-height: 1.4;
@@ -420,6 +420,60 @@
   color: var(--theme-success);
 }
 
+#page-gameplay.iq-page--single-trivia .iq-tile-row::before,
+.iq-tile-row--single::before {
+  content: none;
+}
+
+#page-gameplay.iq-page--single-trivia .iq-tile--right,
+.iq-tile-row--single .iq-tile--right {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding-left: var(--iq-space-3);
+  padding-right: var(--iq-space-3);
+}
+
+.iq-match-grid,
+.iq-match-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  width: min(100%, 44rem);
+}
+
+.iq-match-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: min(100%, 44rem);
+}
+
+.iq-match-option {
+  border: 1px solid rgba(212, 175, 55, 0.24);
+  border-radius: 12px;
+  background: rgba(7, 14, 27, 0.58);
+  color: rgba(240, 232, 213, 0.92);
+  font-family: "Lora", serif;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  text-align: left;
+  padding: 0.8rem 0.95rem;
+  cursor: pointer;
+}
+
+.iq-match-option.is-active {
+  border-color: var(--theme-accent);
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.2);
+}
+
+.iq-match-option.is-locked,
+.iq-match-option:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 /* MCQ mode — options become tap targets, self-score buttons hide.
    Toggled via [data-answer-style="mcq"] on <html> by bootstrap.js. */
 html[data-answer-style="mcq"] .iq-options li {
@@ -516,7 +570,7 @@ html[data-answer-style="mcq"] #iq-dock-score-row {
   margin: 0.4rem 0 0;
   padding-left: 1.4rem;
   font-family: "Cinzel Decorative", serif;
-  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
   color: var(--theme-accent);
   letter-spacing: 0.03em;
   line-height: 1.5;

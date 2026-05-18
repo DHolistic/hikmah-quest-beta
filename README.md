@@ -1,4 +1,4 @@
-# Hikmah Quest — Beta
+# HikahQuest — Beta
 
 Islamic trivia game built around the 99 Names of Allah. This repo contains
 the public beta build; the workspace (xlsx authoring source, build scripts,
@@ -14,6 +14,8 @@ python3 -m http.server 8765 --bind 127.0.0.1
 ## Layout
 
 - `beta/` — the shipping app (HTML pages, JS modules, CSS)
+- `beta/content/banks/` — generated 99-card category banks for Quran, Sunnah, Ummah, and Hidayah
+- `scripts/build-category-banks.mjs` — rebuilds the beta category banks from the wider authoring repo + seasonal pack sources
 - `quran-repository.json` — Quranic ayah lookup (loaded at runtime)
 - `manifest.json`, `sw.js`, `vercel.json` — PWA + deploy config
 - `assets/`, `icons/`, `card-back.*` — static art
