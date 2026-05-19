@@ -169,9 +169,14 @@ export function renderScorebar(container, state) {
   // we surface it here only as a tiny aside.
   const teamA_active = state.turn === "A" ? " is-active" : "";
   const teamB_active = state.turn === "B" ? " is-active" : "";
+  const hasTimer = Number(state.roundSeconds ?? 0) > 0;
+  const timerLabel = hasTimer
+    ? `<span class="iq-scorebar__pill">Time <strong>${Math.max(0, Number(state.roundTimeLeft ?? 0))}s</strong></span><span class="iq-scorebar__sep">·</span>`
+    : "";
 
   container.innerHTML = isSolo
     ? `<div class="iq-scorebar iq-scorebar--solo iq-scorebar--inline${streakTier ? ` iq-scorebar--streak-${streakTier}` : ""}">
+         ${timerLabel}
          <span class="iq-scorebar__pill">Score <strong>${state.soloScore}</strong></span>
          <span class="iq-scorebar__sep">·</span>
          <span class="iq-scorebar__pill">Streak <strong>${state.streak}</strong></span>
@@ -179,7 +184,8 @@ export function renderScorebar(container, state) {
          <span class="iq-scorebar__pill">${cardsPlayed}/${state.totalCards}</span>
          <span class="iq-scorebar__pill iq-scorebar__pill--miss" aria-label="Missed">${missedCount}m</span>
        </div>`
-    : `<div class="iq-scorebar iq-scorebar--team iq-scorebar--inline${streakTier ? ` iq-scorebar--streak-${streakTier}` : ""}">
+        : `<div class="iq-scorebar iq-scorebar--team iq-scorebar--inline${streakTier ? ` iq-scorebar--streak-${streakTier}` : ""}">
+          ${timerLabel}
          <span class="iq-scorebar__pill iq-scorebar__team${teamA_active}">A <strong>${state.teamScoreA}</strong></span>
          <span class="iq-scorebar__pill iq-scorebar__team${teamB_active}">B <strong>${state.teamScoreB}</strong></span>
          <span class="iq-scorebar__sep">·</span>

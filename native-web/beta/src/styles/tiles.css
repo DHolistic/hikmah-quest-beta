@@ -229,7 +229,7 @@
 
 .iq-tile-question {
   font-family: "Lora", serif;
-  font-size: clamp(0.95rem, 2.1vw, 1.15rem);
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
   color: rgba(240, 232, 213, 0.96);
   line-height: 1.65;
 }
@@ -279,7 +279,7 @@
 
 .iq-tile-answer {
   font-family: "Cinzel Decorative", serif;
-  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
   color: var(--theme-accent);
   letter-spacing: 0.04em;
   line-height: 1.4;
@@ -570,7 +570,7 @@ html[data-answer-style="mcq"] #iq-dock-score-row {
   margin: 0.4rem 0 0;
   padding-left: 1.4rem;
   font-family: "Cinzel Decorative", serif;
-  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
   color: var(--theme-accent);
   letter-spacing: 0.03em;
   line-height: 1.5;

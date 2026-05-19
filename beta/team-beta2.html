@@ -69,6 +69,59 @@
             <span class="iq-room-code" id="tб-room-code" aria-label="Room code">----</span>
             <p class="iq-room-code-hint">Share this code with players nearby</p>
           </div>
+
+          <div class="iq-tournament-config" aria-label="Tournament setup">
+            <label class="iq-field-label" for="tb-team-name">Team Name</label>
+            <input id="tb-team-name" class="iq-team-input" type="text" maxlength="24" placeholder="Deen Connectors" />
+
+            <div class="iq-tournament-grid">
+              <div>
+                <label class="iq-field-label" for="tb-round-seconds">Round Timer</label>
+                <select id="tb-round-seconds" class="iq-team-select">
+                  <option value="60" selected>1 minute</option>
+                  <option value="90">1 min 30 sec</option>
+                  <option value="120">2 minutes</option>
+                </select>
+              </div>
+              <div>
+                <label class="iq-field-label" for="tb-battle-style">Battle Style</label>
+                <select id="tb-battle-style" class="iq-team-select">
+                  <option value="same-deck" selected>Same Deck Battle</option>
+                  <option value="shared-deck">Shared Deck Battle</option>
+                </select>
+              </div>
+            </div>
+
+            <label class="iq-toggle-row">
+              <input id="tb-nearby-optin" type="checkbox" />
+              <span>Allow nearby challenge prompts (anonymous unless shared)</span>
+            </label>
+
+            <div class="iq-nearby-actions">
+              <button class="iq-team-btn" id="tb-nearby-enable" type="button">Enable Nearby Detection</button>
+              <button class="iq-team-btn" id="tb-nearby-disable" type="button" style="display:none;">Disable Nearby Detection</button>
+            </div>
+
+            <div id="tb-nearby-banner" class="iq-nearby-banner" style="display:none;" aria-live="polite">
+              <div class="iq-nearby-banner__title">Nearby challenge available</div>
+              <p class="iq-nearby-banner__text" id="tb-nearby-text">Another user is in range. Start a challenge?</p>
+              <div class="iq-nearby-banner__actions">
+                <button class="iq-team-btn iq-team-btn--primary" id="tb-nearby-accept" type="button">Challenge Now</button>
+                <button class="iq-team-btn" id="tb-nearby-dismiss" type="button">Later</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="iq-qr-wrap" aria-label="QR join invite">
+            <img id="tb-qr-image" class="iq-qr-image" alt="Tournament join QR" />
+            <div class="iq-qr-meta">
+              <div class="iq-qr-meta__title">QR Tournament Join</div>
+              <p class="iq-qr-meta__text">3+ nearby players can scan and join this room quickly.</p>
+              <div class="iq-qr-actions">
+                <button class="iq-team-btn" id="tb-copy-link" type="button">Copy Invite Link</button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -104,7 +157,7 @@
         <div class="iq-player-grid" id="tб-player-grid" aria-live="polite"></div>
 
         <button class="iq-team-btn iq-team-btn--primary" id="tб-start-game" disabled style="margin-top:.25rem; align-self:flex-end;">
-          Start Game →
+          Start Tournament Round →
         </button>
       </section>
 
@@ -119,6 +172,7 @@
         <div class="iq-team-section__label">How Team Mode works</div>
         <ul class="iq-how-to">
           <li><strong>Host</strong> creates a room and shares the 4-letter code.</li>
+          <li><strong>Tournament</strong> can start once 3+ players are connected.</li>
           <li><strong>Players</strong> join on their phones or tablets using the code.</li>
           <li>Host's screen shows the cards. Players use their devices to call correct/incorrect.</li>
           <li>Works on the <strong>same Wi-Fi</strong> or same browser (multiple tabs).</li>
@@ -128,6 +182,13 @@
           Beta 2 · Nearby sync uses BroadcastChannel API (same browser, same device, or same browser extension). 
           Full cross-device support coming in a future update.
         </p>
+      </section>
+
+      <section class="iq-team-section" aria-label="Mini achievements">
+        <div class="iq-team-section__label">Mini Achievements</div>
+        <div class="iq-achievement-list" id="tb-achievement-list">
+          <p class="iq-lobby-waiting">No badges yet. Win rounds to unlock.</p>
+        </div>
       </section>
 
       <!-- Legal footer -->

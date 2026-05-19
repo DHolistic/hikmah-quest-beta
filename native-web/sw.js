@@ -1,4 +1,4 @@
-const CACHE = 'hikmah-quest-v9';
+const CACHE = 'hikmah-quest-v10';
 const RUNTIME_CACHE = 'hikmah-quest-runtime-v1';
 const ASSETS = [
   './beta/index.html',
@@ -32,6 +32,7 @@ const ASSETS = [
   './beta/src/app/fx.js',
   './beta/src/app/sound.js',
   './beta/src/app/multiplayer.js',
+  './beta/src/app/proximity.js',
   './beta/src/app/team-beta2.js',
   './beta/src/app/turn-switch.js',
   './beta/src/app/verify-toggle.js',

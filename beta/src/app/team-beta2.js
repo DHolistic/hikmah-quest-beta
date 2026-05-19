@@ -5,6 +5,7 @@
 
 import { generateRoomCode, generateAvatar, MultiplayerRoom, MSG, setActiveRoom, closeActiveRoom, getActiveRoom } from "./multiplayer.js";
 import { saveSession, loadSession } from "./config.js";
+import { createProximityService } from "./proximity.js";
 
 // ── State ────────────────────────────────────────────────────────────────
 const session = loadSession() ?? {};
@@ -33,6 +34,98 @@ const playerGrid     = document.getElementById("tб-player-grid");
 const statusEl       = document.getElementById("tб-status");
 const startGameBtn   = document.getElementById("tб-start-game");
 const confScores     = document.getElementById("tб-conf-scores");
+const teamNameInput  = document.getElementById("tb-team-name");
+const roundSelect    = document.getElementById("tb-round-seconds");
+const battleSelect   = document.getElementById("tb-battle-style");
+const nearbyOptIn    = document.getElementById("tb-nearby-optin");
+const qrImage        = document.getElementById("tb-qr-image");
+const copyLinkBtn    = document.getElementById("tb-copy-link");
+const nearbyEnableBtn = document.getElementById("tb-nearby-enable");
+const nearbyDisableBtn = document.getElementById("tb-nearby-disable");
+const nearbyBanner = document.getElementById("tb-nearby-banner");
+const nearbyText = document.getElementById("tb-nearby-text");
+const nearbyAccept = document.getElementById("tb-nearby-accept");
+const nearbyDismiss = document.getElementById("tb-nearby-dismiss");
+const achievementList = document.getElementById("tb-achievement-list");
+
+const ACHIEVE_KEY = "hq-tournament-achievements-v1";
+
+function loadAchievements() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(ACHIEVE_KEY) ?? "[]");
+    return Array.isArray(raw) ? raw : [];
+  } catch {
+    return [];
+  }
+}
+
+function renderAchievements() {
+  if (!achievementList) return;
+  const rows = loadAchievements();
+  if (!rows.length) {
+    achievementList.innerHTML = `<p class="iq-lobby-waiting">No badges yet. Win rounds to unlock.</p>`;
+    return;
+  }
+  achievementList.innerHTML = rows
+    .slice(-6)
+    .reverse()
+    .map(row => `
+      <div class="iq-achievement-item">
+        <span class="iq-achievement-item__name">${row.name}</span>
+        <span class="iq-achievement-item__meta">${row.when}</span>
+      </div>
+    `)
+    .join("");
+}
+
+function showNearbyPrompt(count) {
+  if (!nearbyBanner || !nearbyText) return;
+  if (count <= 0) {
+    nearbyBanner.style.display = "none";
+    return;
+  }
+  nearbyText.textContent = count === 1
+    ? "1 nearby user detected. Start a challenge?"
+    : `${count} nearby users detected. Start a challenge?`;
+  nearbyBanner.style.display = "";
+}
+
+const proximity = createProximityService({
+  onStatus: (msg, type = "") => setStatus(msg, type),
+  onNearby: count => showNearbyPrompt(count),
+});
+
+function buildInviteUrl(code) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("join", code);
+  return url.toString();
+}
+
+function renderQrInvite(code) {
+  if (!qrImage) return;
+  const invite = buildInviteUrl(code);
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=8&data=${encodeURIComponent(invite)}`;
+  qrImage.src = qrUrl;
+  qrImage.dataset.invite = invite;
+}
+
+function canStartTournament() {
+  if (!_room || _room.role !== "host") return false;
+  return _room.players.size >= 3;
+}
+
+function syncStartAvailability() {
+  if (!startGameBtn) return;
+  const ready = canStartTournament();
+  startGameBtn.disabled = !ready;
+  if (_room?.role === "host") {
+    if (ready) {
+      setStatus(`Tournament ready: ${_room.players.size} players connected.`, "success");
+    } else {
+      setStatus(`Need ${Math.max(0, 3 - (_room?.players.size ?? 0))} more player(s) for tournament mode.`);
+    }
+  }
+}
 
 // ── Avatar display ───────────────────────────────────────────────────────
 function renderSelf() {
@@ -113,24 +206,32 @@ if (hostCreateBtn) {
     setActiveRoom(_room);
 
     if (roomCodeEl) roomCodeEl.textContent = code;
+    renderQrInvite(code);
     if (hostSection) hostSection.style.display = "";
     if (hostLobby)   hostLobby.style.display   = "";
     hostCreateBtn.style.display = "none";
     if (hostStopBtn) hostStopBtn.style.display  = "";
-    if (startGameBtn) startGameBtn.disabled = false;
+    if (startGameBtn) startGameBtn.disabled = true;
 
     // Initialise own score entry
     _scores[_room.playerId] = { name: _hidden ? "Host" : _avatar.name, pts: 0 };
     renderPlayerGrid();
     renderScores();
-    setStatus(`Room ${code} open — share this code!`, "success");
+    setStatus(`Room ${code} open — share QR or code.`, "success");
+    syncStartAvailability();
+
+    if (proximity.isEnabled()) {
+      proximity.disable().then(() =>
+        proximity.enable({ roomCode: code, advertise: true })
+      );
+    }
 
     // Listen for join events
     _room.on(MSG.PLAYER_JOINED, (msg) => {
       _scores[msg.playerId] = { name: msg.avatar.name, pts: 0 };
       renderPlayerGrid();
       renderScores();
-      setStatus(`${msg.avatar.name} joined!`);
+      syncStartAvailability();
     });
 
     _room.on(MSG.ANSWER_CORRECT, (msg) => {
@@ -162,6 +263,10 @@ if (hostStopBtn) {
     if (playerGrid) playerGrid.innerHTML = "";
     _scores = {};
     renderScores();
+    if (qrImage) {
+      qrImage.removeAttribute("src");
+      delete qrImage.dataset.invite;
+    }
   });
 }
 
@@ -224,6 +329,67 @@ if (joinBtn) {
   });
 }
 
+if (copyLinkBtn) {
+  copyLinkBtn.addEventListener("click", async () => {
+    const invite = qrImage?.dataset.invite;
+    if (!invite) {
+      setStatus("Create a room first to generate an invite link.", "error");
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(invite);
+      setStatus("Invite link copied.", "success");
+    } catch {
+      setStatus("Could not copy link. Share the room code manually.");
+    }
+  });
+}
+
+if (nearbyEnableBtn) {
+  nearbyEnableBtn.addEventListener("click", async () => {
+    if (!nearbyOptIn?.checked) {
+      setStatus("Enable nearby opt-in first.", "error");
+      return;
+    }
+    const ok = await proximity.enable({
+      roomCode: _room?.roomCode ?? "",
+      advertise: Boolean(_room?.role === "host"),
+    });
+    if (!ok) return;
+    nearbyEnableBtn.style.display = "none";
+    if (nearbyDisableBtn) nearbyDisableBtn.style.display = "";
+  });
+}
+
+if (nearbyDisableBtn) {
+  nearbyDisableBtn.addEventListener("click", () => {
+    proximity.disable();
+    nearbyDisableBtn.style.display = "none";
+    if (nearbyEnableBtn) nearbyEnableBtn.style.display = "";
+    if (nearbyBanner) nearbyBanner.style.display = "none";
+  });
+}
+
+if (nearbyDismiss) {
+  nearbyDismiss.addEventListener("click", () => {
+    if (nearbyBanner) nearbyBanner.style.display = "none";
+  });
+}
+
+if (nearbyAccept) {
+  nearbyAccept.addEventListener("click", () => {
+    if (_room && canStartTournament()) {
+      startGameBtn?.click();
+      return;
+    }
+    if (!_room) {
+      hostCreateBtn?.click();
+    } else {
+      setStatus("Need at least 3 connected players to start tournament mode.");
+    }
+  });
+}
+
 if (leaveBtn) {
   leaveBtn.addEventListener("click", () => {
     closeActiveRoom();
@@ -241,19 +407,48 @@ if (leaveBtn) {
 // ── Start game (host) ─────────────────────────────────────────────────────
 if (startGameBtn) {
   startGameBtn.addEventListener("click", () => {
+    if (!canStartTournament()) {
+      syncStartAvailability();
+      return;
+    }
+
+    const roundSeconds = Number(roundSelect?.value || 60);
+    const teamName = (teamNameInput?.value || "").trim();
+    const battleStyle = battleSelect?.value || "same-deck";
+
     saveSession({
       ...session,
       mode: "team",
       multiplayerRoom: _room?.roomCode ?? null,
+      roundSeconds,
+      teamName,
+      battleStyle,
+      nearbyOptIn: Boolean(nearbyOptIn?.checked),
+      tournamentMode: true,
     });
     location.href = "gameplay.html";
   });
 }
 
+function autoJoinFromQuery() {
+  const params = new URLSearchParams(window.location.search);
+  const join = (params.get("join") || "").trim().toUpperCase();
+  if (!join) return;
+  if (joinCodeInput) joinCodeInput.value = join;
+  if (joinBtn) joinBtn.click();
+}
+
 // ── Init ─────────────────────────────────────────────────────────────────
 renderSelf();
+renderAchievements();
 if (hostSection) hostSection.style.display = "none";
 if (hostLobby)   hostLobby.style.display   = "none";
 if (hostStopBtn) hostStopBtn.style.display = "none";
 if (leaveBtn)    leaveBtn.style.display    = "none";
 if (startGameBtn) startGameBtn.disabled    = true;
+if (nearbyOptIn) nearbyOptIn.checked = false;
+autoJoinFromQuery();
+
+window.addEventListener("beforeunload", () => {
+  proximity.disable();
+});

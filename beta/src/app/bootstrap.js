@@ -9,6 +9,7 @@ import { showEncouragement } from "./encouragement.js";
 import { initVerifyToggle } from "./verify-toggle.js";
 import { showTurnSwitch } from "./turn-switch.js";
 import { augmentDeckWithMcq } from "./mcq.js";
+import { getActiveRoom } from "./multiplayer.js";
 
 // ─── Display options (bg zoom / pan) ────────────────────────────────────────
 // Persists per-theme settings in localStorage under key "iq-bg-display".
@@ -352,9 +353,72 @@ async function initGameplay() {
   let state = createGameplayState(rightDeck, [], session.mode, {
     difficulty: session.difficulty ?? "medium",
     shuffleDecks: false,
+    teamName: session.teamName ?? "",
+    roundSeconds: Number(session.roundSeconds ?? 0),
+    roundTimeLeft: Number(session.roundSeconds ?? 0),
   });
   state.answerStyle = answerStyle;
   document.documentElement.dataset.answerStyle = answerStyle;
+  const room = getActiveRoom();
+  const timerEnabled = Number(session.roundSeconds ?? 0) > 0;
+  let timerId = null;
+  let lastBroadcastIndex = -1;
+
+  function stopRoundTimer() {
+    if (!timerId) return;
+    clearInterval(timerId);
+    timerId = null;
+  }
+
+  function startRoundTimer() {
+    if (!timerEnabled || state.isComplete) return;
+    const startedAt = Date.now();
+    const roundMs = Number(session.roundSeconds ?? 0) * 1000;
+    timerId = setInterval(() => {
+      if (state.isComplete) {
+        stopRoundTimer();
+        return;
+      }
+      const elapsed = Date.now() - startedAt;
+      const leftMs = Math.max(0, roundMs - elapsed);
+      const leftSec = Math.ceil(leftMs / 1000);
+      if (leftSec !== state.roundTimeLeft) {
+        state = { ...state, roundTimeLeft: leftSec };
+        redraw();
+      }
+      if (leftMs <= 0) {
+        state = { ...state, roundTimeLeft: 0, isComplete: true };
+        checkComplete();
+      }
+    }, 250);
+  }
+
+  function broadcastTournamentState() {
+    if (!room || room.role !== "host") return;
+
+    room.sendScoreUpdate({
+      teamA: state.teamScoreA,
+      teamB: state.teamScoreB,
+      solo: state.soloScore,
+      correctCards: state.correctCards,
+      missedCount: state.missedCards.length,
+      roundTimeLeft: state.roundTimeLeft ?? 0,
+      totalCards: state.totalCards,
+    });
+    room.sendTurnChange(state.turn);
+
+    if (state.index !== lastBroadcastIndex) {
+      lastBroadcastIndex = state.index;
+      const currentCard = state.rightDeck?.[state.index];
+      room.sendCardEvent({
+        index: state.index,
+        total: state.totalCards,
+        roundTimeLeft: state.roundTimeLeft ?? 0,
+        nameOfAllah: currentCard?.transliterationText ?? "",
+        promptText: currentCard?.promptText ?? currentCard?.question ?? "",
+      });
+    }
+  }
 
   const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition || null;
   let activeRecognition = null;
@@ -563,7 +627,8 @@ async function initGameplay() {
     onRevealAnswer:  () => { stopActiveRecognition(); state = revealAnswer(state); redraw(); },
     onCorrect: () => {
       stopActiveRecognition();
-      showToast(ptsForDifficulty(state.difficulty), "Correct!");
+      const awardedPts = ptsForDifficulty(state.difficulty);
+      showToast(awardedPts, "Correct!");
       state = markCorrect(state);
       // FX: streak pulse every 3
       const isStreak = state.streak > 0 && state.streak % 3 === 0;
@@ -573,6 +638,7 @@ async function initGameplay() {
       updateBackdrop(state.correctCards, state.totalCards ?? state.rightDeck?.length ?? 1);
       clearBarakahCard();
       if (state.mode === "team") { state = switchTurn(state); playTurnSwitch(); showTurnSwitch(state.turn); }
+      if (room) room.sendAnswerCorrect(awardedPts);
       checkComplete();
       redraw();
       // Roll Barakah for NEXT card after redraw
@@ -588,6 +654,7 @@ async function initGameplay() {
       state = markIncorrect(state);
       clearBarakahCard();
       if (state.mode === "team") { state = switchTurn(state); playTurnSwitch(); showTurnSwitch(state.turn); }
+      if (room) room.sendAnswerMiss();
       checkComplete();
       redraw();
     },
@@ -739,10 +806,18 @@ async function initGameplay() {
     syncSideRails();
     syncDock();
     verifyToggle?.sync();
+    broadcastTournamentState();
   }
 
   function checkComplete() {
     if (state.isComplete) {
+      stopRoundTimer();
+      const achievementUnlocks = [];
+      if ((state.correctCards ?? 0) >= 3) achievementUnlocks.push("3 Correct Streak");
+      if ((state.missedCards?.length ?? 0) === 0 && (state.correctCards ?? 0) > 0) achievementUnlocks.push("Perfect Round");
+      if ((state.streak ?? 0) >= 5) achievementUnlocks.push("Knowledge Chain x5");
+      if ((state.mode === "team") && ((state.teamScoreA ?? 0) > 0 || (state.teamScoreB ?? 0) > 0)) achievementUnlocks.push("Team Battle Winner");
+
       saveSession({
         ...session,
         soloScore:    state.soloScore,
@@ -753,11 +828,23 @@ async function initGameplay() {
         missedCards:  state.missedCards,
         missedCount:  state.missedCards.length,
         totalCards:   state.totalCards,
+        roundTimeLeft: state.roundTimeLeft ?? 0,
+        achievementUnlocks,
       });
+      if (room && room.role === "host") {
+        room.sendGameComplete({
+          teamA: state.teamScoreA,
+          teamB: state.teamScoreB,
+          solo: state.soloScore,
+          correctCards: state.correctCards,
+          missedCount: state.missedCards.length,
+        });
+      }
       setTimeout(() => { location.href = "results.html"; }, 400);
     }
   }
 
+  startRoundTimer();
   redraw();
   if (typeof mobileDockQuery.addEventListener === "function") {
     mobileDockQuery.addEventListener("change", redraw);
@@ -775,6 +862,18 @@ async function initGameplay() {
 function initResults() {
   const session = loadSession();
   if (!session) { location.href = "index.html"; return; }
+
+  const ACHIEVE_KEY = "hq-tournament-achievements-v1";
+  const unlocked = Array.isArray(session.achievementUnlocks) ? session.achievementUnlocks : [];
+  if (unlocked.length) {
+    try {
+      const existing = JSON.parse(localStorage.getItem(ACHIEVE_KEY) ?? "[]");
+      const safeExisting = Array.isArray(existing) ? existing : [];
+      const stamp = new Date().toLocaleDateString();
+      const merged = safeExisting.concat(unlocked.map(name => ({ name, when: stamp })));
+      localStorage.setItem(ACHIEVE_KEY, JSON.stringify(merged.slice(-30)));
+    } catch {}
+  }
 
   applyTheme(session.themeId, session.variant);
   initDisplayOptions(session.themeId);

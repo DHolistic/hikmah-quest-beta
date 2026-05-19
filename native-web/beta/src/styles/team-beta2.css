@@ -330,3 +330,175 @@
   color: rgba(212, 175, 55, .75);
   font-weight: 600;
 }
+
+/* ── Tournament controls ───────────────────────────────────────────────── */
+.iq-tournament-config {
+  display: grid;
+  gap: .55rem;
+  margin-top: .35rem;
+}
+
+.iq-field-label {
+  display: block;
+  font-size: .68rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(212, 175, 55, .6);
+  margin-bottom: .2rem;
+}
+
+.iq-team-input,
+.iq-team-select {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, .25);
+  background: rgba(240, 232, 213, .05);
+  color: rgba(240, 232, 213, .9);
+  padding: .48rem .62rem;
+  font-family: 'Lora', serif;
+  font-size: .8rem;
+}
+
+.iq-team-input::placeholder {
+  color: rgba(240, 232, 213, .35);
+}
+
+.iq-team-input:focus,
+.iq-team-select:focus {
+  outline: none;
+  border-color: rgba(212, 175, 55, .58);
+  box-shadow: 0 0 10px rgba(212, 175, 55, .14);
+}
+
+.iq-tournament-grid {
+  display: grid;
+  gap: .55rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.iq-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .75rem;
+  color: rgba(240, 232, 213, .65);
+}
+
+.iq-toggle-row input[type="checkbox"] {
+  accent-color: rgba(212, 175, 55, .95);
+}
+
+.iq-qr-wrap {
+  margin-top: .7rem;
+  border: 1px solid rgba(212, 175, 55, .16);
+  border-radius: 10px;
+  background: rgba(240, 232, 213, .025);
+  padding: .65rem;
+  display: grid;
+  gap: .7rem;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+}
+
+.iq-qr-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  border: 1px solid rgba(240, 232, 213, .18);
+  background: rgba(255, 255, 255, .9);
+  object-fit: cover;
+}
+
+.iq-qr-meta__title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: .7rem;
+  letter-spacing: .08em;
+  color: rgba(212, 175, 55, .8);
+  text-transform: uppercase;
+  margin-bottom: .2rem;
+}
+
+.iq-qr-meta__text {
+  margin: 0;
+  font-size: .74rem;
+  line-height: 1.45;
+  color: rgba(240, 232, 213, .58);
+}
+
+.iq-qr-actions {
+  margin-top: .45rem;
+}
+
+.iq-nearby-actions {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.iq-nearby-banner {
+  margin-top: .2rem;
+  border: 1px solid rgba(212, 175, 55, .35);
+  border-radius: 10px;
+  padding: .65rem;
+  background: rgba(212, 175, 55, .08);
+}
+
+.iq-nearby-banner__title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: .72rem;
+  letter-spacing: .08em;
+  color: rgba(212, 175, 55, .95);
+  text-transform: uppercase;
+}
+
+.iq-nearby-banner__text {
+  margin: .35rem 0 .55rem;
+  font-size: .75rem;
+  color: rgba(240, 232, 213, .82);
+}
+
+.iq-nearby-banner__actions {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.iq-achievement-list {
+  display: grid;
+  gap: .4rem;
+}
+
+.iq-achievement-item {
+  border: 1px solid rgba(240, 232, 213, .14);
+  border-radius: 8px;
+  padding: .45rem .55rem;
+  background: rgba(240, 232, 213, .03);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+}
+
+.iq-achievement-item__name {
+  font-size: .76rem;
+  color: rgba(240, 232, 213, .88);
+}
+
+.iq-achievement-item__meta {
+  font-size: .68rem;
+  color: rgba(212, 175, 55, .72);
+  letter-spacing: .04em;
+}
+
+@media (max-width: 540px) {
+  .iq-tournament-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .iq-qr-wrap {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+}

@@ -24,48 +24,74 @@ export function loadSession() {
 // ─── Source configuration ────────────────────────────────────────────────────
 
 export const sourceConfig = {
-  fitr: {
-    id: "fitr",
-    label: "Eid al-Fitr",
+  quran: {
+    id: "quran",
+    label: "Quran",
     symbol: "",
-    description: "Ramadan, fasting, charity, gratitude, and the day of breaking the fast",
+    description: "Surah detail, ayah meaning, location recall, and Quran review anchors",
     themeId: "quran",
     variant: "night",
-    deckUrl: "./content/packs/eid-al-fitr.json",
-    deckType: "seasonal-pack",
+    deckUrl: "./content/banks/quran-99.json",
+    deckType: "bank99",
   },
-  adha: {
-    id: "adha",
-    label: "Eid al-Adha",
+  sunnah: {
+    id: "sunnah",
+    label: "Sunnah",
     symbol: "",
-    description: "Sacrifice, obedience, generosity, and the meaning of Eid al-Adha",
+    description: "Prophet, Seerah, hadith, adab, and daily du'a review",
     themeId: "sunnah",
     variant: "day",
-    deckUrl: "./content/packs/eid-al-adha.json",
-    deckType: "seasonal-pack",
+    deckUrl: "./content/banks/sunnah-99.json",
+    deckType: "bank99",
   },
-  hajj: {
-    id: "hajj",
-    label: "Days of Hajj",
+  ummah: {
+    id: "ummah",
+    label: "Ummah",
     symbol: "",
-    description: "Ihram, Arafah, Mina, sacrifice, and the sacred days of Dhul Hijjah",
+    description: "Companions, legacy, turning points, and Muslim historical memory",
     themeId: "ummah",
     variant: "day",
-    deckUrl: "./content/packs/days-of-hajj.json",
-    deckType: "seasonal-pack",
+    deckUrl: "./content/banks/ummah-99.json",
+    deckType: "bank99",
   },
-  ultimate: {
-    id: "ultimate",
-    label: "Ultimate",
+  hidayah: {
+    id: "hidayah",
+    label: "Hidayah",
     symbol: "",
-    description: "Ibrahim family legacy, sacred story, and an Allah's Names finale round",
+    description: "Iman, worship, du'a, adab, family, and everyday guidance",
+    themeId: "hidayah",
+    variant: "day",
+    deckUrl: "./content/banks/hidayah-99.json",
+    deckType: "bank99",
+  },
+  jami: {
+    id: "jami",
+    label: "Jami'",
+    symbol: "",
+    description: "All categories together: Quran, Sunnah, Ummah, and Hidayah in one gathered round",
     themeId: "ultimate",
     variant: "day",
-    deckUrl: "./content/packs/ibrahim-family-legacy.json",
-    finaleDeckUrl: "./content/packs/allah-names-finale.json",
+    deckUrls: [
+      "./content/banks/quran-99.json",
+      "./content/banks/sunnah-99.json",
+      "./content/banks/ummah-99.json",
+      "./content/banks/hidayah-99.json",
+    ],
+    deckType: "bank99",
+  },
+  bonus: {
+    id: "bonus",
+    label: "Allah's Names Bonus",
+    symbol: "",
+    description: "Bonus round outside the main 4 decks",
+    themeId: "ultimate",
+    variant: "night",
+    deckUrl: "./content/packs/allah-names-finale.json",
     deckType: "seasonal-pack",
   },
 };
+
+export const MAIN_SOURCE_IDS = ["quran", "sunnah", "ummah", "hidayah", "jami"];
 
 // ─── Label helpers ───────────────────────────────────────────────────────────
 
