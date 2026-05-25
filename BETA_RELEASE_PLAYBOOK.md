@@ -263,3 +263,33 @@ Ship one beta package with:
 - pass-and-play fallback
 
 That keeps the release coherent and easy to explain.
+
+## AM Next To-Do (Compact)
+
+### Quick Summary
+
+- Tournament flow is now in Team Hub with QR join, nearby challenge prompts, and timed rounds.
+- Four-deck structure is aligned to Quran, Sunnah, Ummah, and Hidayah.
+- Sub-category metadata is active via deck focus, lane, and difficulty mapping.
+
+### Morning Priorities
+
+1. Smoke test the new beta game flow end to end.
+2. Validate tournament mode with 3+ participants.
+3. Verify sub-category mapping and question quality.
+4. Log issues and lock release notes.
+
+### Quick AM Test Pass
+
+- Confirm each master deck loads and plays across easy, medium, and hard.
+- Confirm timer countdown appears and auto-ends the round.
+- Confirm room create, QR invite, link copy, and join-by-code all work.
+- Confirm tournament start is blocked below 3 players.
+- Confirm nearby detection prompt appears after opt-in and can be accepted/dismissed.
+- Confirm achievements appear after round completion.
+
+### Release Exit Criteria
+
+- No P1 blockers in deck loading, tournament start, timer, or score sync.
+- Nearby opt-in flow is consistent.
+- Category labels and sub-category mapping are coherent across all decks.
