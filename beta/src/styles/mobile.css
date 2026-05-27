@@ -1,5 +1,5 @@
 /* ==========================================================================
-   mobile.css — Hikmah Quest Beta
+   mobile.css — HQuest Beta
    Portrait phone + small tablet responsive overrides.
    Import LAST in index.html (after all other stylesheets).
    ========================================================================== */
@@ -104,6 +104,20 @@
     padding: 1.25rem 1.25rem 2rem;
     align-items: flex-start;
     text-align: left;
+  }
+
+  #page-gameplay.iq-page--single-trivia .iq-tile--right {
+    padding-top: 1.6rem;
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+  }
+
+  #page-gameplay .iq-tile-question {
+    font-size: clamp(1.08rem, 5vw, 1.28rem) !important;
+  }
+
+  #page-gameplay .iq-options li {
+    font-size: 0.96rem;
   }
 
   #iq-tile-setup {

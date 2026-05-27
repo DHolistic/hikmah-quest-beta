@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   ILM QUEST · SOUND ENGINE
+   HQUEST · SOUND ENGINE
    Web Audio API synthesis — no external files required.
    Organic tones: oud pluck, ney breath, frame drum, chime.
    ═══════════════════════════════════════════════════════════════ */

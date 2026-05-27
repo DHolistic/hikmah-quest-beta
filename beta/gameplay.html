@@ -6,12 +6,12 @@
   <meta name="copyright" content="© 2026 Donya G. Berhan, LPC. All Rights Reserved.">
   <meta name="author" content="Donya G. Berhan, LPC">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-  <meta name="description" content="HikahQuest — Islamic trivia gameplay. Two-tile challenge with the 99 Names of Allah and Q&amp;A." />
+  <meta name="description" content="HQuest — Islamic trivia gameplay. Main Q&amp;A realms plus a separate Allah's Names bonus round." />
   <meta name="theme-color" content="#07111a" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="HikahQuest" />
+  <meta name="apple-mobile-web-app-title" content="HQuest" />
 
   <link rel="manifest" href="../manifest.json" />
 
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="src/styles/mobile.css" />
   <link rel="stylesheet" href="src/styles/fx.css" />
 
-  <title>HikahQuest — Gameplay</title>
+  <title>HQuest — Gameplay</title>
 </head>
 <body>
 
@@ -204,10 +204,6 @@
           <span id="bf-ctx-name" style="color:#f0e8d5; font-weight:600;"></span>
         </div>
         <div style="display:flex; gap:.5rem; margin-bottom:.25rem;">
-          <span style="color:rgba(240,232,213,.45); min-width:88px; text-transform:uppercase; font-size:.68rem; letter-spacing:.06em;">Anchor | <span lang="ar" dir="rtl">المرساة</span></span>
-          <span id="bf-ctx-meaning" style="color:#f0e8d5;"></span>
-        </div>
-        <div style="display:flex; gap:.5rem; margin-bottom:.25rem;">
           <span style="color:rgba(240,232,213,.45); min-width:88px; text-transform:uppercase; font-size:.68rem; letter-spacing:.06em;">Reference | <span lang="ar" dir="rtl">المرجع</span></span>
           <span id="bf-ctx-ref" style="color:#f0e8d5;"></span>
         </div>
@@ -278,7 +274,6 @@
       var card = window.__iqGetCurrentCard ? window.__iqGetCurrentCard() : null;
       if (card) {
         document.getElementById('bf-ctx-name').textContent     = card.deckName       || card.nameOfAllah || '—';
-        document.getElementById('bf-ctx-meaning').textContent  = card.nameMeaning    || card.category    || '—';
         document.getElementById('bf-ctx-ref').textContent      = card.referenceHint  || card.sourceTitle || '—';
         document.getElementById('bf-ctx-question').textContent = card.promptText     || card.question    || '—';
         document.getElementById('bf-ctx-answer').textContent   = card.answerText     || card.answer      || '—';
@@ -319,7 +314,6 @@
       if (card) {
         bodyLines.push(
           'Round Focus: '    + (card.deckName      || card.nameOfAllah || ''),
-          'Anchor: '         + (card.nameMeaning   || card.category    || ''),
           'Pack/Deck: '      + (card.pack          || '') + ' / ' + (card.deckName || ''),
           'Category: '       + (card.category      || ''),
           'Difficulty: '     + (card.difficulty    || ''),
@@ -332,8 +326,8 @@
       if (text) bodyLines.push('', 'Notes: ' + text);
 
       var sub  = encodeURIComponent(card
-        ? 'HikahQuest Card Issue — ' + (card.deckName || card.nameOfAllah || page)
-        : 'HikahQuest Beta Feedback — ' + page);
+        ? 'HQuest Card Issue — ' + (card.deckName || card.nameOfAllah || page)
+        : 'HQuest Beta Feedback — ' + page);
       var body = encodeURIComponent(bodyLines.join('\n'));
       window.location.href = 'mailto:donyaberhan@gmail.com?subject=' + sub + '&body=' + body;
       closeFeedback();
@@ -359,7 +353,7 @@
 
   <noscript>
     <p style="padding:2rem;text-align:center;font-family:serif;color:#f0e8d5;">
-      HikahQuest requires JavaScript to run. Please enable JavaScript in your browser.
+      HQuest requires JavaScript to run. Please enable JavaScript in your browser.
     </p>
   </noscript>
 

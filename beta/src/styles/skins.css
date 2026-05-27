@@ -1,5 +1,5 @@
 /* ==========================================================================
-   skins.css — Hikmah Quest Beta Background Images & Theme Decorative Tweaks
+   skins.css — HQuest Beta Background Images & Theme Decorative Tweaks
    ========================================================================== */
 
 @import "./tokens.css";
@@ -15,8 +15,8 @@
                    Painted on top of .iq-bg-layer since .iq-page creates a
                    stacking context (transform: translateZ(0) in skins.css).
 
-   Image paths go ../../../ (styles/ → src/ → beta/ → ilm-quest/) to reach
-   the shared prototype/art-direction/ folder.
+   Image paths go ../../../ from the beta styles folder to reach
+   the shared asset image folder.
    -------------------------------------------------------------------------- */
 
 /* ── Background layer base ───────────────────────────────────────────────── */
@@ -98,7 +98,7 @@ html[data-theme="hidayah"][data-variant="day"] .iq-page {
   background-image: linear-gradient(180deg, rgba(10, 8, 24, 0.1), rgba(10, 8, 24, 0.42));
 }
 html[data-theme="hidayah"][data-variant="day"] .iq-bg-layer {
-  background-image: url(../../../assets/images/hidayah-placeholder.png);
+  background-image: url(../../../assets/images/HidayahInnerWorld.png);
   background-position: center center;
 }
 
@@ -106,7 +106,7 @@ html[data-theme="hidayah"][data-variant="night"] .iq-page {
   background-image: linear-gradient(180deg, rgba(8, 6, 18, 0.16), rgba(8, 6, 18, 0.56));
 }
 html[data-theme="hidayah"][data-variant="night"] .iq-bg-layer {
-  background-image: url(../../../assets/images/hidayah-placeholder.png);
+  background-image: url(../../../assets/images/HidayahNighInnerWorld.png);
   background-position: center center;
 }
 
@@ -133,6 +133,11 @@ html[data-theme="ultimate"][data-variant="night"] .iq-bg-layer {
    Selection menu (index.html) — Arch images for all themes, both variants.
    #page-home ID specificity overrides the per-variant .iq-bg-layer rules above.
    -------------------------------------------------------------------------- */
+html #page-home .iq-bg-layer {
+  background-size: cover;
+  background-position: center 34%;
+}
+
 html[data-theme="quran"] #page-home .iq-bg-layer {
   background-image: url(../../../assets/images/Arch2B_landscape.png);
 }
@@ -143,7 +148,8 @@ html[data-theme="ummah"] #page-home .iq-bg-layer {
   background-image: url(../../../assets/images/Arch2C_landscape.png);
 }
 html[data-theme="hidayah"] #page-home .iq-bg-layer {
-  background-image: url(../../../assets/images/hidayah-placeholder.png);
+  background-image: url(../../../assets/images/HidayahArch.png);
+  background-position: center 24%;
 }
 html[data-theme="ultimate"] #page-home .iq-bg-layer {
   background-image: url(../../../assets/images/2DArch_landscape.png);

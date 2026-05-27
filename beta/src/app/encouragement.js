@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   ILM QUEST · ARABIC ENCOURAGEMENT
+   HQUEST · ARABIC ENCOURAGEMENT
    Text-only praise on correct answers. No audio files needed —
    pairs with the synthesised oud/ney chime in sound.js.
    ═══════════════════════════════════════════════════════════════ */

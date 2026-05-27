@@ -1,5 +1,5 @@
 /* ==========================================================================
-   tiles.css — Hikmah Quest Beta Floating Text Layout
+   tiles.css — HQuest Beta Floating Text Layout
    No card panels. Text floats in the backdrop scene.
    Asymmetric two-column split. Divider line is the only structural edge.
    ========================================================================== */
@@ -229,15 +229,15 @@
 
 .iq-tile-question {
   font-family: "Lora", serif;
-  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  font-size: clamp(1.2rem, 2.7vw, 1.65rem);
   color: rgba(240, 232, 213, 0.96);
-  line-height: 1.65;
+  line-height: 1.72;
 }
 
 .iq-tile-anchor {
   font-family: "Lora", serif;
   font-style: italic;
-  font-size: 0.84rem;
+  font-size: 0.96rem;
   color: rgba(240, 232, 213, 0.82);
   line-height: 1.55;
   margin-bottom: 0.35rem;
@@ -279,7 +279,7 @@
 
 .iq-tile-answer {
   font-family: "Cinzel Decorative", serif;
-  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  font-size: clamp(1.18rem, 2.4vw, 1.55rem);
   color: var(--theme-accent);
   letter-spacing: 0.04em;
   line-height: 1.4;
@@ -291,13 +291,13 @@
 .iq-tile-clue {
   font-family: "Lora", serif;
   font-style: italic;
-  font-size: 0.85rem;
+  font-size: 0.96rem;
   color: rgba(240, 232, 213, 0.75);
   line-height: 1.55;
 }
 
 .iq-tile-source {
-  font-size: 0.7rem;
+  font-size: 0.82rem;
   color: rgba(240, 232, 213, 0.38);
   font-style: italic;
   margin-top: var(--iq-space-1);
@@ -306,7 +306,7 @@
 .iq-tile-transliteration {
   font-family: "Lora", serif;
   font-style: italic;
-  font-size: clamp(0.78rem, 1.6vw, 0.9rem);
+  font-size: clamp(0.94rem, 1.9vw, 1.08rem);
   color: rgba(240, 232, 213, 0.55);
   letter-spacing: 0.03em;
 }
@@ -402,7 +402,7 @@
 .iq-options li {
   padding: 0.4rem 0;
   font-family: "Lora", serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: rgba(240, 232, 213, 0.82);
   border-left: 2px solid transparent;
   padding-left: 0.75rem;
@@ -431,8 +431,16 @@
   width: 100%;
   max-width: 980px;
   margin: 0 auto;
-  padding-left: var(--iq-space-3);
-  padding-right: var(--iq-space-3);
+  justify-content: flex-start;
+  padding-top: clamp(4.5rem, 13vh, 8rem);
+  padding-left: clamp(2.75rem, 6vw, 5rem);
+  padding-right: clamp(1.4rem, 4vw, 3rem);
+}
+
+#page-gameplay.iq-page--single-trivia .iq-tile--right .iq-tile-body,
+.iq-tile-row--single .iq-tile--right .iq-tile-body {
+  width: min(100%, 46rem);
+  gap: 0.85rem;
 }
 
 .iq-match-grid,
@@ -481,8 +489,8 @@ html[data-answer-style="mcq"] .iq-options li {
   border: 1px solid rgba(212, 175, 55, 0.18);
   border-left: 2px solid rgba(212, 175, 55, 0.35);
   border-radius: 8px;
-  padding: 0.55rem 0.85rem;
-  min-height: 2.4rem;
+  padding: 0.72rem 1rem;
+  min-height: 3rem;
   display: flex;
   align-items: center;
 }

@@ -434,10 +434,37 @@ async function initGameplay() {
 
   function normalizedTokens(text) {
     return String(text ?? "")
+      .normalize("NFKD")
       .toLowerCase()
-      .replace(/[^a-z0-9\s]/g, " ")
+      .replace(/\p{M}/gu, "")
+      .replace(/[^\p{L}\p{N}\s]/gu, " ")
       .split(/\s+/)
       .filter(token => token.length > 1);
+  }
+
+  async function primeMicrophoneAccess() {
+    if (!window.isSecureContext) {
+      return "Voice input needs a secure page (HTTPS or localhost).";
+    }
+
+    if (!navigator.mediaDevices?.getUserMedia) {
+      return null;
+    }
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      stream.getTracks().forEach(track => track.stop());
+      return null;
+    } catch (err) {
+      const reason = err?.name || "unknown-error";
+      if (reason === "NotAllowedError" || reason === "SecurityError") {
+        return "Microphone access was blocked. Allow mic permission and try again.";
+      }
+      if (reason === "NotFoundError" || reason === "DevicesNotFoundError") {
+        return "No microphone was found on this device.";
+      }
+      return `Microphone setup failed: ${reason}.`;
+    }
   }
 
   function scoreSpeechTranscript(transcript, targets) {
@@ -462,7 +489,7 @@ async function initGameplay() {
       id:           card.id ?? "",
       packId:       card.packId ?? "",
       nameOfAllah:  card.transliterationText ?? "",
-      nameMeaning:  card.themeAnchorText ?? "",
+      nameMeaning:  "",
       pack:         card.packId ?? card.subTheme ?? "",
       deckName:     card.deckName ?? config.label ?? "",
       category:     card.category ?? "",
@@ -716,7 +743,7 @@ async function initGameplay() {
         else handlers.onIncorrect();
       }, 700);
     },
-    onSpeechStart: () => {
+    onSpeechStart: async preferredLocale => {
       const card = state.rightDeck?.[state.index];
       if (!card) return;
 
@@ -732,9 +759,23 @@ async function initGameplay() {
         return;
       }
 
+      const micAccessError = await primeMicrophoneAccess();
+      if (micAccessError) {
+        state = {
+          ...state,
+          speechStatus: "error",
+          speechError: micAccessError,
+          speechLocale: preferredLocale || card.speechLocales?.[0] || "en-US",
+        };
+        redraw();
+        return;
+      }
+
+      const speechLocale = preferredLocale || card.speechLocales?.[0] || "en-US";
       const recognition = new SpeechRecognitionCtor();
       activeRecognition = recognition;
-      recognition.lang = "en-US";
+      recognition.lang = speechLocale;
+      recognition.continuous = false;
       recognition.interimResults = false;
       recognition.maxAlternatives = 1;
 
@@ -744,6 +785,7 @@ async function initGameplay() {
         speechError: "",
         speechTranscript: "",
         speechScore: 0,
+        speechLocale,
       };
       redraw();
 
@@ -757,6 +799,7 @@ async function initGameplay() {
           card.answerText || "",
           card.transliterationText || "",
           card.themeAnchorText || "",
+          card.arabicText || "",
         ].filter(Boolean);
         const score = scoreSpeechTranscript(transcript, targets);
         state = {
@@ -775,10 +818,17 @@ async function initGameplay() {
       };
 
       recognition.onerror = event => {
+        const rawError = event.error || "unknown-error";
+        const hints = {
+          "not-allowed": "Microphone permission was denied.",
+          "audio-capture": "No microphone audio was captured.",
+          "no-speech": "No speech was detected. Try again closer to the mic.",
+          "network": "Voice recognition could not reach the browser speech service.",
+        };
         state = {
           ...state,
           speechStatus: "error",
-          speechError: `Voice input error: ${event.error || "unknown-error"}.`,
+          speechError: hints[rawError] || `Voice input error: ${rawError}.`,
         };
         redraw();
       };
@@ -789,7 +839,9 @@ async function initGameplay() {
           state = {
             ...state,
             speechStatus: "ended",
-            speechError: state.speechError || "No voice transcript was captured.",
+            speechError: state.speechError || (Array.isArray(card.speechLocales) && card.speechLocales.length > 1
+              ? "No voice transcript was captured. Try the other mic mode."
+              : "No voice transcript was captured."),
           };
           redraw();
         }

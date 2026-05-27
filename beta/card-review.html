@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ultimate" data-variant="night">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+  <meta name="description" content="HQuest beta card review lab." />
+  <link rel="stylesheet" href="src/styles/tokens.css" />
+  <link rel="stylesheet" href="src/styles/base.css" />
+  <link rel="stylesheet" href="src/styles/tiles.css" />
+  <link rel="stylesheet" href="src/styles/skins.css" />
+  <link rel="stylesheet" href="src/styles/buttons.css" />
+  <link rel="stylesheet" href="src/styles/mobile.css" />
+  <title>HQuest Beta Card Review</title>
+  <style>
+    body { overflow: auto; }
+    .iq-review-page {
+      min-height: 100dvh;
+      padding-bottom: 1rem;
+    }
+    .iq-review-shell {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 320px minmax(320px, 1fr) 320px;
+      gap: 1rem;
+      padding: 1rem;
+      min-height: calc(100dvh - 4rem);
+    }
+    .iq-review-panel {
+      border: 1px solid var(--theme-panel-edge);
+      background: rgba(7, 14, 27, 0.8);
+      backdrop-filter: blur(14px);
+      border-radius: 18px;
+      padding: 1rem;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+    }
+    .iq-review-panel h2 {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--theme-accent);
+      margin-bottom: 0.7rem;
+    }
+    .iq-review-controls,
+    .iq-review-meta,
+    .iq-review-inspector {
+      display: grid;
+      gap: 0.7rem;
+    }
+    .iq-review-field {
+      display: grid;
+      gap: 0.35rem;
+    }
+    .iq-review-field label,
+    .iq-review-stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(240, 232, 213, 0.62);
+    }
+    .iq-review-select,
+    .iq-review-search {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--theme-panel-edge);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--iq-text);
+      padding: 0.72rem 0.8rem;
+      font: inherit;
+    }
+    .iq-review-chip-row,
+    .iq-review-action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .iq-review-chip,
+    .iq-review-btn {
+      border-radius: 999px;
+      border: 1px solid var(--theme-panel-edge);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--iq-text);
+      padding: 0.45rem 0.75rem;
+      font: inherit;
+      cursor: pointer;
+    }
+    .iq-review-chip.is-active,
+    .iq-review-btn.is-primary {
+      border-color: var(--theme-accent);
+      background: var(--theme-accent-soft);
+      color: var(--theme-accent);
+    }
+    .iq-review-list {
+      margin-top: 0.75rem;
+      display: grid;
+      gap: 0.55rem;
+      max-height: calc(100dvh - 24rem);
+      overflow: auto;
+      padding-right: 0.2rem;
+    }
+    .iq-review-card-row {
+      width: 100%;
+      text-align: left;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.035);
+      color: inherit;
+      padding: 0.75rem 0.8rem;
+      cursor: pointer;
+    }
+    .iq-review-card-row.is-active {
+      border-color: var(--theme-accent);
+      background: rgba(212, 175, 55, 0.12);
+    }
+    .iq-review-card-row small,
+    .iq-review-empty,
+    .iq-review-note,
+    .iq-review-answer {
+      color: rgba(240, 232, 213, 0.72);
+    }
+    .iq-review-card-row strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 0.92rem;
+    }
+    .iq-review-preview {
+      display: grid;
+      grid-template-rows: auto auto minmax(0, 1fr) auto;
+      gap: 0.8rem;
+      min-height: 0;
+    }
+    .iq-review-preview .iq-tile {
+      min-height: 28rem;
+    }
+    .iq-review-stage {
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.18);
+      padding: 0.7rem 0.8rem;
+      font-size: 0.84rem;
+    }
+    .iq-review-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+    .iq-review-stat {
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.035);
+      padding: 0.7rem 0.8rem;
+    }
+    .iq-review-stat strong {
+      display: block;
+      color: var(--theme-accent);
+      font-size: 1rem;
+    }
+    .iq-review-kv {
+      display: grid;
+      gap: 0.25rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .iq-review-kv:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+    .iq-review-kv code {
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.8rem;
+    }
+    @media (max-width: 1180px) {
+      .iq-review-shell {
+        grid-template-columns: 1fr;
+      }
+      .iq-review-list {
+        max-height: 18rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="iq-app">
+    <div class="iq-page iq-review-page" id="iq-review-page">
+      <div class="iq-bg-layer" aria-hidden="true"></div>
+      <header class="iq-header">
+        <a href="index.html" class="iq-btn iq-btn--ghost iq-btn--sm" aria-label="Back to home">←</a>
+        <div class="iq-header-center">
+          <span class="iq-title iq-title--sm">Card Review Lab</span>
+        </div>
+        <div class="iq-scorebar iq-scorebar--inline">
+          <span class="iq-scorebar__pill">Beta files only</span>
+          <span class="iq-scorebar__pill" id="iq-review-count-pill">0 cards</span>
+        </div>
+      </header>
+
+      <main class="iq-review-shell">
+        <section class="iq-review-panel">
+          <h2>Review Queue</h2>
+          <div class="iq-review-controls">
+            <div class="iq-review-field">
+              <label for="iq-review-source">Source</label>
+              <select id="iq-review-source" class="iq-review-select"></select>
+            </div>
+            <div class="iq-review-field">
+              <label for="iq-review-search">Search</label>
+              <input id="iq-review-search" class="iq-review-search" type="search" placeholder="Find by title, prompt, answer, source..." />
+            </div>
+            <div class="iq-review-field">
+              <span class="iq-review-stat-label">Question Style</span>
+              <div class="iq-review-chip-row" id="iq-review-style-row"></div>
+            </div>
+            <div class="iq-review-field">
+              <span class="iq-review-stat-label">Theme Variant</span>
+              <div class="iq-review-chip-row" id="iq-review-variant-row"></div>
+            </div>
+          </div>
+          <div class="iq-review-list" id="iq-review-list"></div>
+        </section>
+
+        <section class="iq-review-panel iq-review-preview">
+          <div class="iq-review-meta">
+            <div class="iq-review-action-row">
+              <button class="iq-review-btn" id="iq-review-prev">← Prev</button>
+              <button class="iq-review-btn is-primary" id="iq-review-reveal">Reveal Answer</button>
+              <button class="iq-review-btn" id="iq-review-next">Next →</button>
+              <button class="iq-review-btn" id="iq-review-reload">Reload Cards</button>
+            </div>
+            <div class="iq-review-stats">
+              <div class="iq-review-stat"><span class="iq-review-stat-label">Showing</span><strong id="iq-review-position">0 / 0</strong></div>
+              <div class="iq-review-stat"><span class="iq-review-stat-label">Theme Asset</span><strong id="iq-review-theme-asset">—</strong></div>
+              <div class="iq-review-stat"><span class="iq-review-stat-label">Style Mix</span><strong id="iq-review-style-summary">—</strong></div>
+              <div class="iq-review-stat"><span class="iq-review-stat-label">Hidayah Arch</span><strong id="iq-review-hidayah-status">—</strong></div>
+            </div>
+          </div>
+          <div class="iq-review-stage" id="iq-review-stage">Loading cards…</div>
+          <div class="iq-tile" id="iq-review-preview-card"></div>
+          <div class="iq-review-answer" id="iq-review-answer-note"></div>
+        </section>
+
+        <aside class="iq-review-panel">
+          <h2>Inspector</h2>
+          <div class="iq-review-inspector" id="iq-review-inspector"></div>
+        </aside>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="src/app/card-review.js"></script>
+</body>
+</html>

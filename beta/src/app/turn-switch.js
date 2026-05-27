@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   ILM QUEST · TEAM TURN-SWITCH OVERLAY
+   HQUEST · TEAM TURN-SWITCH OVERLAY
    Brief full-bleed banner on each A↔B turn flip. Pairs with the
    playTurnSwitch() chime so players know to pass the device.
    ═══════════════════════════════════════════════════════════════ */

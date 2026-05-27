@@ -6,12 +6,12 @@
   <meta name="copyright" content="© 2026 Donya G. Berhan, LPC. All Rights Reserved.">
   <meta name="author" content="Donya G. Berhan, LPC">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-  <meta name="description" content="HikahQuest — Select your mode and difficulty level." />
+  <meta name="description" content="HQuest — Select your mode and difficulty level." />
   <meta name="theme-color" content="#07111a" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="HikahQuest" />
+  <meta name="apple-mobile-web-app-title" content="HQuest" />
 
   <link rel="manifest" href="../manifest.json" />
 
@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="src/styles/buttons.css" />
   <link rel="stylesheet" href="src/styles/mobile.css" />
 
-  <title>HikahQuest — Select Your Challenge</title>
+  <title>HQuest — Select Your Challenge</title>
 </head>
 <body>
 
@@ -40,9 +40,9 @@
 
       <!-- ── Header ─────────────────────────────────────────────────────────── -->
       <header class="iq-header" role="banner">
-        <div class="iq-header-logo" aria-label="HikahQuest">
+        <div class="iq-header-logo" aria-label="HQuest">
           <span class="iq-header-logo__symbol" aria-hidden="true">☪</span>
-          <span class="iq-header-logo__name">HikahQuest</span>
+          <span class="iq-header-logo__name">HQuest</span>
         </div>
         <div style="display:flex;align-items:center;gap:.5rem;">
           <button
@@ -99,13 +99,13 @@
             aria-label="Challenge options"
           >
             <div class="iq-tile-header">
-              <span class="iq-tile-badge">Challenge Settings</span>
+              <span class="iq-tile-badge" id="challenge-badge">Challenge Settings</span>
             </div>
 
             <div class="iq-tile-body">
-              <h1 class="iq-tile-name">Choose Your Challenge</h1>
-              <p class="iq-tile-meaning">
-                Guided deck formats for learning, with voice challenge reserved for Ultimate
+              <h1 class="iq-tile-name" id="challenge-title">Choose Your Challenge</h1>
+              <p class="iq-tile-meaning" id="challenge-copy">
+                Guided deck formats for learning, with team rounds handled separately in the group hub
               </p>
 
               <!-- Mode -->
@@ -120,7 +120,7 @@
               <div class="iq-setup-group iq-setup-group--tile">
                 <label class="iq-setup-label" id="label-answer-style">Round Style</label>
                 <div class="iq-chip-group" role="radiogroup" aria-labelledby="label-answer-style">
-                  <button class="iq-chip is-selected" role="radio" aria-pressed="true" data-answer-style="guided">Deck-Guided Learning</button>
+                  <button class="iq-chip is-selected" role="radio" aria-pressed="true" data-answer-style="guided" id="guided-style-chip">Deck-Guided Learning</button>
                 </div>
               </div>
 
@@ -135,20 +135,20 @@
                     class="iq-medallion-btn"
                     id="iq-journey-btn"
                     aria-disabled="false"
-                  >Begin Journey →</button>
+                  >Begin Q&amp;A Round →</button>
                 </div>
               </div>
 
-              <div class="iq-setup-group iq-setup-group--tile" style="margin-top:.5rem;">
+              <div class="iq-setup-group iq-setup-group--tile" style="margin-top:.5rem;" id="team-hub-group">
                 <a
                   id="iq-team-hub-btn"
                   class="iq-btn iq-btn--ghost iq-btn--sm"
                   href="team-beta2.html"
-                  aria-label="Open Team Beta 2 Hub"
+                  aria-label="Open Group Round Hub"
                   style="text-decoration:none;"
-                >Team Beta 2 Hub →</a>
+                >Host / Join Group Round →</a>
                 <p class="iq-tile-meaning" style="font-size:.75rem; opacity:.9; margin-top:.2rem;">
-                  Conference-ready team setup: anonymous usernames, hidden avatars, and device view toggle.
+                  Group setup for host and players: optional display names, private room codes, and shared tournament flow.
                 </p>
               </div>
             </div>
@@ -163,7 +163,7 @@
 
   <noscript>
     <p style="padding:2rem;text-align:center;font-family:serif;color:#f0e8d5;">
-      HikahQuest requires JavaScript to run. Please enable JavaScript in your browser.
+      HQuest requires JavaScript to run. Please enable JavaScript in your browser.
     </p>
   </noscript>
 
@@ -246,7 +246,7 @@
       var text = textEl.value.trim();
       if (!text){ textEl.focus(); return; }
       var page = window.location.pathname.split('/').pop() || 'mode-select';
-      var sub  = encodeURIComponent('HikahQuest Beta Feedback — ' + name);
+      var sub  = encodeURIComponent('HQuest Beta Feedback — ' + name);
       var body = encodeURIComponent('From: ' + name + '\nPage: ' + page + '\n\n' + text);
       window.location.href = 'mailto:donyaberhan@gmail.com?subject=' + sub + '&body=' + body;
       closeFeedback();

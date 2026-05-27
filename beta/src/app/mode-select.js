@@ -140,6 +140,7 @@ function initModeSelect() {
   initDisplayOptions(session.themeId);
 
   const src = sourceConfig[session.sourceId];
+  const isBonusRound = session.sourceId === "bonus";
   let selected = {
     sourceId:    session.sourceId,
     themeId:     session.themeId,
@@ -155,6 +156,39 @@ function initModeSelect() {
   if (realmName) realmName.textContent = src?.label ?? "Unknown";
   if (realmDesc) realmDesc.textContent = src?.description ?? "";
 
+  const challengeBadge = document.getElementById("challenge-badge");
+  const challengeTitle = document.getElementById("challenge-title");
+  const challengeCopy = document.getElementById("challenge-copy");
+  const journeyBtn = document.getElementById("iq-journey-btn");
+  const teamHubGroup = document.getElementById("team-hub-group");
+  const teamModeChip = document.querySelector('[data-mode="team"]');
+  const guidedStyleChip = document.getElementById("guided-style-chip");
+
+  if (isBonusRound) {
+    selected.mode = "solo";
+    if (challengeBadge) challengeBadge.textContent = "Bonus Round";
+    if (challengeTitle) challengeTitle.textContent = "Allah's Names Bonus";
+    if (challengeCopy) challengeCopy.textContent = "A separate bonus round focused on the Names of Allah. This stays distinct from the main Q&A realms.";
+    if (guidedStyleChip) guidedStyleChip.textContent = "Name Reflection Round";
+    if (journeyBtn) journeyBtn.textContent = "Begin Bonus Round →";
+    if (teamModeChip) {
+      teamModeChip.disabled = true;
+      teamModeChip.style.display = "none";
+    }
+    if (teamHubGroup) teamHubGroup.style.display = "none";
+  } else {
+    if (challengeBadge) challengeBadge.textContent = "Challenge Settings";
+    if (challengeTitle) challengeTitle.textContent = "Choose Your Challenge";
+    if (challengeCopy) challengeCopy.textContent = "Guided deck formats for learning, with team rounds handled separately in the group hub";
+    if (guidedStyleChip) guidedStyleChip.textContent = "Deck-Guided Learning";
+    if (journeyBtn) journeyBtn.textContent = "Begin Q&A Round →";
+    if (teamModeChip) {
+      teamModeChip.disabled = false;
+      teamModeChip.style.display = "";
+    }
+    if (teamHubGroup) teamHubGroup.style.display = "";
+  }
+
   // Wire up mode, difficulty, and answer-style chips
   wireChips("[data-mode]", selected.mode, val => { selected.mode = val; });
   wireChips("[data-difficulty]", selected.difficulty, val => { selected.difficulty = val; });
@@ -169,7 +203,6 @@ function initModeSelect() {
   }
 
   // Journey button → start gameplay
-  const journeyBtn = document.getElementById("iq-journey-btn");
   if (journeyBtn) {
     journeyBtn.addEventListener("click", () => {
       saveSession(selected);

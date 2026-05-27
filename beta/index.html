@@ -6,12 +6,12 @@
   <meta name="copyright" content="© 2026 Donya G. Berhan, LPC. All Rights Reserved.">
   <meta name="author" content="Donya G. Berhan, LPC">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-  <meta name="description" content="HikahQuest — Choose your source of Islamic knowledge and begin your trivia journey." />
+  <meta name="description" content="HQuest — Choose your source of Islamic knowledge and begin your trivia journey." />
   <meta name="theme-color" content="#07111a" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="HikahQuest" />
+  <meta name="apple-mobile-web-app-title" content="HQuest" />
 
   <link rel="manifest" href="../manifest.json" />
 
@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="src/styles/buttons.css" />
   <link rel="stylesheet" href="src/styles/mobile.css" />
 
-  <title>HikahQuest — Choose Your Path</title>
+  <title>HQuest — Choose Your Path</title>
 </head>
 <body>
 
@@ -76,9 +76,9 @@
 
       <!-- ── Header ─────────────────────────────────────────────────────────── -->
       <header class="iq-header" role="banner">
-        <div class="iq-header-logo" aria-label="HikahQuest">
+        <div class="iq-header-logo" aria-label="HQuest">
           <span class="iq-header-logo__symbol" aria-hidden="true">☪</span>
-          <span class="iq-header-logo__name">HikahQuest</span>
+          <span class="iq-header-logo__name">HQuest</span>
         </div>
         <div style="display:flex;align-items:center;gap:.5rem;">
           <button
@@ -111,7 +111,7 @@
             aria-label="Source selection"
           >
             <div class="iq-tile-header">
-              <span class="iq-tile-badge">Choose Your Deck</span>
+              <span class="iq-tile-badge">Choose Your Realm</span>
             </div>
             <div class="iq-tile-body">
               <ul
@@ -134,13 +134,13 @@
             aria-label="Realm information"
           >
             <div class="iq-tile-header">
-              <span class="iq-tile-badge" id="realm-badge">HikahQuest</span>
+              <span class="iq-tile-badge" id="realm-badge">HQuest</span>
             </div>
 
             <div class="iq-tile-body">
-              <h1 class="iq-tile-name" id="realm-title">Select a Deck</h1>
+              <h1 class="iq-tile-name" id="realm-title">Select a Realm</h1>
               <p class="iq-tile-meaning" id="realm-desc">
-                Choose a deck on the left to begin your journey
+                Choose a main Q&amp;A realm on the left to begin your journey
               </p>
 
               <!-- Next button to proceed to mode/difficulty page -->
@@ -149,7 +149,7 @@
                 id="iq-next-btn"
                 disabled
                 aria-disabled="true"
-              >Next →</button>
+              >Choose Challenge →</button>
 
               <section class="iq-support-panel" aria-label="Support and legal">
                 <h2 class="iq-support-panel__title">Support</h2>
@@ -164,7 +164,7 @@
                   <div class="iq-support-panel__qr" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;color:#07111a;font-weight:700;">OFFLINE</div>
                   <div class="iq-support-panel__actions">
                     <a class="iq-support-link" href="donation.html">Donation and Gift Options</a>
-                    <a class="iq-support-link" href="mailto:donyaberhan@gmail.com?subject=HikahQuest%20Donation%20Gift">Email Support Intent</a>
+                    <a class="iq-support-link" href="mailto:donyaberhan@gmail.com?subject=HQuest%20Donation%20Gift">Email Support Intent</a>
                   </div>
                 </div>
 
@@ -176,7 +176,7 @@
                 </div>
 
                 <div class="iq-support-panel__actions" style="margin-top:.75rem;">
-                  <button class="iq-medallion-btn" id="iq-bonus-btn" type="button">Allah's Names Bonus →</button>
+                  <button class="iq-medallion-btn" id="iq-bonus-btn" type="button">Allah's Names Bonus Round →</button>
                 </div>
               </section>
             </div>
@@ -191,7 +191,7 @@
 
   <noscript>
     <p style="padding:2rem;text-align:center;font-family:serif;color:#f0e8d5;">
-      HikahQuest requires JavaScript to run. Please enable JavaScript in your browser.
+      HQuest requires JavaScript to run. Please enable JavaScript in your browser.
     </p>
   </noscript>
 
@@ -272,7 +272,7 @@
       var text = textEl.value.trim();
       if (!text){ textEl.focus(); return; }
       var page = window.location.pathname.split('/').pop() || 'index';
-      var sub  = encodeURIComponent('HikahQuest Beta Feedback — ' + name);
+      var sub  = encodeURIComponent('HQuest Beta Feedback — ' + name);
       var body = encodeURIComponent('From: ' + name + '\nPage: ' + page + '\n\n' + text);
       window.location.href = 'mailto:donyaberhan@gmail.com?subject=' + sub + '&body=' + body;
       closeFeedback();

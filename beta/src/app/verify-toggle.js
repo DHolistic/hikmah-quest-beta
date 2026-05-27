@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   ILM QUEST · CARD VERIFICATION TOGGLE
+   HQUEST · CARD VERIFICATION TOGGLE
    Subtle ✓ chip — Donya marks each card whose Q&A she's eyeballed
    and confirmed correct. Persists to localStorage; export later.
    Complementary to the أستغفر الله beta-feedback modal:

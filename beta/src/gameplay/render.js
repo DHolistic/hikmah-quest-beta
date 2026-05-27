@@ -109,7 +109,7 @@ export function renderRightTile(container, state, handlers = {}) {
 
   if (!answered) {
     container.querySelector(".iq-tile-body")?.addEventListener("click", (e) => {
-      if (questionType === "multiple-choice") {
+      if (questionType === "multiple-choice" || questionType === "fill-blank") {
         const li = e.target.closest("[data-option-index]");
         if (!li) return;
         const idx = Number(li.dataset.optionIndex);
@@ -143,7 +143,7 @@ export function renderRightTile(container, state, handlers = {}) {
 
       if (questionType === "speech") {
         const speechBtn = e.target.closest('[data-action="startSpeech"]');
-        if (speechBtn) handlers.onSpeechStart?.();
+        if (speechBtn) handlers.onSpeechStart?.(speechBtn.dataset.speechLocale || "");
       }
     });
   }
@@ -262,7 +262,6 @@ function buildTriviaBody(card, answered, state) {
 }
 
 function buildQuranBody(card, answered) {
-  const anchorLabel = getAnchorLabel(card.category);
   const strategy = getRevealStrategy(card);
 
   const optionsHtml = card.options
@@ -279,12 +278,10 @@ function buildQuranBody(card, answered) {
   // ── Pre-reveal: show only what is NOT the answer ─────────────────────────
   // The strategy controls which fields are hidden until the user reveals.
   const preArabic =
-    strategy.hide.includes("arabicText") ? "" :
     (card.promptArabicText ? `<p class="iq-tile-prompt-arabic" dir="rtl" lang="ar">${card.promptArabicText}</p>` : "");
-
-  const preAnchor =
-    strategy.hide.includes("themeAnchorText") ? "" :
-    (card.themeAnchorText ? `<p class="iq-tile-anchor">${anchorLabel}: ${escHtml(card.themeAnchorText)}</p>` : "");
+  const preSupport = card.promptSupportText
+    ? formatProse(card.promptSupportText, "iq-tile-clue")
+    : "";
 
   // ── Reveal panel: render the answer + any previously-hidden context ──────
   const revealParts = [];
@@ -295,9 +292,6 @@ function buildQuranBody(card, answered) {
     if (card.transliterationText && strategy.show.includes("transliterationText")) {
       revealParts.push(`<p class="iq-tile-transliteration">${escHtml(card.transliterationText)}</p>`);
     }
-    if (card.themeAnchorText && strategy.hide.includes("themeAnchorText")) {
-      revealParts.push(`<p class="iq-tile-anchor"><strong>${anchorLabel}:</strong> ${escHtml(card.themeAnchorText)}</p>`);
-    }
     if (card.translationText && strategy.show.includes("translationText")) {
       revealParts.push(formatProse(card.translationText, "iq-tile-clue"));
     }
@@ -305,7 +299,7 @@ function buildQuranBody(card, answered) {
 
   return `
     ${preArabic}
-    ${preAnchor}
+    ${preSupport}
     <p class="iq-tile-question">${escHtml(card.promptText)}</p>
     ${optionsHtml ? `<ol class="iq-options" type="A">${optionsHtml}</ol>` : ""}
     ${revealParts.length ? revealParts.join("\n") : ""}
@@ -365,22 +359,41 @@ function buildMatchBody(card, answered, state) {
 }
 
 function buildSpeechBody(card, answered, state) {
+  const locales = Array.isArray(card.speechLocales) && card.speechLocales.length
+    ? card.speechLocales
+    : ["en-US"];
   const transcript = state.speechTranscript || "";
   const scorePct = state.speechScore ? `${Math.round(state.speechScore * 100)}%` : "0%";
   const thresholdPct = `${Math.round((card.accuracyThreshold ?? 0.67) * 100)}%`;
+  const localeLabels = {
+    "en-US": "English Mic",
+    "ar-SA": "Arabic Mic",
+  };
+  const activeLocaleLabel = localeLabels[state.speechLocale] || "Default Mic";
+  const actionButtons = locales.length > 1
+    ? locales.map(locale => {
+      const label = localeLabels[locale] || "Start Voice Answer";
+      const active = state.speechLocale === locale ? " is-active" : "";
+      return `<button class="iq-medallion-btn${active}" data-action="startSpeech" data-speech-locale="${escAttr(locale)}" ${answered ? "disabled" : ""}>${label}</button>`;
+    }).join("")
+    : `<button class="iq-medallion-btn" data-action="startSpeech" data-speech-locale="${escAttr(locales[0])}" ${answered ? "disabled" : ""}>Start Voice Answer</button>`;
+  const localeHint = locales.length > 1
+    ? "<p class=\"iq-tile-clue\">Use English Mic for transliteration, or Arabic Mic if you want to say the Arabic name directly.</p>"
+    : "";
 
   return `
     <p class="iq-tile-question">${escHtml(card.promptText)}</p>
     <p class="iq-tile-clue">Voice challenge: speak your answer clearly. Target accuracy: ${thresholdPct}.</p>
-    <button class="iq-medallion-btn" data-action="startSpeech" ${answered ? "disabled" : ""}>Start Voice Answer</button>
+    <div class="iq-choice-stack">${actionButtons}</div>
+    ${localeHint}
     <p class="iq-tile-clue">Status: ${escHtml(state.speechStatus || "idle")}</p>
+    ${state.speechLocale ? `<p class="iq-tile-clue">Mic Mode: ${escHtml(activeLocaleLabel)}</p>` : ""}
     ${state.speechError ? `<p class="iq-tile-clue">${escHtml(state.speechError)}</p>` : ""}
     ${transcript ? `<p class="iq-tile-anchor"><strong>Transcript:</strong> ${escHtml(transcript)}</p>` : ""}
     ${state.speechStatus === "scored" ? `<p class="iq-tile-anchor"><strong>Vocabulary Score:</strong> ${scorePct}</p>` : ""}
     ${answered ? `
       <p class="iq-tile-arabic" dir="rtl" lang="ar">${card.arabicText ? card.arabicText : ""}</p>
       ${card.transliterationText ? `<p class="iq-tile-transliteration">${escHtml(card.transliterationText)}</p>` : ""}
-      ${card.themeAnchorText ? `<p class="iq-tile-anchor"><strong>Meaning Anchor:</strong> ${escHtml(card.themeAnchorText)}</p>` : ""}
     ` : ""}
   `;
 }
@@ -505,11 +518,4 @@ function formatCategory(category) {
 function formatDifficulty(difficulty) {
   if (!difficulty) return "Open";
   return difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
-}
-
-function getAnchorLabel(category) {
-  if (category === "quran") return "Meaning Anchor";
-  if (category === "sunnah") return "Hadith Anchor";
-  if (category === "ummah") return "History Anchor";
-  return "Theme Anchor";
 }

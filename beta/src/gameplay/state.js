@@ -41,6 +41,7 @@ export function createGameplayState(rightDeck, leftDeck, mode = "solo", options 
     speechScore: 0,
     speechStatus: "idle",
     speechError: "",
+    speechLocale: "",
     ...options,
   };
 }
@@ -73,6 +74,7 @@ export function advanceCard(state) {
     speechScore: 0,
     speechStatus: "idle",
     speechError: "",
+    speechLocale: "",
   };
 }
 

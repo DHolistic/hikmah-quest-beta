@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   ILM QUEST · FX CONTROLLER
+   HQUEST · FX CONTROLLER
    Noor Pulse · Barakah Card · Knowledge Chain · Backdrop Evolution
    Sound Panel · Accessibility Panel UI
    ═══════════════════════════════════════════════════════════════ */

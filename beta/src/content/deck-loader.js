@@ -23,6 +23,33 @@ function splitAnswerDetails(answerText) {
   return { answerStem: text, referenceText: "" };
 }
 
+function sanitizeLegacyAnswer(answerText) {
+  const text = String(answerText ?? "").trim();
+  if (!text) return "";
+
+  const anchored = text.match(/Anchor (?:answer|reference):\s*(.+)$/i);
+  if (anchored) return anchored[1].trim();
+
+  return text
+    .replace(/^Learner\s+(?:explains|states)[^.]*\.\s*/i, "")
+    .trim();
+}
+
+function isAuthoringStylePrompt(promptText) {
+  const text = String(promptText ?? "").toLowerCase();
+  return (
+    text.includes("reinforce ") ||
+    text.includes("source and practice") ||
+    text.includes("in your own words") ||
+    text.includes("restate this hadith teaching") ||
+    text.includes("what key seerah/history lesson") ||
+    text.includes("what practical lesson") ||
+    text.includes("locate and apply") ||
+    text.includes("explain what it means") ||
+    text.includes("verify meaning")
+  );
+}
+
 function extractVerseReference(...candidates) {
   for (const value of candidates) {
     const text = String(value ?? "");
@@ -38,6 +65,22 @@ function buildArabicExcerpt(arabicText, wordLimit = 10) {
   const words = String(arabicText ?? "").trim().split(/\s+/).filter(Boolean);
   if (words.length <= wordLimit) return words.join(" ");
   return `${words.slice(0, wordLimit).join(" ")} ...`;
+}
+
+function buildArabicPromptWithBlank(arabicText, tailWordCount = 4) {
+  const words = String(arabicText ?? "").trim().split(/\s+/).filter(Boolean);
+  if (words.length <= tailWordCount + 2) return `${words.slice(0, -1).join(" ")} ...`;
+  return `${words.slice(0, -tailWordCount).join(" ")} ...`;
+}
+
+function extractArabicCompletion(arabicText, tailWordCount = 4) {
+  const words = String(arabicText ?? "").trim().split(/\s+/).filter(Boolean);
+  if (!words.length) return "";
+  return words.slice(-Math.min(tailWordCount, words.length)).join(" ");
+}
+
+function formatQuranLocation(verse) {
+  return `Surah ${verse.surahName || verse.surah} ${verse.surah}:${verse.ayah} · Juz ${verse.juzNumber}`;
 }
 
 function choiceLabelFor(card) {
@@ -81,7 +124,8 @@ async function loadQuranRepository() {
 
 function transformLegacyCard(card) {
   const pts = Number(card.pts ?? 1);
-  const { answerStem, referenceText } = splitAnswerDetails(card.answer || "");
+  const cleanedAnswer = sanitizeLegacyAnswer(card.answer || "");
+  const { answerStem, referenceText } = splitAnswerDetails(cleanedAnswer);
   return {
     id: String(card.id),
     type: "legacy",
@@ -104,7 +148,7 @@ function transformLegacyCard(card) {
     questionType: card.questionType || (card.questionMode === "multiple-choice" ? "multiple-choice" : "open"),
     referenceText: card.referenceText || card.ayahReveal?.source || referenceText,
     referenceHint: card.referenceHint || "",
-    sourceTitle: card.sourceTitle || card.ayahReveal?.source || referenceText || "HikahQuest",
+    sourceTitle: card.sourceTitle || card.ayahReveal?.source || referenceText || "HQuest",
     sourceUrl: "",
     explanation: card.explanation || "",
     themeAnchorText: card.themeAnchorText || card.themeOutcome || card.nameMeaning || "",
@@ -213,19 +257,9 @@ function applyQuranDifficultyBehavior(card, difficulty, quranLookup) {
   enriched.transliterationText = enriched.transliterationText || verse.transliteration || "";
   enriched.translationText = enriched.translationText || verse.translation_si || verse.translation_ya || "";
   enriched.sourceTitle = `${verse.surahName || `Surah ${verse.surah}`} ${verse.surah}:${verse.ayah}`;
-
-  if (difficulty === "medium") {
-    enriched.questionMode = "memorization";
-    enriched.promptArabicText = enriched.promptArabicText || buildArabicExcerpt(verse.arabic);
-    enriched.promptText = enriched.translationText || enriched.promptText;
-  }
-
-  if (difficulty === "hard") {
-    enriched.questionMode = "meaning-location";
-    enriched.promptArabicText = buildArabicExcerpt(verse.arabic, 14);
-    enriched.promptText = "What does this ayah mean, and where is it found?";
-    enriched.answerText = `${verse.surahName || `Surah ${verse.surah}`} ${verse.surah}:${verse.ayah}`;
-  }
+  enriched.promptArabicText = enriched.promptArabicText || buildArabicExcerpt(verse.arabic);
+  enriched.quranLocationChoice = formatQuranLocation(verse);
+  enriched.quranCompletionChoice = extractArabicCompletion(verse.arabic);
 
   return enriched;
 }
@@ -239,21 +273,450 @@ function applyReferenceBehavior(card) {
 }
 
 function applyMeaningAnchorBehavior(card) {
-  if (!(card.promptArabicText || card.arabicText) || !card.translationText) {
-    return card;
+  return card;
+}
+
+function buildLegacyPrompt(card) {
+  const lane = String(card.deckLane || "").toLowerCase();
+  const subTheme = String(card.subTheme || "").toLowerCase();
+  const source = String(card.sourceTitle || card.referenceText || "").toLowerCase();
+  const currentPrompt = String(card.promptText || "");
+  const answer = String(card.answerText || "").trim();
+
+  if (!isAuthoringStylePrompt(currentPrompt)) return currentPrompt;
+
+  if (lane.includes("hadith") || subTheme.includes("hadith") || source.includes("bukhari") || source.includes("muslim")) {
+    if (answer.startsWith("...")) return "Complete this hadith teaching.";
+    return "Which answer best matches this hadith teaching?";
   }
 
+  if (lane.includes("history") || lane.includes("seerah") || subTheme.includes("history") || subTheme.includes("seerah")) {
+    return "Which answer best matches this Seerah or Ummah clue?";
+  }
+
+  if (card.category === "sunnah") {
+    return "Which answer best matches this Sunnah teaching?";
+  }
+
+  if (card.category === "hidayah") {
+    return "Which answer best matches this Hidayah clue?";
+  }
+
+  if (card.category === "ummah") {
+    return "Which answer best matches this Ummah clue?";
+  }
+
+  return "Which answer best matches this clue?";
+}
+
+function buildLegacyPromptSupport(card) {
+  const lane = String(card.deckLane || "").toLowerCase();
+  const subTheme = String(card.subTheme || "").toLowerCase();
+  const source = String(card.sourceTitle || card.referenceText || "").trim();
+  if (lane.includes("hadith") || subTheme.includes("hadith") || /bukhari|muslim/i.test(source)) {
+    return source || "";
+  }
+  return "";
+}
+
+function isHadithStyleCard(card) {
+  const lane = String(card.deckLane || "").toLowerCase();
+  const subTheme = String(card.subTheme || "").toLowerCase();
+  const source = String(card.sourceTitle || card.referenceText || "").toLowerCase();
+  return lane.includes("hadith") || subTheme.includes("hadith") || /bukhari|muslim/.test(source);
+}
+
+function isCompletionStyleCard(card) {
+  const prompt = String(card.promptText || "").toLowerCase();
+  const answer = String(card.answerText || "").trim();
+  return (
+    answer.startsWith("...") ||
+    prompt.includes(" complete") ||
+    prompt.startsWith("complete") ||
+    prompt.includes("___") ||
+    prompt.includes(" fill in") ||
+    prompt.includes("missing word")
+  );
+}
+
+function buildSunnahSourceChoice(card) {
+  const source = String(card.sourceTitle || card.referenceText || "").trim();
+  if (source) return source;
+  const answer = String(card.answerText || "").trim();
+  const m = answer.match(/\(([^()]*?(?:Bukhari|Muslim)[^()]*)\)\s*$/i);
+  return m ? m[1].trim() : "";
+}
+
+function inferLegacyQuestionType(card) {
+  const difficulty = String(card.difficulty || "").toLowerCase();
+  if (difficulty === "easy") return "multiple-choice";
+  if (isCompletionStyleCard(card)) {
+    return "fill-blank";
+  }
+  return "multiple-choice";
+}
+
+function applySunnahHardPatterns(card, selectedCards, allCards) {
+  if (card.category !== "sunnah" || String(card.difficulty || "").toLowerCase() !== "hard" || !isHadithStyleCard(card)) {
+    return null;
+  }
+
+  if (isCompletionStyleCard(card)) {
+    const correct = choiceLabelFor(card);
+    if (!correct) return null;
+    const distractors = shuffleDeck(
+      uniqueChoices([
+        ...selectedCards.filter(candidate => candidate.id !== card.id && candidate.category === "sunnah" && candidate.subTheme === card.subTheme),
+        ...allCards.filter(candidate => candidate.id !== card.id && candidate.category === "sunnah" && candidate.subTheme === card.subTheme),
+      ]).map(choiceLabelFor).filter(choice => choice && choice !== correct)
+    ).slice(0, 3);
+    if (distractors.length < 3) return null;
+    const options = shuffleDeck([correct, ...distractors]);
+    return {
+      ...card,
+      promptText: "Complete this hadith teaching.",
+      promptSupportText: buildSunnahSourceChoice(card),
+      questionMode: "multiple-choice",
+      questionType: "fill-blank",
+      options,
+      correctIndex: options.indexOf(correct),
+    };
+  }
+
+  const correct = buildSunnahSourceChoice(card);
+  if (!correct) return null;
+  const distractors = shuffleDeck([
+    ...new Set(
+      [...selectedCards, ...allCards]
+        .filter(candidate => candidate.id !== card.id && candidate.category === "sunnah" && isHadithStyleCard(candidate))
+        .map(buildSunnahSourceChoice)
+        .filter(choice => choice && choice !== correct)
+    ),
+  ]).slice(0, 3);
+  if (distractors.length < 3) return null;
+  const options = shuffleDeck([correct, ...distractors]);
   return {
     ...card,
-    themeAnchorText: card.translationText,
+    promptText: "Which source best matches this hadith teaching?",
+    promptSupportText: card.answerText || "",
+    answerText: correct,
+    answerChoice: correct,
+    questionMode: "multiple-choice",
+    questionType: "multiple-choice",
+    options,
+    correctIndex: options.indexOf(correct),
   };
 }
 
-async function shapeLegacyDeck(selectedCards, allCards, difficulty) {
-  const needsQuranLookup = selectedCards.some(card => card.category === "quran" && difficulty !== "easy");
-  const quranLookup = needsQuranLookup ? await loadQuranRepository() : new Map();
+function applyHidayahHardPatterns(card, selectedCards, allCards) {
+  if (card.category !== "hidayah" || String(card.difficulty || "").toLowerCase() !== "hard") {
+    return null;
+  }
 
-  return selectedCards.map(card => {
+  const basePool = uniqueChoices([
+    ...selectedCards.filter(candidate => candidate.id !== card.id && candidate.category === "hidayah" && candidate.subTheme === card.subTheme),
+    ...allCards.filter(candidate => candidate.id !== card.id && candidate.category === "hidayah" && candidate.subTheme === card.subTheme),
+    ...allCards.filter(candidate => candidate.id !== card.id && candidate.category === "hidayah" && candidate.deckLane === card.deckLane),
+  ]);
+
+  if (isCompletionStyleCard(card)) {
+    const correct = choiceLabelFor(card);
+    if (!correct) return null;
+    const distractors = shuffleDeck(
+      basePool.map(choiceLabelFor).filter(choice => choice && choice !== correct)
+    ).slice(0, 3);
+    if (distractors.length < 3) return null;
+    const options = shuffleDeck([correct, ...distractors]);
+    return {
+      ...card,
+      promptText: "Complete this guidance teaching.",
+      promptSupportText: buildLegacyPromptSupport(card),
+      questionMode: "multiple-choice",
+      questionType: "fill-blank",
+      options,
+      correctIndex: options.indexOf(correct),
+    };
+  }
+
+  const correct = choiceLabelFor(card);
+  if (!correct) return null;
+  const distractors = shuffleDeck(
+    basePool.map(choiceLabelFor).filter(choice => choice && choice !== correct)
+  ).slice(0, 3);
+  if (distractors.length < 3) return null;
+  const options = shuffleDeck([correct, ...distractors]);
+  return {
+    ...card,
+    promptText: "Which guidance answer best matches this prompt?",
+    promptSupportText: buildLegacyPromptSupport(card),
+    questionMode: "multiple-choice",
+    questionType: "multiple-choice",
+    options,
+    correctIndex: options.indexOf(correct),
+  };
+}
+
+function applyLegacyTriviaMultipleChoice(card, selectedCards, allCards) {
+  if (card.category === "quran") return card;
+  const sunnahHardOverride = applySunnahHardPatterns(card, selectedCards, allCards);
+  if (sunnahHardOverride) return sunnahHardOverride;
+  const hidayahHardOverride = applyHidayahHardPatterns(card, selectedCards, allCards);
+  if (hidayahHardOverride) return hidayahHardOverride;
+  if (["multiple-choice", "fill-blank", "sequence", "match", "speech"].includes(card.questionType)) {
+    return {
+      ...card,
+      promptText: buildLegacyPrompt(card),
+      promptSupportText: buildLegacyPromptSupport(card),
+    };
+  }
+
+  const correct = choiceLabelFor(card);
+  if (!correct) return card;
+
+  const pool = uniqueChoices([
+    ...selectedCards.filter(candidate =>
+      candidate.id !== card.id &&
+      candidate.category === card.category &&
+      candidate.subTheme === card.subTheme &&
+      candidate.deckLane === card.deckLane
+    ),
+    ...selectedCards.filter(candidate =>
+      candidate.id !== card.id &&
+      candidate.category === card.category &&
+      candidate.subTheme === card.subTheme
+    ),
+    ...allCards.filter(candidate =>
+      candidate.id !== card.id &&
+      candidate.category === card.category &&
+      candidate.subTheme === card.subTheme
+    ),
+    ...allCards.filter(candidate =>
+      candidate.id !== card.id &&
+      candidate.category === card.category &&
+      candidate.deckLane === card.deckLane
+    ),
+  ]).filter(candidate => choiceLabelFor(candidate) !== correct);
+
+  let distractors = shuffleDeck(pool).slice(0, 3).map(choiceLabelFor);
+  if (distractors.length < 3) {
+    const fallbackPool = uniqueChoices(
+      allCards.filter(candidate => candidate.id !== card.id)
+    )
+      .map(choiceLabelFor)
+      .filter(choice => choice && choice !== correct && !distractors.includes(choice));
+    distractors = distractors.concat(shuffleDeck(fallbackPool).slice(0, 3 - distractors.length));
+  }
+  if (distractors.length < 3) {
+    return {
+      ...card,
+      promptText: buildLegacyPrompt(card),
+      promptSupportText: buildLegacyPromptSupport(card),
+    };
+  }
+
+  const options = shuffleDeck([correct, ...distractors]);
+  const questionType = inferLegacyQuestionType(card);
+  return {
+    ...card,
+    promptText: buildLegacyPrompt(card),
+    promptSupportText: buildLegacyPromptSupport(card),
+    questionMode: "multiple-choice",
+    questionType,
+    options,
+    correctIndex: options.indexOf(correct),
+  };
+}
+
+function quranMeaningChoiceLabel(card) {
+  return String(
+    card.translationText ||
+    card.answerChoice ||
+    card.answerText ||
+    ""
+  ).trim();
+}
+
+function quranLocationChoiceLabel(card) {
+  return String(card.quranLocationChoice || card.sourceTitle || card.referenceText || "").trim();
+}
+
+function quranCompletionChoiceLabel(card) {
+  return String(card.quranCompletionChoice || "").trim();
+}
+
+function applyQuranMultipleChoice(card, selectedCards, allCards) {
+  const quranPool = [
+    ...selectedCards.filter(candidate => candidate.id !== card.id && candidate.category === "quran"),
+    ...allCards.filter(candidate => candidate.id !== card.id && candidate.category === "quran"),
+  ];
+
+  if (card.difficulty === "medium") {
+    const correct = quranLocationChoiceLabel(card);
+    if (!correct) return card;
+    const distractors = shuffleDeck(
+      [...new Set(quranPool.map(quranLocationChoiceLabel).filter(choice => choice && choice !== correct))]
+    ).slice(0, 3);
+    if (distractors.length < 3) return card;
+    const options = shuffleDeck([correct, ...distractors]);
+    return {
+      ...card,
+      promptText: "Which Quran location matches this passage?",
+      promptSupportText: card.translationText || "",
+      answerText: correct,
+      answerChoice: correct,
+      questionMode: "multiple-choice",
+      questionType: "multiple-choice",
+      options,
+      correctIndex: options.indexOf(correct),
+    };
+  }
+
+  if (card.difficulty === "hard") {
+    const correct = quranCompletionChoiceLabel(card);
+    if (!correct) return card;
+    const distractors = shuffleDeck(
+      [...new Set(quranPool.map(quranCompletionChoiceLabel).filter(choice => choice && choice !== correct))]
+    ).slice(0, 3);
+    if (distractors.length < 3) return card;
+    const options = shuffleDeck([correct, ...distractors]);
+    return {
+      ...card,
+      promptText: "Which phrase best completes this Quran passage?",
+      promptArabicText: buildArabicPromptWithBlank(card.arabicText || card.promptArabicText || ""),
+      promptSupportText: card.translationText || "",
+      answerText: correct,
+      answerChoice: correct,
+      questionMode: "multiple-choice",
+      questionType: "fill-blank",
+      options,
+      correctIndex: options.indexOf(correct),
+    };
+  }
+
+  const correct = quranMeaningChoiceLabel(card);
+  if (!correct) return card;
+  const distractors = shuffleDeck(
+    [...new Set(quranPool.map(quranMeaningChoiceLabel).filter(choice => choice && choice !== correct))]
+  ).slice(0, 3);
+  if (distractors.length < 3) return card;
+  const options = shuffleDeck([correct, ...distractors]);
+
+  return {
+    ...card,
+    promptText: "Which meaning best matches this Quran passage?",
+    answerText: correct,
+    answerChoice: correct,
+    questionMode: "multiple-choice",
+    questionType: "multiple-choice",
+    options,
+    correctIndex: options.indexOf(correct),
+  };
+}
+
+function buildQuranRepositoryChoicePool(quranLookup) {
+  return Array.from(quranLookup.values()).map(verse => ({
+    translationChoice: (verse.translation_si || verse.translation_ya || "").trim(),
+    locationChoice: formatQuranLocation(verse),
+    completionChoice: extractArabicCompletion(verse.arabic),
+  }));
+}
+
+function applyQuranStudyCard(card, selectedCards, allCards, quranLookup) {
+  const repoPool = buildQuranRepositoryChoicePool(quranLookup);
+  const localPool = [
+    ...selectedCards.filter(candidate => candidate.id !== card.id && candidate.category === "quran"),
+    ...allCards.filter(candidate => candidate.id !== card.id && candidate.category === "quran"),
+  ];
+  const hasVerseBackedPassage = Boolean(card.arabicText && card.translationText && card.quranLocationChoice && card.quranCompletionChoice);
+  const buildMeaningFallback = () => {
+    const correct = quranMeaningChoiceLabel(card);
+    if (!correct) {
+      return {
+        ...card,
+        promptText: "Which meaning best matches this Quran passage?",
+        promptSupportText: "",
+        questionMode: "multiple-choice",
+        questionType: "multiple-choice",
+      };
+    }
+    const fallbackDistractors = shuffleDeck([
+      ...new Set([
+        ...repoPool.map(item => item.translationChoice),
+        ...localPool.map(quranMeaningChoiceLabel),
+      ].filter(choice => choice && choice !== correct)),
+    ]).slice(0, 3);
+    const options = fallbackDistractors.length >= 3
+      ? shuffleDeck([correct, ...fallbackDistractors])
+      : null;
+    return {
+      ...card,
+      promptText: "Which meaning best matches this Quran passage?",
+      promptSupportText: "",
+      answerText: correct,
+      answerChoice: correct,
+      questionMode: "multiple-choice",
+      questionType: "multiple-choice",
+      options,
+      correctIndex: options ? options.indexOf(correct) : null,
+    };
+  };
+
+  if (card.difficulty === "medium" && hasVerseBackedPassage) {
+    const correct = quranLocationChoiceLabel(card);
+    if (!correct) return buildMeaningFallback();
+    const distractors = shuffleDeck([
+      ...new Set([
+        ...repoPool.map(item => item.locationChoice),
+        ...localPool.map(quranLocationChoiceLabel),
+      ].filter(choice => choice && choice !== correct)),
+    ]).slice(0, 3);
+    if (distractors.length < 3) return buildMeaningFallback();
+    const options = shuffleDeck([correct, ...distractors]);
+    return {
+      ...card,
+      promptText: "Which Quran location matches this passage?",
+      promptSupportText: card.translationText || "",
+      answerText: correct,
+      answerChoice: correct,
+      questionMode: "multiple-choice",
+      questionType: "multiple-choice",
+      options,
+      correctIndex: options.indexOf(correct),
+    };
+  }
+
+  if (card.difficulty === "hard" && hasVerseBackedPassage) {
+    const correct = quranCompletionChoiceLabel(card);
+    if (!correct) return buildMeaningFallback();
+    const distractors = shuffleDeck([
+      ...new Set([
+        ...repoPool.map(item => item.completionChoice),
+        ...localPool.map(quranCompletionChoiceLabel),
+      ].filter(choice => choice && choice !== correct)),
+    ]).slice(0, 3);
+    if (distractors.length < 3) return buildMeaningFallback();
+    const options = shuffleDeck([correct, ...distractors]);
+    return {
+      ...card,
+      promptText: "Which phrase best completes this Quran passage?",
+      promptArabicText: buildArabicPromptWithBlank(card.arabicText || card.promptArabicText || ""),
+      promptSupportText: card.translationText || "",
+      answerText: correct,
+      answerChoice: correct,
+      questionMode: "multiple-choice",
+      questionType: "fill-blank",
+      options,
+      correctIndex: options.indexOf(correct),
+    };
+  }
+
+  return buildMeaningFallback();
+}
+
+async function shapeLegacyDeck(selectedCards, allCards, difficulty) {
+  const needsQuranLookup = selectedCards.some(card => card.category === "quran");
+  const quranLookup = needsQuranLookup ? await loadQuranRepository() : new Map();
+  const firstPass = selectedCards.map(card => {
     let shaped = { ...card };
 
     if (difficulty === "easy") {
@@ -268,6 +731,39 @@ async function shapeLegacyDeck(selectedCards, allCards, difficulty) {
     shaped = applyMeaningAnchorBehavior(shaped);
     return shaped;
   });
+
+  return firstPass.map(card =>
+    card.category === "quran"
+      ? applyQuranStudyCard(card, firstPass, firstPass, quranLookup)
+      : applyLegacyTriviaMultipleChoice(card, firstPass, firstPass)
+  );
+}
+
+async function shapeLegacyDeckForReview(selectedCards, allCards) {
+  const needsQuranLookup = selectedCards.some(card => card.category === "quran");
+  const quranLookup = needsQuranLookup ? await loadQuranRepository() : new Map();
+
+  const firstPass = selectedCards.map(card => {
+    let shaped = { ...card };
+
+    if (card.difficulty === "easy") {
+      shaped = applyEasyMultipleChoice(shaped, allCards, allCards);
+    }
+
+    if (shaped.category === "quran") {
+      shaped = applyQuranDifficultyBehavior(shaped, shaped.difficulty, quranLookup);
+    }
+
+    shaped = applyReferenceBehavior(shaped);
+    shaped = applyMeaningAnchorBehavior(shaped);
+    return shaped;
+  });
+
+  return firstPass.map(card =>
+    card.category === "quran"
+      ? applyQuranStudyCard(card, firstPass, firstPass, quranLookup)
+      : applyLegacyTriviaMultipleChoice(card, firstPass, firstPass)
+  );
 }
 
 // ─── Fallback decks (used if fetch fails) ───────────────────────────────────
@@ -378,7 +874,7 @@ function transformTwoTileCard(card) {
 }
 
 function normalizeSeasonalCard(card, config, difficulty) {
-  const sourceLabel = config.label || "HikahQuest";
+  const sourceLabel = config.label || "HQuest";
   const questionType = card.questionType || (config.id === "bonus" ? "speech" : "multiple-choice");
   const sequenceSteps = Array.isArray(card.sequenceSteps) ? card.sequenceSteps : null;
   const matchPairs = Array.isArray(card.matchPairs) ? card.matchPairs : null;
@@ -411,6 +907,7 @@ function normalizeSeasonalCard(card, config, difficulty) {
     matchLeftOptions: matchPairs ? matchPairs.map(pair => pair.left) : null,
     matchRightOptions: matchPairs ? shuffleDeck(matchPairs.map(pair => pair.right)) : null,
     speechTargets: Array.isArray(card.speechTargets) ? card.speechTargets : [card.answerText || card.answer || ""].filter(Boolean),
+    speechLocales: Array.isArray(card.speechLocales) ? [...card.speechLocales] : null,
     accuracyThreshold: typeof card.accuracyThreshold === "number" ? card.accuracyThreshold : 0.67,
     badgeLabel: card.badgeLabel || card.title || sourceLabel,
   };
@@ -431,7 +928,7 @@ function flattenSinglePassDeck(data) {
       answer: card.answer || "",
       referenceHint: card.referenceHint || "",
       referenceText: card.referenceHint || "",
-      sourceTitle: card.referenceHint || pack.packName || data.deckName || "HikahQuest",
+      sourceTitle: card.referenceHint || pack.packName || data.deckName || "HQuest",
       nameOfAllah: card.nameOfAllah || "",
       nameMeaning: card.nameMeaning || "",
       explanation: card.formula || "",
@@ -468,7 +965,8 @@ function transformFinaleNameCard(card) {
     matchPairs: null,
     matchLeftOptions: null,
     matchRightOptions: null,
-    speechTargets: [card.transliteration || "", card.meaning || ""].filter(Boolean),
+    speechTargets: [card.transliteration || "", card.meaning || "", card.arabic || ""].filter(Boolean),
+    speechLocales: ["en-US", "ar-SA"],
     accuracyThreshold: 0.67,
   };
 }
@@ -544,6 +1042,52 @@ export async function loadDeck(config, difficulty = "medium") {
     console.warn("[deck-loader] Fetch failed, using fallback:", err.message);
     const fallback = config.deckType === "quran" ? FALLBACK_QURAN : FALLBACK_TWO_TILE;
     return shuffleDeck([...fallback]);
+  }
+}
+
+export async function loadDeckForReview(config) {
+  try {
+    if (config.deckType === "bank99") {
+      const urls = Array.isArray(config.deckUrls) ? config.deckUrls : [config.deckUrl].filter(Boolean);
+      const fetched = await Promise.all(urls.map(fetchJson));
+      const all = fetched.flatMap(data => Array.isArray(data) ? data.map(transformLegacyCard) : []);
+      return shapeLegacyDeckForReview(all, all);
+    }
+
+    if (config.deckType === "single-pass-deck") {
+      const urls = Array.isArray(config.deckUrls) ? config.deckUrls : [config.deckUrl].filter(Boolean);
+      const decks = await Promise.all(urls.map(fetchJson));
+      const all = decks.flatMap(flattenSinglePassDeck);
+      return shapeLegacyDeckForReview(all, all);
+    }
+
+    if (config.deckType === "seasonal-pack") {
+      const data = await fetchJson(config.deckUrl);
+      return Array.isArray(data)
+        ? (config.id === "bonus"
+          ? data.map(transformFinaleNameCard)
+          : data.map(card => normalizeSeasonalCard(card, config, card.difficulty || "medium")))
+        : [];
+    }
+
+    const data = await fetchJson(config.deckUrl);
+
+    if (config.deckType === "cards99") {
+      const all = Array.isArray(data) ? data.map(transformLegacyCard) : [];
+      return shapeLegacyDeckForReview(all, all);
+    }
+
+    if (config.deckType === "quran") {
+      const ayahs = Array.isArray(data) ? data : data.ayahs ?? [];
+      return ayahs.map(transformQuranCard);
+    }
+
+    const challenges = Array.isArray(data) ? data : [];
+    return challenges.map(transformTwoTileCard);
+  } catch (err) {
+    console.warn("[deck-loader] Review fetch failed, using fallback:", err.message);
+    const fallback = config.deckType === "quran" ? FALLBACK_QURAN : FALLBACK_TWO_TILE;
+    return [...fallback];
   }
 }
 

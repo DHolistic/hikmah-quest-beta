@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   ILM QUEST · TEAM BETA 2 HUB CONTROLLER
+   HQUEST · TEAM BETA 2 HUB CONTROLLER
    Anonymous avatars · Room management · Live lobby
    ═══════════════════════════════════════════════════════════════ */
 
@@ -35,6 +35,7 @@ const statusEl       = document.getElementById("tб-status");
 const startGameBtn   = document.getElementById("tб-start-game");
 const confScores     = document.getElementById("tб-conf-scores");
 const teamNameInput  = document.getElementById("tb-team-name");
+const playerNameInput = document.getElementById("tb-player-name");
 const roundSelect    = document.getElementById("tb-round-seconds");
 const battleSelect   = document.getElementById("tb-battle-style");
 const nearbyOptIn    = document.getElementById("tb-nearby-optin");
@@ -49,6 +50,23 @@ const nearbyDismiss = document.getElementById("tb-nearby-dismiss");
 const achievementList = document.getElementById("tb-achievement-list");
 
 const ACHIEVE_KEY = "hq-tournament-achievements-v1";
+let _displayName = String(session.playerName ?? "").trim();
+
+function initialsForName(name) {
+  const parts = String(name ?? "").trim().split(/\s+/).filter(Boolean);
+  if (!parts.length) return "HQ";
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return `${parts[0][0] ?? ""}${parts[1][0] ?? ""}`.toUpperCase();
+}
+
+function currentAvatar() {
+  const name = _displayName || _avatar.name;
+  return {
+    ..._avatar,
+    name,
+    initials: _displayName ? initialsForName(_displayName) : _avatar.initials,
+  };
+}
 
 function loadAchievements() {
   try {
@@ -130,20 +148,31 @@ function syncStartAvailability() {
 // ── Avatar display ───────────────────────────────────────────────────────
 function renderSelf() {
   if (!selfBadge) return;
-  selfBadge.textContent  = _hidden ? "?" : _avatar.initials;
+  const avatar = currentAvatar();
+  selfBadge.textContent  = _hidden ? "?" : avatar.initials;
   selfBadge.style.background = _hidden
     ? "rgba(240,232,213,.06)"
-    : `radial-gradient(circle at 35% 35%, ${_avatar.color}, rgba(7,17,26,.9))`;
-  selfBadge.style.color = _hidden ? "rgba(240,232,213,.3)" : _avatar.color;
+    : `radial-gradient(circle at 35% 35%, ${avatar.color}, rgba(7,17,26,.9))`;
+  selfBadge.style.color = _hidden ? "rgba(240,232,213,.3)" : avatar.color;
   selfBadge.classList.toggle("is-hidden", _hidden);
-  if (selfName) selfName.textContent = _hidden ? "Hidden" : _avatar.name;
+  if (selfName) selfName.textContent = _hidden ? "Hidden" : avatar.name;
   if (privacyBtn) privacyBtn.textContent = _hidden ? "Show identity" : "Hide identity";
+  if (playerNameInput) playerNameInput.value = _displayName;
 }
 
 if (privacyBtn) {
   privacyBtn.addEventListener("click", () => {
     _hidden = !_hidden;
     if (_room) _room.setHidden(_hidden);
+    renderSelf();
+  });
+}
+
+if (playerNameInput) {
+  playerNameInput.value = _displayName;
+  playerNameInput.addEventListener("input", () => {
+    _displayName = playerNameInput.value.trim();
+    saveSession({ ...loadSession(), playerName: _displayName });
     renderSelf();
   });
 }
@@ -201,7 +230,7 @@ if (hostCreateBtn) {
   hostCreateBtn.addEventListener("click", () => {
     closeActiveRoom();
     const code = generateRoomCode();
-    _room = new MultiplayerRoom("host", code, _avatar);
+    _room = new MultiplayerRoom("host", code, currentAvatar());
     _room.open();
     setActiveRoom(_room);
 
@@ -214,7 +243,7 @@ if (hostCreateBtn) {
     if (startGameBtn) startGameBtn.disabled = true;
 
     // Initialise own score entry
-    _scores[_room.playerId] = { name: _hidden ? "Host" : _avatar.name, pts: 0 };
+    _scores[_room.playerId] = { name: _hidden ? "Host" : currentAvatar().name, pts: 0 };
     renderPlayerGrid();
     renderScores();
     setStatus(`Room ${code} open — share QR or code.`, "success");
@@ -277,7 +306,7 @@ if (joinBtn) {
     if (!code || code.length < 2) { setStatus("Enter a room code.", "error"); return; }
 
     closeActiveRoom();
-    _room = new MultiplayerRoom("player", code, _avatar);
+    _room = new MultiplayerRoom("player", code, currentAvatar());
     _room.open();
     setActiveRoom(_room);
 
@@ -425,6 +454,7 @@ if (startGameBtn) {
       battleStyle,
       nearbyOptIn: Boolean(nearbyOptIn?.checked),
       tournamentMode: true,
+      playerName: _displayName,
     });
     location.href = "gameplay.html";
   });

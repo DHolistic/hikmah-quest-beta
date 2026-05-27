@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="src/styles/buttons.css" />
   <link rel="stylesheet" href="src/styles/team-beta2.css" />
 
-  <title>HikahQuest — Team Challenge Hub</title>
+  <title>HQuest — Group Round Hub</title>
 </head>
 <body>
 
@@ -27,7 +27,7 @@
       <!-- Header -->
       <header class="iq-team-header">
         <a href="mode-select.html" class="iq-team-header__back">← Back</a>
-        <span class="iq-team-header__title">Team Challenge Hub</span>
+        <span class="iq-team-header__title">Group Round Hub</span>
         <span style="width:4rem;"></span><!-- spacer -->
       </header>
 
@@ -39,6 +39,8 @@
       <!-- Anonymous Avatar (self) -->
       <section class="iq-team-section" aria-label="Your identity">
         <div class="iq-team-section__label">Your identity</div>
+        <label class="iq-field-label" for="tb-player-name">Display Name (optional)</label>
+        <input id="tb-player-name" class="iq-team-input" type="text" maxlength="24" placeholder="Use a host or player name" />
         <div class="iq-avatar-self">
           <div class="iq-avatar-badge is-hidden" id="tб-self-badge" aria-hidden="true">?</div>
           <span class="iq-avatar-name" id="tб-self-name">Hidden</span>
@@ -47,7 +49,7 @@
           </button>
         </div>
         <p style="font-size:.72rem; color:rgba(240,232,213,.35); line-height:1.5; margin:0;">
-          Your anonymous name is randomly generated each session. Hidden by default for conference privacy.
+          Your name can stay anonymous or use an optional host/player label. Hidden by default for conference privacy.
         </p>
       </section>
 

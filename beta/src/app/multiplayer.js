@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   ILM QUEST · MULTIPLAYER
+   HQUEST · MULTIPLAYER
    BroadcastChannel for same-device/same-browser tab sync.
    Room-code join for simple coordinated play.
    Graceful fallback: works fully offline / solo.
