@@ -15,12 +15,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "generatedFromId": 1,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 1
   },
   {
     "cat": "quran",
@@ -35,16 +30,11 @@
     "generatedFromId": 1,
     "id": "1-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah Al-Fatiha — Surah 1, 7 verses",
+    "question": "Linked to Ar-Rahman (The Most Gracious): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Ar-Rahman. Anchor answer: Surah Al-Fatiha — Surah 1, 7 verses",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -59,16 +49,11 @@
     "generatedFromId": 1,
     "id": "1-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "Surah Al-Fatiha — Surah 1, 7 verses",
+    "question": "Where is the surah for Ar-Rahman (The Most Gracious) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: Surah Al-Fatiha — Surah 1, 7 verses",
     "themeAnchor": "location-and-application",
     "referenceHint": "",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "2-1",
@@ -86,12 +71,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "1:1",
-    "generatedFromId": 2,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 2
   },
   {
     "cat": "quran",
@@ -106,16 +86,11 @@
     "generatedFromId": 2,
     "id": "2-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "...the Most Merciful (Ar-Raheem) — Al-Fatiha 1:1",
+    "question": "Linked to Ar-Raheem (The Most Merciful): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Ar-Raheem. Anchor answer: ...the Most Merciful (Ar-Raheem) — Al-Fatiha 1:1",
     "themeAnchor": "meaning",
     "referenceHint": "1:1",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -130,16 +105,11 @@
     "generatedFromId": 2,
     "id": "2-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "1:1",
+    "question": "Where is the ayah for Ar-Raheem (The Most Merciful) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 1:1",
     "themeAnchor": "location-and-application",
     "referenceHint": "1:1",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "3-1",
@@ -157,12 +127,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "generatedFromId": 3,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 3
   },
   {
     "cat": "quran",
@@ -177,16 +142,11 @@
     "generatedFromId": 3,
     "id": "3-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah Al-Qadr — Surah 97",
+    "question": "Linked to Al-Malik (The King): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Malik. Anchor answer: Surah Al-Qadr — Surah 97",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -201,16 +161,11 @@
     "generatedFromId": 3,
     "id": "3-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "Surah Al-Qadr — Surah 97",
+    "question": "Where is the surah for Al-Malik (The King) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: Surah Al-Qadr — Surah 97",
     "themeAnchor": "location-and-application",
     "referenceHint": "",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "4-1",
@@ -228,12 +183,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "generatedFromId": 4,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 4
   },
   {
     "cat": "quran",
@@ -248,16 +198,11 @@
     "generatedFromId": 4,
     "id": "4-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Al-Mu'awwidhatain — Al-Falaq (113) + An-Nas (114)",
+    "question": "Linked to Al-Quddus (The Holy): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Quddus. Anchor answer: Al-Mu'awwidhatain — Al-Falaq (113) + An-Nas (114)",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -272,16 +217,11 @@
     "generatedFromId": 4,
     "id": "4-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "Al-Mu'awwidhatain — Al-Falaq (113) + An-Nas (114)",
+    "question": "Where is the surah for Al-Quddus (The Holy) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: Al-Mu'awwidhatain — Al-Falaq (113) + An-Nas (114)",
     "themeAnchor": "location-and-application",
     "referenceHint": "",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "5-1",
@@ -299,12 +239,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "1:2",
-    "generatedFromId": 5,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 5
   },
   {
     "cat": "quran",
@@ -319,16 +254,11 @@
     "generatedFromId": 5,
     "id": "5-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "...the worlds (al-'alameen) — 1:2",
+    "question": "Linked to As-Salam (The Source of Peace): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to As-Salam. Anchor answer: ...the worlds (al-'alameen) — 1:2",
     "themeAnchor": "meaning",
     "referenceHint": "1:2",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -343,16 +273,11 @@
     "generatedFromId": 5,
     "id": "5-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "1:2",
+    "question": "Where is the ayah for As-Salam (The Source of Peace) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 1:2",
     "themeAnchor": "location-and-application",
     "referenceHint": "1:2",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "6-1",
@@ -370,12 +295,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "2:156",
-    "generatedFromId": 6,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 6
   },
   {
     "cat": "quran",
@@ -390,16 +310,11 @@
     "generatedFromId": 6,
     "id": "6-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "...to Him we shall return — Al-Baqarah 2:156",
+    "question": "Linked to Al-Mu'min (The Guardian of Faith): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Mu'min. Anchor answer: ...to Him we shall return — Al-Baqarah 2:156",
     "themeAnchor": "meaning",
     "referenceHint": "2:156",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -414,16 +329,11 @@
     "generatedFromId": 6,
     "id": "6-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "2:156",
+    "question": "Where is the ayah for Al-Mu'min (The Guardian of Faith) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 2:156",
     "themeAnchor": "location-and-application",
     "referenceHint": "2:156",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "7-1",
@@ -441,12 +351,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "generatedFromId": 7,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 7
   },
   {
     "cat": "quran",
@@ -461,16 +366,11 @@
     "generatedFromId": 7,
     "id": "7-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah Al-Kawthar — Surah 108",
+    "question": "Linked to Al-Muhaymin (The Protector): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Muhaymin. Anchor answer: Surah Al-Kawthar — Surah 108",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -485,16 +385,11 @@
     "generatedFromId": 7,
     "id": "7-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "Surah Al-Kawthar — Surah 108",
+    "question": "Where is the surah for Al-Muhaymin (The Protector) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: Surah Al-Kawthar — Surah 108",
     "themeAnchor": "location-and-application",
     "referenceHint": "",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "8-1",
@@ -512,12 +407,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "generatedFromId": 8,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 8
   },
   {
     "cat": "quran",
@@ -532,16 +422,11 @@
     "generatedFromId": 8,
     "id": "8-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah Al-Jumu'ah — Surah 62",
+    "question": "Linked to Al-Aziz (The Almighty): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Aziz. Anchor answer: Surah Al-Jumu'ah — Surah 62",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -556,16 +441,11 @@
     "generatedFromId": 8,
     "id": "8-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "Surah Al-Jumu'ah — Surah 62",
+    "question": "Where is the surah for Al-Aziz (The Almighty) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: Surah Al-Jumu'ah — Surah 62",
     "themeAnchor": "location-and-application",
     "referenceHint": "",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "9-1",
@@ -583,12 +463,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "40:60",
-    "generatedFromId": 9,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 9
   },
   {
     "cat": "quran",
@@ -603,16 +478,11 @@
     "generatedFromId": 9,
     "id": "9-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "...respond to you — Ghafir 40:60",
+    "question": "Linked to Al-Jabbar (The Compeller): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Jabbar. Anchor answer: ...respond to you — Ghafir 40:60",
     "themeAnchor": "meaning",
     "referenceHint": "40:60",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -627,16 +497,11 @@
     "generatedFromId": 9,
     "id": "9-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "40:60",
+    "question": "Where is the ayah for Al-Jabbar (The Compeller) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 40:60",
     "themeAnchor": "location-and-application",
     "referenceHint": "40:60",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "10-1",
@@ -654,12 +519,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "94:5",
-    "generatedFromId": 10,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 10
   },
   {
     "cat": "quran",
@@ -674,16 +534,11 @@
     "generatedFromId": 10,
     "id": "10-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "...relief / ease (yusra) — Ash-Sharh 94:5",
+    "question": "Linked to Al-Mutakabbir (The Supreme): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Mutakabbir. Anchor answer: ...relief / ease (yusra) — Ash-Sharh 94:5",
     "themeAnchor": "meaning",
     "referenceHint": "94:5",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -698,16 +553,11 @@
     "generatedFromId": 10,
     "id": "10-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "94:5",
+    "question": "Where is the ayah for Al-Mutakabbir (The Supreme) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 94:5",
     "themeAnchor": "location-and-application",
     "referenceHint": "94:5",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "11-1",
@@ -725,12 +575,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "112:1",
-    "generatedFromId": 11,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 11
   },
   {
     "cat": "quran",
@@ -745,16 +590,11 @@
     "generatedFromId": 11,
     "id": "11-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah Al-Ikhlas (112:1). Teaches Tawhid. Worth 1/3 of the Quran.",
+    "question": "Linked to Al-Khaliq (The Creator): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Khaliq. Anchor answer: Surah Al-Ikhlas (112:1). Teaches Tawhid. Worth 1/3 of the Quran.",
     "themeAnchor": "meaning",
     "referenceHint": "112:1",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -769,16 +609,11 @@
     "generatedFromId": 11,
     "id": "11-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "112:1",
+    "question": "Where is the ayah for Al-Khaliq (The Creator) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 112:1",
     "themeAnchor": "location-and-application",
     "referenceHint": "112:1",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "12-1",
@@ -796,12 +631,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "generatedFromId": 12,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 12
   },
   {
     "cat": "quran",
@@ -816,16 +646,11 @@
     "generatedFromId": 12,
     "id": "12-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah Al-Baqarah — Surah 2",
+    "question": "Linked to Al-Bari' (The Evolver): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Bari'. Anchor answer: Surah Al-Baqarah — Surah 2",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -840,16 +665,11 @@
     "generatedFromId": 12,
     "id": "12-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "Surah Al-Baqarah — Surah 2",
+    "question": "Where is the surah for Al-Bari' (The Evolver) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: Surah Al-Baqarah — Surah 2",
     "themeAnchor": "location-and-application",
     "referenceHint": "",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "13-1",
@@ -867,12 +687,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "29:41",
-    "generatedFromId": 13,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 13
   },
   {
     "cat": "quran",
@@ -887,16 +702,11 @@
     "generatedFromId": 13,
     "id": "13-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah Al-Ankabut / The Spider — Surah 29. The spider's web is in 29:41.",
+    "question": "Linked to Al-Musawwir (The Fashioner): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Musawwir. Anchor answer: Surah Al-Ankabut / The Spider — Surah 29. The spider's web is in 29:41.",
     "themeAnchor": "meaning",
     "referenceHint": "29:41",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -911,16 +721,11 @@
     "generatedFromId": 13,
     "id": "13-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "29:41",
+    "question": "Where is the surah for Al-Musawwir (The Fashioner) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 29:41",
     "themeAnchor": "location-and-application",
     "referenceHint": "29:41",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "14-1",
@@ -938,12 +743,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "generatedFromId": 14,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 14
   },
   {
     "cat": "quran",
@@ -958,16 +758,11 @@
     "generatedFromId": 14,
     "id": "14-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah An-Naml / The Ant — Surah 27",
+    "question": "Linked to Al-Ghaffar (The Forgiver): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Ghaffar. Anchor answer: Surah An-Naml / The Ant — Surah 27",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -982,16 +777,11 @@
     "generatedFromId": 14,
     "id": "14-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "Surah An-Naml / The Ant — Surah 27",
+    "question": "Where is the surah for Al-Ghaffar (The Forgiver) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: Surah An-Naml / The Ant — Surah 27",
     "themeAnchor": "location-and-application",
     "referenceHint": "",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "15-1",
@@ -1009,12 +799,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "generatedFromId": 15,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 15
   },
   {
     "cat": "quran",
@@ -1029,16 +814,11 @@
     "generatedFromId": 15,
     "id": "15-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah Al-Kahf — Surah 18. Recommended every Friday.",
+    "question": "Linked to Al-Qahhar (The Subduer): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Qahhar. Anchor answer: Surah Al-Kahf — Surah 18. Recommended every Friday.",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -1053,16 +833,11 @@
     "generatedFromId": 15,
     "id": "15-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "Surah Al-Kahf — Surah 18. Recommended every Friday.",
+    "question": "Where is the surah for Al-Qahhar (The Subduer) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: Surah Al-Kahf — Surah 18. Recommended every Friday.",
     "themeAnchor": "location-and-application",
     "referenceHint": "",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "16-1",
@@ -1080,12 +855,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "11:61",
-    "generatedFromId": 16,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 16
   },
   {
     "cat": "quran",
@@ -1100,16 +870,11 @@
     "generatedFromId": 16,
     "id": "16-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "The she-camel story is in Surah Hud (11:61-68) and Ash-Shams (91:13)",
+    "question": "Linked to Al-Wahhab (The Bestower): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Wahhab. Anchor answer: The she-camel story is in Surah Hud (11:61-68) and Ash-Shams (91:13)",
     "themeAnchor": "meaning",
     "referenceHint": "11:61",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -1124,16 +889,11 @@
     "generatedFromId": 16,
     "id": "16-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "11:61",
+    "question": "Where is the surah for Al-Wahhab (The Bestower) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 11:61",
     "themeAnchor": "location-and-application",
     "referenceHint": "11:61",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "17-1",
@@ -1151,12 +911,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "94:5",
-    "generatedFromId": 17,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 17
   },
   {
     "cat": "quran",
@@ -1171,16 +926,11 @@
     "generatedFromId": 17,
     "id": "17-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "...ease (yusra) — 94:5. Repeated twice! One hardship, two eases.",
+    "question": "Linked to Ar-Razzaq (The Provider): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Ar-Razzaq. Anchor answer: ...ease (yusra) — 94:5. Repeated twice! One hardship, two eases.",
     "themeAnchor": "meaning",
     "referenceHint": "94:5",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -1195,16 +945,11 @@
     "generatedFromId": 17,
     "id": "17-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "94:5",
+    "question": "Where is the ayah for Ar-Razzaq (The Provider) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 94:5",
     "themeAnchor": "location-and-application",
     "referenceHint": "94:5",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "18-1",
@@ -1222,12 +967,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "51:56",
-    "generatedFromId": 18,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 18
   },
   {
     "cat": "quran",
@@ -1242,16 +982,11 @@
     "generatedFromId": 18,
     "id": "18-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "...except to worship Me — 51:56",
+    "question": "Linked to Al-Fattah (The Opener): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Fattah. Anchor answer: ...except to worship Me — 51:56",
     "themeAnchor": "meaning",
     "referenceHint": "51:56",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -1266,16 +1001,11 @@
     "generatedFromId": 18,
     "id": "18-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "51:56",
+    "question": "Where is the ayah for Al-Fattah (The Opener) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 51:56",
     "themeAnchor": "location-and-application",
     "referenceHint": "51:56",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "19-1",
@@ -1293,12 +1023,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "49:13",
-    "generatedFromId": 19,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 19
   },
   {
     "cat": "quran",
@@ -1313,16 +1038,11 @@
     "generatedFromId": 19,
     "id": "19-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "...know one another. Indeed, the most noble of you in the sight of Allah is the most righteous — Al-Hujurat 49:13",
+    "question": "Linked to Al-'Alim (The All-Knowing): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-'Alim. Anchor answer: ...know one another. Indeed, the most noble of you in the sight of Allah is the most righteous — Al-Hujurat 49:13",
     "themeAnchor": "meaning",
     "referenceHint": "49:13",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -1337,16 +1057,11 @@
     "generatedFromId": 19,
     "id": "19-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "49:13",
+    "question": "Where is the ayah for Al-'Alim (The All-Knowing) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 49:13",
     "themeAnchor": "location-and-application",
     "referenceHint": "49:13",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "20-1",
@@ -1364,12 +1079,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "13:11",
-    "generatedFromId": 20,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 20
   },
   {
     "cat": "quran",
@@ -1384,16 +1094,11 @@
     "generatedFromId": 20,
     "id": "20-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "...themselves — Surah Ar-Ra'd (The Thunder) 13:11",
+    "question": "Linked to Al-Qabid (The Constrictor): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Qabid. Anchor answer: ...themselves — Surah Ar-Ra'd (The Thunder) 13:11",
     "themeAnchor": "meaning",
     "referenceHint": "13:11",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -1408,16 +1113,11 @@
     "generatedFromId": 20,
     "id": "20-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "13:11",
+    "question": "Where is the ayah for Al-Qabid (The Constrictor) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 13:11",
     "themeAnchor": "location-and-application",
     "referenceHint": "13:11",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "21-1",
@@ -1435,12 +1135,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "2:183",
-    "generatedFromId": 21,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 21
   },
   {
     "cat": "quran",
@@ -1455,16 +1150,11 @@
     "generatedFromId": 21,
     "id": "21-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "...those before you, that you may become righteous — Al-Baqarah 2:183",
+    "question": "Linked to Al-Basit (The Expander): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Basit. Anchor answer: ...those before you, that you may become righteous — Al-Baqarah 2:183",
     "themeAnchor": "meaning",
     "referenceHint": "2:183",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -1479,16 +1169,11 @@
     "generatedFromId": 21,
     "id": "21-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "2:183",
+    "question": "Where is the ayah for Al-Basit (The Expander) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 2:183",
     "themeAnchor": "location-and-application",
     "referenceHint": "2:183",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "22-1",
@@ -1506,12 +1191,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "54:17",
-    "generatedFromId": 22,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 22
   },
   {
     "cat": "quran",
@@ -1526,16 +1206,11 @@
     "generatedFromId": 22,
     "id": "22-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "...remembrance. So is there any who will remember? — 54:17",
+    "question": "Linked to Al-Khafid (The Abaser): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Khafid. Anchor answer: ...remembrance. So is there any who will remember? — 54:17",
     "themeAnchor": "meaning",
     "referenceHint": "54:17",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -1550,16 +1225,11 @@
     "generatedFromId": 22,
     "id": "22-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "54:17",
+    "question": "Where is the ayah for Al-Khafid (The Abaser) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 54:17",
     "themeAnchor": "location-and-application",
     "referenceHint": "54:17",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "23-1",
@@ -1577,12 +1247,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "12:3",
-    "generatedFromId": 23,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 23
   },
   {
     "cat": "quran",
@@ -1597,16 +1262,11 @@
     "generatedFromId": 23,
     "id": "23-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah Yusuf — Surah 12. 'Ahsan al-qasas' in 12:3.",
+    "question": "Linked to Ar-Rafi' (The Exalter): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Ar-Rafi'. Anchor answer: Surah Yusuf — Surah 12. 'Ahsan al-qasas' in 12:3.",
     "themeAnchor": "meaning",
     "referenceHint": "12:3",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -1621,16 +1281,11 @@
     "generatedFromId": 23,
     "id": "23-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "12:3",
+    "question": "Where is the surah for Ar-Rafi' (The Exalter) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 12:3",
     "themeAnchor": "location-and-application",
     "referenceHint": "12:3",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "24-1",
@@ -1648,12 +1303,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "generatedFromId": 24,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 24
   },
   {
     "cat": "quran",
@@ -1668,16 +1318,11 @@
     "generatedFromId": 24,
     "id": "24-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah Ya-Sin — Surah 36",
+    "question": "Linked to Al-Mu'izz (The Honorer): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Mu'izz. Anchor answer: Surah Ya-Sin — Surah 36",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -1692,16 +1337,11 @@
     "generatedFromId": 24,
     "id": "24-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "Surah Ya-Sin — Surah 36",
+    "question": "Where is the surah for Al-Mu'izz (The Honorer) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: Surah Ya-Sin — Surah 36",
     "themeAnchor": "location-and-application",
     "referenceHint": "",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "25-1",
@@ -1719,12 +1359,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "generatedFromId": 25,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 25
   },
   {
     "cat": "quran",
@@ -1739,16 +1374,11 @@
     "generatedFromId": 25,
     "id": "25-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah Al-Mulk — Surah 67",
+    "question": "Linked to Al-Mudhill (The Humiliator): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Mudhill. Anchor answer: Surah Al-Mulk — Surah 67",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -1763,16 +1393,11 @@
     "generatedFromId": 25,
     "id": "25-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "Surah Al-Mulk — Surah 67",
+    "question": "Where is the surah for Al-Mudhill (The Humiliator) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: Surah Al-Mulk — Surah 67",
     "themeAnchor": "location-and-application",
     "referenceHint": "",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "26-1",
@@ -1790,12 +1415,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "2:255",
-    "generatedFromId": 26,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 26
   },
   {
     "cat": "quran",
@@ -1810,16 +1430,11 @@
     "generatedFromId": 26,
     "id": "26-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah Al-Baqarah — 2:255, 2:256, 2:282",
+    "question": "Linked to As-Sami' (The All-Hearing): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to As-Sami'. Anchor answer: Surah Al-Baqarah — 2:255, 2:256, 2:282",
     "themeAnchor": "meaning",
     "referenceHint": "2:255",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -1834,16 +1449,11 @@
     "generatedFromId": 26,
     "id": "26-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "2:255",
+    "question": "Where is the surah for As-Sami' (The All-Hearing) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 2:255",
     "themeAnchor": "location-and-application",
     "referenceHint": "2:255",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "27-1",
@@ -1861,12 +1471,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "57:25",
-    "generatedFromId": 27,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 27
   },
   {
     "cat": "quran",
@@ -1881,16 +1486,11 @@
     "generatedFromId": 27,
     "id": "27-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah Al-Hadid / Iron — 57:25",
+    "question": "Linked to Al-Basir (The All-Seeing): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Basir. Anchor answer: Surah Al-Hadid / Iron — 57:25",
     "themeAnchor": "meaning",
     "referenceHint": "57:25",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -1905,16 +1505,11 @@
     "generatedFromId": 27,
     "id": "27-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "57:25",
+    "question": "Where is the surah for Al-Basir (The All-Seeing) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 57:25",
     "themeAnchor": "location-and-application",
     "referenceHint": "57:25",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "28-1",
@@ -1937,12 +1532,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "2:255",
-    "generatedFromId": 28,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 28
   },
   {
     "cat": "quran",
@@ -1957,16 +1547,11 @@
     "generatedFromId": 28,
     "id": "28-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Āyat al-Kursī — Al-Baqarah 2:255 — The greatest verse in the Quran. Recite after every obligatory prayer for protection.",
+    "question": "Linked to Al-Hakam (The Judge): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Hakam. Anchor answer: Āyat al-Kursī — Al-Baqarah 2:255 — The greatest verse in the Quran. Recite after every obligatory prayer for protection.",
     "themeAnchor": "meaning",
     "referenceHint": "2:255",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -1981,16 +1566,11 @@
     "generatedFromId": 28,
     "id": "28-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "2:255",
+    "question": "Where is the ayah for Al-Hakam (The Judge) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 2:255",
     "themeAnchor": "location-and-application",
     "referenceHint": "2:255",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "29-1",
@@ -2008,12 +1588,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "2:286",
-    "generatedFromId": 29,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 29
   },
   {
     "cat": "quran",
@@ -2028,16 +1603,11 @@
     "generatedFromId": 29,
     "id": "29-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Al-Baqarah 2:286 — last verse of the Surah",
+    "question": "Linked to Al-'Adl (The Just): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-'Adl. Anchor answer: Al-Baqarah 2:286 — last verse of the Surah",
     "themeAnchor": "meaning",
     "referenceHint": "2:286",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -2052,16 +1622,11 @@
     "generatedFromId": 29,
     "id": "29-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "2:286",
+    "question": "Where is the ayah for Al-'Adl (The Just) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 2:286",
     "themeAnchor": "location-and-application",
     "referenceHint": "2:286",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "30-1",
@@ -2079,12 +1644,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "65:3",
-    "generatedFromId": 30,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 30
   },
   {
     "cat": "quran",
@@ -2099,16 +1659,11 @@
     "generatedFromId": 30,
     "id": "30-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "At-Talaq 65:3. The concept is Tawakkul (reliance on Allah).",
+    "question": "Linked to Al-Latif (The Subtle): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Latif. Anchor answer: At-Talaq 65:3. The concept is Tawakkul (reliance on Allah).",
     "themeAnchor": "meaning",
     "referenceHint": "65:3",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -2123,16 +1678,11 @@
     "generatedFromId": 30,
     "id": "30-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "65:3",
+    "question": "Where is the ayah for Al-Latif (The Subtle) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 65:3",
     "themeAnchor": "location-and-application",
     "referenceHint": "65:3",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "31-1",
@@ -2150,12 +1700,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "24:35",
-    "generatedFromId": 31,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 31
   },
   {
     "cat": "quran",
@@ -2170,16 +1715,11 @@
     "generatedFromId": 31,
     "id": "31-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "An-Nur 24:35. A niche with a lamp, lamp in glass, glass like a star, lit from olive tree.",
+    "question": "Linked to Al-Khabir (The Aware): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Khabir. Anchor answer: An-Nur 24:35. A niche with a lamp, lamp in glass, glass like a star, lit from olive tree.",
     "themeAnchor": "meaning",
     "referenceHint": "24:35",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -2194,16 +1734,11 @@
     "generatedFromId": 31,
     "id": "31-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "24:35",
+    "question": "Where is the ayah for Al-Khabir (The Aware) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 24:35",
     "themeAnchor": "location-and-application",
     "referenceHint": "24:35",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "32-1",
@@ -2221,12 +1756,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "generatedFromId": 32,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 32
   },
   {
     "cat": "quran",
@@ -2241,16 +1771,11 @@
     "generatedFromId": 32,
     "id": "32-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "Surah Al-Waqi'ah — Surah 56. 1) As-Sabiqun (the foremost) 2) Ashab al-Yameen (people of the right) 3) Ashab ash-Shimal (people of the left).",
+    "question": "Linked to Al-Halim (The Forbearing): which surah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-Halim. Anchor answer: Surah Al-Waqi'ah — Surah 56. 1) As-Sabiqun (the foremost) 2) Ashab al-Yameen (people of the right) 3) Ashab ash-Shimal (people of the left).",
     "themeAnchor": "meaning",
     "referenceHint": "",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -2265,16 +1790,11 @@
     "generatedFromId": 32,
     "id": "32-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "Surah Al-Waqi'ah — Surah 56. 1) As-Sabiqun (the foremost) 2) Ashab al-Yameen (people of the right) 3) Ashab ash-Shimal (people of the left).",
+    "question": "Where is the surah for Al-Halim (The Forbearing) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: Surah Al-Waqi'ah — Surah 56. 1) As-Sabiqun (the foremost) 2) Ashab al-Yameen (people of the right) 3) Ashab ash-Shimal (people of the left).",
     "themeAnchor": "location-and-application",
     "referenceHint": "",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "surah-revelation",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   },
   {
     "id": "33-1",
@@ -2292,12 +1812,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "meaning",
     "referenceHint": "9:60",
-    "generatedFromId": 33,
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 33
   },
   {
     "cat": "quran",
@@ -2312,16 +1827,11 @@
     "generatedFromId": 33,
     "id": "33-2",
     "clusterRole": "reinforce",
-    "question": "Which meaning best matches this Quran passage?",
-    "answer": "At-Tawbah 9:60 — poor, needy, administrators, reconciled hearts, freeing slaves, debtors, Allah's cause, stranded traveler.",
+    "question": "Linked to Al-'Azim (The Magnificent): which ayah does this clue point to?",
+    "answer": "Learner explains the meaning and its link to Al-'Azim. Anchor answer: At-Tawbah 9:60 — poor, needy, administrators, reconciled hearts, freeing slaves, debtors, Allah's cause, stranded traveler.",
     "themeAnchor": "meaning",
     "referenceHint": "9:60",
-    "learningTarget": "meaning",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "meaning"
   },
   {
     "cat": "quran",
@@ -2336,15 +1846,10 @@
     "generatedFromId": 33,
     "id": "33-3",
     "clusterRole": "locate-apply",
-    "question": "Which Quran location matches this passage?",
-    "answer": "9:60",
+    "question": "Where is the ayah for Al-'Azim (The Magnificent) found — and what does it call a believer to do?",
+    "answer": "Learner states location and application. Anchor reference: 9:60",
     "themeAnchor": "location-and-application",
     "referenceHint": "9:60",
-    "learningTarget": "location",
-    "deckFocus": "revelation-and-context",
-    "deckLane": "ayah-context",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "location"
   }
 ]

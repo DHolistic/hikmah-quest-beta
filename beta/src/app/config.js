@@ -79,6 +79,20 @@ export const sourceConfig = {
     ],
     deckType: "bank99",
   },
+  special: {
+    id: "special",
+    label: "Seasonal / Special",
+    symbol: "",
+    description: "Focused MCQ packs: Eid al-Adha & Hajj, Eid al-Fitr & Ramadan, and Prophets & Hadith. All questions play in one gathered round.",
+    themeId: "ultimate",
+    variant: "day",
+    deckUrls: [
+      "./content/packs/adha-hajj.json",
+      "./content/packs/fitr-ramadan.json",
+      "./content/packs/prophets-hadiths.json",
+    ],
+    deckType: "seasonal-multi",
+  },
   bonus: {
     id: "bonus",
     label: "Allah's Names Bonus",
@@ -91,7 +105,7 @@ export const sourceConfig = {
   },
 };
 
-export const MAIN_SOURCE_IDS = ["quran", "sunnah", "ummah", "hidayah", "jami"];
+export const MAIN_SOURCE_IDS = ["quran", "sunnah", "ummah", "hidayah", "jami", "special"];
 
 // ─── Label helpers ───────────────────────────────────────────────────────────
 

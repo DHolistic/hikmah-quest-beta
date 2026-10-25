@@ -1,8 +1,14 @@
 {
-  "generatedAt": "2026-05-18T07:15:12.570Z",
+  "generatedAt": "2026-06-18T19:46:58.995Z",
   "source": {
     "legacy297": "/home/matt/DProjects/ilm-quest/cards-297-theme-template.json",
-    "seasonalDir": "/home/matt/DProjects/hikmah-quest-beta/beta/content/packs"
+    "seasonalDir": "/home/matt/DProjects/hikmah-quest-beta/beta/content/packs",
+    "hidayahPacks": [
+      "duas-faith.json",
+      "days-of-hajj.json",
+      "eid-al-adha.json",
+      "eid-al-fitr.json"
+    ]
   },
   "banks": {
     "quran": {
@@ -11,7 +17,9 @@
         "1": 33,
         "2": 33,
         "3": 33
-      }
+      },
+      "uniqueQuestions": 99,
+      "uniqueAnswers": 97
     },
     "sunnah": {
       "total": 99,
@@ -19,7 +27,9 @@
         "1": 33,
         "2": 33,
         "3": 33
-      }
+      },
+      "uniqueQuestions": 99,
+      "uniqueAnswers": 99
     },
     "ummah": {
       "total": 99,
@@ -27,7 +37,9 @@
         "1": 33,
         "2": 33,
         "3": 33
-      }
+      },
+      "uniqueQuestions": 99,
+      "uniqueAnswers": 99
     },
     "hidayah": {
       "total": 99,
@@ -35,7 +47,9 @@
         "1": 33,
         "2": 33,
         "3": 33
-      }
+      },
+      "uniqueQuestions": 99,
+      "uniqueAnswers": 31
     }
   }
 }

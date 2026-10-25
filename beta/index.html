@@ -82,6 +82,13 @@
         </div>
         <div style="display:flex;align-items:center;gap:.5rem;">
           <button
+            id="howto-trigger"
+            class="iq-display-toggle"
+            aria-label="How to Play"
+            title="How to Play"
+            style="font-family:'Lora',serif; font-size:.78rem; letter-spacing:.02em; color:var(--theme-accent); padding:0 .55rem;"
+          >How to Play</button>
+          <button
             id="bsml-trigger"
             class="iq-display-toggle"
             aria-label="Astaghfirullah Correction Space"
@@ -277,6 +284,69 @@
       window.location.href = 'mailto:donyaberhan@gmail.com?subject=' + sub + '&body=' + body;
       closeFeedback();
     });
+  })();
+  </script>
+
+  <div id="howto-overlay" aria-modal="true" role="dialog" aria-label="How to Play" style="
+    display:none; position:fixed; inset:0; z-index:9999;
+    background:rgba(0,0,0,.72); backdrop-filter:blur(5px);
+    align-items:center; justify-content:center;">
+    <div style="
+      background:rgba(7,17,26,.96); border:1px solid rgba(212,175,55,.28);
+      border-radius:14px; padding:1.6rem 1.5rem; max-width:430px; width:92%;
+      max-height:86vh; overflow-y:auto;
+      color:#f0e8d5; font-family:'Lora',serif; box-shadow:0 0 48px rgba(0,0,0,.6);">
+      <div style="text-align:center; font-family:'Scheherazade New',serif; font-size:1.05rem; color:rgba(212,175,55,.55); margin-bottom:.4rem;">بسم الله الرحمن الرحيم</div>
+      <h2 style="text-align:center; font-family:'Cinzel Decorative',serif; font-size:1.2rem; color:#d4af37; margin:.1rem 0 1rem; letter-spacing:.03em;">How to Play</h2>
+
+      <p style="margin:0 0 .9rem; font-size:.84rem; line-height:1.5;">
+        <strong style="color:#d4af37;">Goal:</strong> Pick a realm, work through its cards, and build your score and streak. HQuest is a study game — every card teaches as you play. There's no time pressure unless you turn on a timer.
+      </p>
+
+      <p style="margin:0 0 .35rem; font-size:.84rem; color:#d4af37;"><strong>How a card works</strong></p>
+      <ul style="margin:0 0 .9rem; padding-left:1.1rem; font-size:.82rem; line-height:1.5;">
+        <li>If the card shows choices, <strong>tap the answer</strong> — it scores automatically.</li>
+        <li>Otherwise, tap <strong>Reveal Answer</strong>, then honestly mark <strong>✓ Got It</strong> or <strong>✗ Missed It</strong>.</li>
+        <li><strong>Skip</strong> moves on with no penalty.</li>
+      </ul>
+
+      <p style="margin:0 0 .35rem; font-size:.84rem; color:#d4af37;"><strong>Points</strong></p>
+      <p style="margin:0 0 .9rem; font-size:.82rem; line-height:1.5;">
+        Easy = 1 point · Medium = 2 · Hard = 3. A correct streak builds bonus encouragement; a miss resets the streak.
+      </p>
+
+      <p style="margin:0 0 .35rem; font-size:.84rem; color:#d4af37;"><strong>Realms</strong></p>
+      <p style="margin:0 0 1.1rem; font-size:.82rem; line-height:1.5;">
+        <strong>Quran · Sunnah · Ummah · Hidayah</strong> are subject decks. <strong>Jami'</strong> mixes all of them. <strong>Seasonal / Special</strong> gathers focused packs (Hajj, Ramadan, Prophets &amp; Hadith).
+      </p>
+
+      <div style="display:flex; justify-content:center;">
+        <button id="howto-close" style="
+          background:linear-gradient(135deg,#b8912a,#d4af37); border:none;
+          border-radius:6px; padding:.45rem 1.4rem; color:#07111a;
+          font-size:.82rem; font-weight:700; cursor:pointer; font-family:'Cinzel Decorative',serif;">Begin →</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    var trigger = document.getElementById('howto-trigger');
+    var overlay = document.getElementById('howto-overlay');
+    var closeBtn= document.getElementById('howto-close');
+    function openHowto(){ overlay.style.display = 'flex'; }
+    function closeHowto(){
+      overlay.style.display = 'none';
+      try { localStorage.setItem('hq_howto_seen', '1'); } catch(e){}
+    }
+    if (trigger) trigger.addEventListener('click', openHowto);
+    if (closeBtn) closeBtn.addEventListener('click', closeHowto);
+    overlay.addEventListener('click', function(e){ if(e.target===overlay) closeHowto(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && overlay.style.display==='flex') closeHowto(); });
+    // Auto-show once for first-time players.
+    var seen = false;
+    try { seen = localStorage.getItem('hq_howto_seen') === '1'; } catch(e){}
+    if (!seen) setTimeout(openHowto, 450);
   })();
   </script>
 </body>

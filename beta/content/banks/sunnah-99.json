@@ -15,12 +15,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 34,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 34
   },
   {
     "cat": "sunnah",
@@ -35,16 +30,11 @@
     "generatedFromId": 34,
     "id": "34-2",
     "clusterRole": "reinforce",
-    "question": "Complete this hadith teaching.",
-    "answer": "...intended. (Bukhari 1, Muslim 1907)",
+    "question": "Tied to Al-Ghafur (The Forgiving): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Ghafur. Anchor answer: ...intended. (Bukhari 1, Muslim 1907)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -59,16 +49,11 @@
     "generatedFromId": 34,
     "id": "34-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "...intended. (Bukhari 1, Muslim 1907)",
+    "question": "Name the source of this hadith for Al-Ghafur (The Forgiving) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: ...intended. (Bukhari 1, Muslim 1907)",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "35-1",
@@ -86,12 +71,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 35,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 35
   },
   {
     "cat": "sunnah",
@@ -106,16 +86,11 @@
     "generatedFromId": 35,
     "id": "35-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Half. (Muslim 223)",
+    "question": "Tied to Ash-Shakur (The Appreciative): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Ash-Shakur. Anchor answer: Half. (Muslim 223)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -130,16 +105,11 @@
     "generatedFromId": 35,
     "id": "35-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "Half. (Muslim 223)",
+    "question": "Name the source of this hadith for Ash-Shakur (The Appreciative) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: Half. (Muslim 223)",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "36-1",
@@ -157,12 +127,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 36,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 36
   },
   {
     "cat": "sunnah",
@@ -177,16 +142,11 @@
     "generatedFromId": 36,
     "id": "36-2",
     "clusterRole": "reinforce",
-    "question": "Complete this hadith teaching.",
-    "answer": "...himself. (Bukhari 13, Muslim 45)",
+    "question": "Tied to Al-'Aliy (The Most High): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-'Aliy. Anchor answer: ...himself. (Bukhari 13, Muslim 45)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -201,16 +161,11 @@
     "generatedFromId": 36,
     "id": "36-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "...himself. (Bukhari 13, Muslim 45)",
+    "question": "Name the source of this hadith for Al-'Aliy (The Most High) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: ...himself. (Bukhari 13, Muslim 45)",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "37-1",
@@ -228,12 +183,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 37,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 37
   },
   {
     "cat": "sunnah",
@@ -248,16 +198,11 @@
     "generatedFromId": 37,
     "id": "37-2",
     "clusterRole": "reinforce",
-    "question": "Complete this hadith teaching.",
-    "answer": "...teach it. (Bukhari 5027)",
+    "question": "Tied to Al-Kabir (The Most Great): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Kabir. Anchor answer: ...teach it. (Bukhari 5027)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -272,16 +217,11 @@
     "generatedFromId": 37,
     "id": "37-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "...teach it. (Bukhari 5027)",
+    "question": "Name the source of this hadith for Al-Kabir (The Most Great) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: ...teach it. (Bukhari 5027)",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "38-1",
@@ -299,12 +239,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 38,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 38
   },
   {
     "cat": "sunnah",
@@ -319,16 +254,11 @@
     "generatedFromId": 38,
     "id": "38-2",
     "clusterRole": "reinforce",
-    "question": "Complete this hadith teaching.",
-    "answer": "...charity (sadaqah). (At-Tirmidhi 1956)",
+    "question": "Tied to Al-Hafiz (The Preserver): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Hafiz. Anchor answer: ...charity (sadaqah). (At-Tirmidhi 1956)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -343,16 +273,11 @@
     "generatedFromId": 38,
     "id": "38-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "...charity (sadaqah). (At-Tirmidhi 1956)",
+    "question": "Name the source of this hadith for Al-Hafiz (The Preserver) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: ...charity (sadaqah). (At-Tirmidhi 1956)",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "39-1",
@@ -370,12 +295,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 39,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 39
   },
   {
     "cat": "sunnah",
@@ -390,16 +310,11 @@
     "generatedFromId": 39,
     "id": "39-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "As-salamu alaykum — 'Peace be upon you.' (Muslim 54)",
+    "question": "Tied to Al-Muqit (The Sustainer): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Muqit. Anchor answer: As-salamu alaykum — 'Peace be upon you.' (Muslim 54)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -414,16 +329,11 @@
     "generatedFromId": 39,
     "id": "39-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "As-salamu alaykum — 'Peace be upon you.' (Muslim 54)",
+    "question": "Name the source of this hadith for Al-Muqit (The Sustainer) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: As-salamu alaykum — 'Peace be upon you.' (Muslim 54)",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "40-1",
@@ -441,12 +351,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 40,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 40
   },
   {
     "cat": "sunnah",
@@ -461,16 +366,11 @@
     "generatedFromId": 40,
     "id": "40-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Muhammad ibn Abdullah. 'The Praised One.' Also called Ahmad.",
+    "question": "Tied to Al-Hasib (The Reckoner): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Hasib. Anchor answer: Muhammad ibn Abdullah. 'The Praised One.' Also called Ahmad.",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -485,16 +385,11 @@
     "generatedFromId": 40,
     "id": "40-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "Muhammad ibn Abdullah. 'The Praised One.' Also called Ahmad.",
+    "question": "Name the source of this Seerah point for Al-Hasib (The Reckoner) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: Muhammad ibn Abdullah. 'The Praised One.' Also called Ahmad.",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "41-1",
@@ -512,12 +407,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "96:1",
-    "generatedFromId": 41,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 41
   },
   {
     "cat": "sunnah",
@@ -532,16 +422,11 @@
     "generatedFromId": 41,
     "id": "41-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Cave Hira. 'Iqra!' (Read/Recite) — Surah Al-Alaq 96:1. Age 40.",
+    "question": "Tied to Al-Jalil (The Majestic): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Jalil. Anchor answer: Cave Hira. 'Iqra!' (Read/Recite) — Surah Al-Alaq 96:1. Age 40.",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "96:1",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -556,16 +441,11 @@
     "generatedFromId": 41,
     "id": "41-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "96:1",
+    "question": "Name the source of this Seerah point for Al-Jalil (The Majestic) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: 96:1",
     "themeAnchor": "source-and-practice",
     "referenceHint": "96:1",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "42-1",
@@ -583,12 +463,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 42,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 42
   },
   {
     "cat": "sunnah",
@@ -603,16 +478,11 @@
     "generatedFromId": 42,
     "id": "42-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Migration from Makkah to Madinah — 622 CE. Start of Hijri calendar.",
+    "question": "Tied to Al-Karim (The Generous): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Karim. Anchor answer: Migration from Makkah to Madinah — 622 CE. Start of Hijri calendar.",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -627,16 +497,11 @@
     "generatedFromId": 42,
     "id": "42-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "Migration from Makkah to Madinah — 622 CE. Start of Hijri calendar.",
+    "question": "Name the source of this Seerah point for Al-Karim (The Generous) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: Migration from Makkah to Madinah — 622 CE. Start of Hijri calendar.",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "43-1",
@@ -654,12 +519,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "21:87",
-    "generatedFromId": 43,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 43
   },
   {
     "cat": "sunnah",
@@ -674,16 +534,11 @@
     "generatedFromId": 43,
     "id": "43-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Prophet Yunus AS. 'La ilaha illa anta subhanaka inni kuntu minaz-zalimin' (21:87)",
+    "question": "Tied to Ar-Raqib (The Watchful): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Ar-Raqib. Anchor answer: Prophet Yunus AS. 'La ilaha illa anta subhanaka inni kuntu minaz-zalimin' (21:87)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "21:87",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -698,16 +553,11 @@
     "generatedFromId": 43,
     "id": "43-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "21:87",
+    "question": "Name the source of this Seerah point for Ar-Raqib (The Watchful) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: 21:87",
     "themeAnchor": "source-and-practice",
     "referenceHint": "21:87",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "44-1",
@@ -725,12 +575,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 44,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 44
   },
   {
     "cat": "sunnah",
@@ -745,16 +590,11 @@
     "generatedFromId": 44,
     "id": "44-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Merchant/trader. 'As-Sadiq Al-Ameen' (The Truthful, The Trustworthy).",
+    "question": "Tied to Al-Mujib (The Responsive): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Mujib. Anchor answer: Merchant/trader. 'As-Sadiq Al-Ameen' (The Truthful, The Trustworthy).",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -769,16 +609,11 @@
     "generatedFromId": 44,
     "id": "44-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "Merchant/trader. 'As-Sadiq Al-Ameen' (The Truthful, The Trustworthy).",
+    "question": "Name the source of this Seerah point for Al-Mujib (The Responsive) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: Merchant/trader. 'As-Sadiq Al-Ameen' (The Truthful, The Trustworthy).",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "45-1",
@@ -796,12 +631,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 45,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 45
   },
   {
     "cat": "sunnah",
@@ -816,16 +646,11 @@
     "generatedFromId": 45,
     "id": "45-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Naseeha (Sincere Advice). (Muslim 55)",
+    "question": "Tied to Al-Wasi' (The Vast): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Wasi'. Anchor answer: Naseeha (Sincere Advice). (Muslim 55)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -840,16 +665,11 @@
     "generatedFromId": 45,
     "id": "45-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "Naseeha (Sincere Advice). (Muslim 55)",
+    "question": "Name the source of this hadith for Al-Wasi' (The Vast) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: Naseeha (Sincere Advice). (Muslim 55)",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "46-1",
@@ -867,12 +687,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 46,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 46
   },
   {
     "cat": "sunnah",
@@ -887,16 +702,11 @@
     "generatedFromId": 46,
     "id": "46-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Abu Hurairah — ~5,374 hadiths.",
+    "question": "Tied to Al-Hakim (The Wise): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Hakim. Anchor answer: Abu Hurairah — ~5,374 hadiths.",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -911,16 +721,11 @@
     "generatedFromId": 46,
     "id": "46-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "Abu Hurairah — ~5,374 hadiths.",
+    "question": "Name the source of this hadith for Al-Hakim (The Wise) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: Abu Hurairah — ~5,374 hadiths.",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "47-1",
@@ -938,12 +743,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 47,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 47
   },
   {
     "cat": "sunnah",
@@ -958,16 +758,11 @@
     "generatedFromId": 47,
     "id": "47-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Families (wives). (At-Tirmidhi 3895)",
+    "question": "Tied to Al-Wadud (The Loving): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Wadud. Anchor answer: Families (wives). (At-Tirmidhi 3895)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -982,16 +777,11 @@
     "generatedFromId": 47,
     "id": "47-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "Families (wives). (At-Tirmidhi 3895)",
+    "question": "Name the source of this hadith for Al-Wadud (The Loving) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: Families (wives). (At-Tirmidhi 3895)",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "48-1",
@@ -1009,12 +799,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 48,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 48
   },
   {
     "cat": "sunnah",
@@ -1029,16 +814,11 @@
     "generatedFromId": 48,
     "id": "48-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Sahih Al-Bukhari and Sahih Muslim (Al-Sahihayn).",
+    "question": "Tied to Al-Majid (The Glorious): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Majid. Anchor answer: Sahih Al-Bukhari and Sahih Muslim (Al-Sahihayn).",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -1053,16 +833,11 @@
     "generatedFromId": 48,
     "id": "48-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "Sahih Al-Bukhari and Sahih Muslim (Al-Sahihayn).",
+    "question": "Name the source of this hadith for Al-Majid (The Glorious) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: Sahih Al-Bukhari and Sahih Muslim (Al-Sahihayn).",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "49-1",
@@ -1080,12 +855,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 49,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 49
   },
   {
     "cat": "sunnah",
@@ -1100,16 +870,11 @@
     "generatedFromId": 49,
     "id": "49-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Islam, Iman (Faith), Ihsan (Excellence). (Muslim 8)",
+    "question": "Tied to Al-Ba'ith (The Resurrector): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Ba'ith. Anchor answer: Islam, Iman (Faith), Ihsan (Excellence). (Muslim 8)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -1124,16 +889,11 @@
     "generatedFromId": 49,
     "id": "49-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "Islam, Iman (Faith), Ihsan (Excellence). (Muslim 8)",
+    "question": "Name the source of this hadith for Al-Ba'ith (The Resurrector) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: Islam, Iman (Faith), Ihsan (Excellence). (Muslim 8)",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "50-1",
@@ -1151,12 +911,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 50,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 50
   },
   {
     "cat": "sunnah",
@@ -1171,16 +926,11 @@
     "generatedFromId": 50,
     "id": "50-2",
     "clusterRole": "reinforce",
-    "question": "Complete this hadith teaching.",
-    "answer": "...remain silent. (Bukhari 6018, Muslim 47)",
+    "question": "Tied to Ash-Shahid (The Witness): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Ash-Shahid. Anchor answer: ...remain silent. (Bukhari 6018, Muslim 47)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -1195,16 +945,11 @@
     "generatedFromId": 50,
     "id": "50-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "...remain silent. (Bukhari 6018, Muslim 47)",
+    "question": "Name the source of this hadith for Ash-Shahid (The Witness) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: ...remain silent. (Bukhari 6018, Muslim 47)",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "51-1",
@@ -1222,12 +967,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "4:125",
-    "generatedFromId": 51,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 51
   },
   {
     "cat": "sunnah",
@@ -1242,16 +982,11 @@
     "generatedFromId": 51,
     "id": "51-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Khalilullah — 'Friend of Allah.' (Quran 4:125)",
+    "question": "Tied to Al-Haqq (The Truth): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Haqq. Anchor answer: Khalilullah — 'Friend of Allah.' (Quran 4:125)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "4:125",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -1266,16 +1001,11 @@
     "generatedFromId": 51,
     "id": "51-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "4:125",
+    "question": "Name the source of this Seerah point for Al-Haqq (The Truth) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: 4:125",
     "themeAnchor": "source-and-practice",
     "referenceHint": "4:125",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "52-1",
@@ -1293,12 +1023,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 52,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 52
   },
   {
     "cat": "sunnah",
@@ -1313,16 +1038,11 @@
     "generatedFromId": 52,
     "id": "52-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Night journey to Al-Aqsa + ascent through heavens. 5 daily prayers made obligatory.",
+    "question": "Tied to Al-Wakil (The Trustee): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Wakil. Anchor answer: Night journey to Al-Aqsa + ascent through heavens. 5 daily prayers made obligatory.",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -1337,16 +1057,11 @@
     "generatedFromId": 52,
     "id": "52-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "Night journey to Al-Aqsa + ascent through heavens. 5 daily prayers made obligatory.",
+    "question": "Name the source of this Seerah point for Al-Wakil (The Trustee) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: Night journey to Al-Aqsa + ascent through heavens. 5 daily prayers made obligatory.",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "53-1",
@@ -1364,12 +1079,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "3:1",
-    "generatedFromId": 53,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 53
   },
   {
     "cat": "sunnah",
@@ -1384,16 +1094,11 @@
     "generatedFromId": 53,
     "id": "53-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "313 Muslims defeated ~1,000 Quraysh (3:1 odds). Angels sent to assist.",
+    "question": "Tied to Al-Qawiy (The Strong): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Qawiy. Anchor answer: 313 Muslims defeated ~1,000 Quraysh (3:1 odds). Angels sent to assist.",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "3:1",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -1408,16 +1113,11 @@
     "generatedFromId": 53,
     "id": "53-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "3:1",
+    "question": "Name the source of this Seerah point for Al-Qawiy (The Strong) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: 3:1",
     "themeAnchor": "source-and-practice",
     "referenceHint": "3:1",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "54-1",
@@ -1435,12 +1135,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "48:1",
-    "generatedFromId": 54,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 54
   },
   {
     "cat": "sunnah",
@@ -1455,16 +1150,11 @@
     "generatedFromId": 54,
     "id": "54-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Peace treaty (6 AH). Quran called it 'a clear victory' (48:1). Islam spread massively after.",
+    "question": "Tied to Al-Matin (The Firm): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Matin. Anchor answer: Peace treaty (6 AH). Quran called it 'a clear victory' (48:1). Islam spread massively after.",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "48:1",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -1479,16 +1169,11 @@
     "generatedFromId": 54,
     "id": "54-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "48:1",
+    "question": "Name the source of this Seerah point for Al-Matin (The Firm) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: 48:1",
     "themeAnchor": "source-and-practice",
     "referenceHint": "48:1",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "55-1",
@@ -1506,12 +1191,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 55,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 55
   },
   {
     "cat": "sunnah",
@@ -1526,16 +1206,11 @@
     "generatedFromId": 55,
     "id": "55-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Wife: Khadijah. Daughter: Zainab. Buried in Madinah (Masjid an-Nabawi).",
+    "question": "Tied to Al-Waliy (The Protecting Friend): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Waliy. Anchor answer: Wife: Khadijah. Daughter: Zainab. Buried in Madinah (Masjid an-Nabawi).",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -1550,16 +1225,11 @@
     "generatedFromId": 55,
     "id": "55-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "Wife: Khadijah. Daughter: Zainab. Buried in Madinah (Masjid an-Nabawi).",
+    "question": "Name the source of this Seerah point for Al-Waliy (The Protecting Friend) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: Wife: Khadijah. Daughter: Zainab. Buried in Madinah (Masjid an-Nabawi).",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "56-1",
@@ -1577,12 +1247,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 56,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 56
   },
   {
     "cat": "sunnah",
@@ -1597,16 +1262,11 @@
     "generatedFromId": 56,
     "id": "56-2",
     "clusterRole": "reinforce",
-    "question": "Complete this hadith teaching.",
-    "answer": "...the most consistent, even if they are small. (Bukhari 6465)",
+    "question": "Tied to Al-Hamid (The Praiseworthy): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Hamid. Anchor answer: ...the most consistent, even if they are small. (Bukhari 6465)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -1621,16 +1281,11 @@
     "generatedFromId": 56,
     "id": "56-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "...the most consistent, even if they are small. (Bukhari 6465)",
+    "question": "Name the source of this hadith for Al-Hamid (The Praiseworthy) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: ...the most consistent, even if they are small. (Bukhari 6465)",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "57-1",
@@ -1648,12 +1303,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 57,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 57
   },
   {
     "cat": "sunnah",
@@ -1668,16 +1318,11 @@
     "generatedFromId": 57,
     "id": "57-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "1) Return salaam 2) Accept invitations 3) Give advice 4) Yarhamukallah at sneeze 5) Visit sick 6) Follow funeral. (Muslim 2162)",
+    "question": "Tied to Al-Muhsi (The Counter): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Muhsi. Anchor answer: 1) Return salaam 2) Accept invitations 3) Give advice 4) Yarhamukallah at sneeze 5) Visit sick 6) Follow funeral. (Muslim 2162)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -1692,16 +1337,11 @@
     "generatedFromId": 57,
     "id": "57-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "1) Return salaam 2) Accept invitations 3) Give advice 4) Yarhamukallah at sneeze 5) Visit sick 6) Follow funeral. (Muslim 2162)",
+    "question": "Name the source of this hadith for Al-Muhsi (The Counter) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: 1) Return salaam 2) Accept invitations 3) Give advice 4) Yarhamukallah at sneeze 5) Visit sick 6) Follow funeral. (Muslim 2162)",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "58-1",
@@ -1719,12 +1359,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 58,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 58
   },
   {
     "cat": "sunnah",
@@ -1739,16 +1374,11 @@
     "generatedFromId": 58,
     "id": "58-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Major shirk, mocking religion, believing another's guidance surpasses the Prophet's, supporting polytheists against Muslims, hating any part of the message.",
+    "question": "Tied to Al-Mubdi' (The Originator): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Mubdi'. Anchor answer: Major shirk, mocking religion, believing another's guidance surpasses the Prophet's, supporting polytheists against Muslims, hating any part of the message.",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -1763,16 +1393,11 @@
     "generatedFromId": 58,
     "id": "58-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "Major shirk, mocking religion, believing another's guidance surpasses the Prophet's, supporting polytheists against Muslims, hating any part of the message.",
+    "question": "Name the source of this hadith for Al-Mubdi' (The Originator) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: Major shirk, mocking religion, believing another's guidance surpasses the Prophet's, supporting polytheists against Muslims, hating any part of the message.",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "59-1",
@@ -1790,12 +1415,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 59,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 59
   },
   {
     "cat": "sunnah",
@@ -1810,16 +1430,11 @@
     "generatedFromId": 59,
     "id": "59-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "1) Bukhari 2) Muslim 3) Abu Dawud 4) At-Tirmidhi 5) An-Nasa'i 6) Ibn Majah",
+    "question": "Tied to Al-Mu'id (The Restorer): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Mu'id. Anchor answer: 1) Bukhari 2) Muslim 3) Abu Dawud 4) At-Tirmidhi 5) An-Nasa'i 6) Ibn Majah",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -1834,16 +1449,11 @@
     "generatedFromId": 59,
     "id": "59-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "1) Bukhari 2) Muslim 3) Abu Dawud 4) At-Tirmidhi 5) An-Nasa'i 6) Ibn Majah",
+    "question": "Name the source of this hadith for Al-Mu'id (The Restorer) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: 1) Bukhari 2) Muslim 3) Abu Dawud 4) At-Tirmidhi 5) An-Nasa'i 6) Ibn Majah",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "60-1",
@@ -1861,12 +1471,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 60,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 60
   },
   {
     "cat": "sunnah",
@@ -1881,16 +1486,11 @@
     "generatedFromId": 60,
     "id": "60-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "1) Victory through awe 2) Earth made a place of prayer 3) War booty lawful 4) Intercession 5) Sent to all mankind. (Bukhari 335)",
+    "question": "Tied to Al-Muhyi (The Giver of Life): which teaching does this hadith convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Muhyi. Anchor answer: 1) Victory through awe 2) Earth made a place of prayer 3) War booty lawful 4) Intercession 5) Sent to all mankind. (Bukhari 335)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -1905,16 +1505,11 @@
     "generatedFromId": 60,
     "id": "60-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "1) Victory through awe 2) Earth made a place of prayer 3) War booty lawful 4) Intercession 5) Sent to all mankind. (Bukhari 335)",
+    "question": "Name the source of this hadith for Al-Muhyi (The Giver of Life) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: 1) Victory through awe 2) Earth made a place of prayer 3) War booty lawful 4) Intercession 5) Sent to all mankind. (Bukhari 335)",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "hadith-meaning",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "61-1",
@@ -1932,12 +1527,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "46:35",
-    "generatedFromId": 61,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 61
   },
   {
     "cat": "sunnah",
@@ -1952,16 +1542,11 @@
     "generatedFromId": 61,
     "id": "61-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Muhammad, Ibrahim, Musa, Isa, Nuh. (Quran 46:35, 33:7)",
+    "question": "Tied to Al-Mumit (The Creator of Death): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Mumit. Anchor answer: Muhammad, Ibrahim, Musa, Isa, Nuh. (Quran 46:35, 33:7)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "46:35",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -1976,16 +1561,11 @@
     "generatedFromId": 61,
     "id": "61-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "46:35",
+    "question": "Name the source of this Seerah point for Al-Mumit (The Creator of Death) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: 46:35",
     "themeAnchor": "source-and-practice",
     "referenceHint": "46:35",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "62-1",
@@ -2003,12 +1583,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 62,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 62
   },
   {
     "cat": "sunnah",
@@ -2023,16 +1598,11 @@
     "generatedFromId": 62,
     "id": "62-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "13 years Makkah (610-622 CE), 10 years Madinah (622-632 CE). Born ~570 CE, died age 63.",
+    "question": "Tied to Al-Hayy (The Ever Living): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Hayy. Anchor answer: 13 years Makkah (610-622 CE), 10 years Madinah (622-632 CE). Born ~570 CE, died age 63.",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -2047,16 +1617,11 @@
     "generatedFromId": 62,
     "id": "62-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "13 years Makkah (610-622 CE), 10 years Madinah (622-632 CE). Born ~570 CE, died age 63.",
+    "question": "Name the source of this Seerah point for Al-Hayy (The Ever Living) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: 13 years Makkah (610-622 CE), 10 years Madinah (622-632 CE). Born ~570 CE, died age 63.",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "63-1",
@@ -2074,12 +1639,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "3:152",
-    "generatedFromId": 63,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 63
   },
   {
     "cat": "sunnah",
@@ -2094,16 +1654,11 @@
     "generatedFromId": 63,
     "id": "63-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Archers left posts, Quraysh counter-attacked. 70 martyred including Hamza. Lesson: obey the Prophet's commands. (Quran 3:152)",
+    "question": "Tied to Al-Qayyum (The Self-Subsisting): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Qayyum. Anchor answer: Archers left posts, Quraysh counter-attacked. 70 martyred including Hamza. Lesson: obey the Prophet's commands. (Quran 3:152)",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "3:152",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -2118,16 +1673,11 @@
     "generatedFromId": 63,
     "id": "63-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "3:152",
+    "question": "Name the source of this Seerah point for Al-Qayyum (The Self-Subsisting) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: 3:152",
     "themeAnchor": "source-and-practice",
     "referenceHint": "3:152",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "64-1",
@@ -2145,12 +1695,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 64,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 64
   },
   {
     "cat": "sunnah",
@@ -2165,16 +1710,11 @@
     "generatedFromId": 64,
     "id": "64-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Arafah, final Hajj (10 AH). All people equal by taqwa, riba abolished, treat women well, hold to Quran and Sunnah.",
+    "question": "Tied to Al-Wajid (The Finder): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Wajid. Anchor answer: Arafah, final Hajj (10 AH). All people equal by taqwa, riba abolished, treat women well, hold to Quran and Sunnah.",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -2189,16 +1729,11 @@
     "generatedFromId": 64,
     "id": "64-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "Arafah, final Hajj (10 AH). All people equal by taqwa, riba abolished, treat women well, hold to Quran and Sunnah.",
+    "question": "Name the source of this Seerah point for Al-Wajid (The Finder) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: Arafah, final Hajj (10 AH). All people equal by taqwa, riba abolished, treat women well, hold to Quran and Sunnah.",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "65-1",
@@ -2216,12 +1751,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 65,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 65
   },
   {
     "cat": "sunnah",
@@ -2236,16 +1766,11 @@
     "generatedFromId": 65,
     "id": "65-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "Musa: parting Red Sea. Isa: raising the dead. Muhammad: the Quran itself.",
+    "question": "Tied to Al-Majeed (The Noble): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Majeed. Anchor answer: Musa: parting Red Sea. Isa: raising the dead. Muhammad: the Quran itself.",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -2260,16 +1785,11 @@
     "generatedFromId": 65,
     "id": "65-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "Musa: parting Red Sea. Isa: raising the dead. Muhammad: the Quran itself.",
+    "question": "Name the source of this Seerah point for Al-Majeed (The Noble) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: Musa: parting Red Sea. Isa: raising the dead. Muhammad: the Quran itself.",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   },
   {
     "id": "66-1",
@@ -2287,12 +1807,7 @@
     "templateStatus": "approved-pending",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "generatedFromId": 66,
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "easy",
-    "questionStyle": "easy",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "generatedFromId": 66
   },
   {
     "cat": "sunnah",
@@ -2307,16 +1822,11 @@
     "generatedFromId": 66,
     "id": "66-2",
     "clusterRole": "reinforce",
-    "question": "Which answer best matches this hadith teaching?",
-    "answer": "~619 CE. Lost Khadijah (wife) and Abu Talib (uncle/protector) within weeks.",
+    "question": "Tied to Al-Wahid (The One): which teaching does this Seerah point convey?",
+    "answer": "Learner summarizes the hadith theme linked to Al-Wahid. Anchor answer: ~619 CE. Lost Khadijah (wife) and Abu Talib (uncle/protector) within weeks.",
     "themeAnchor": "hadith-meaning",
     "referenceHint": "",
-    "learningTarget": "hadith-understanding",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "medium",
-    "questionStyle": "medium",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "hadith-understanding"
   },
   {
     "cat": "sunnah",
@@ -2331,15 +1841,10 @@
     "generatedFromId": 66,
     "id": "66-3",
     "clusterRole": "source-practice",
-    "question": "Which source best matches this hadith teaching?",
-    "answer": "~619 CE. Lost Khadijah (wife) and Abu Talib (uncle/protector) within weeks.",
+    "question": "Name the source of this Seerah point for Al-Wahid (The One) and how to act on it.",
+    "answer": "Learner gives source and practice. Anchor reference: ~619 CE. Lost Khadijah (wife) and Abu Talib (uncle/protector) within weeks.",
     "themeAnchor": "source-and-practice",
     "referenceHint": "",
-    "learningTarget": "trusted-source",
-    "deckFocus": "meaning-and-theme",
-    "deckLane": "seerah-and-example",
-    "difficulty": "hard",
-    "questionStyle": "hard",
-    "systemVersion": "hq-4-deck-reallocation-v1"
+    "learningTarget": "trusted-source"
   }
 ]

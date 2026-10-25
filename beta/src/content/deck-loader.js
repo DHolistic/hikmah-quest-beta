@@ -35,6 +35,10 @@ function sanitizeLegacyAnswer(answerText) {
     .trim();
 }
 
+// Detects ONLY the old generic authoring-template stems (the verbose
+// "Reinforce X: ..." / "Locate and apply X: ..." boilerplate). It must not match
+// legitimate authored questions that happen to ask a learner to explain meaning,
+// otherwise those real prompts get flattened to a generic stem.
 function isAuthoringStylePrompt(promptText) {
   const text = String(promptText ?? "").toLowerCase();
   return (
@@ -44,9 +48,7 @@ function isAuthoringStylePrompt(promptText) {
     text.includes("restate this hadith teaching") ||
     text.includes("what key seerah/history lesson") ||
     text.includes("what practical lesson") ||
-    text.includes("locate and apply") ||
-    text.includes("explain what it means") ||
-    text.includes("verify meaning")
+    text.includes("locate and apply")
   );
 }
 
@@ -276,6 +278,16 @@ function applyMeaningAnchorBehavior(card) {
   return card;
 }
 
+// Preserve an authored prompt verbatim when one exists and is not generic
+// authoring-template text. Only fall back to a generated stem otherwise. This
+// stops the runtime from collapsing distinct, subject-specific bank prompts back
+// into a single repeated sentence.
+function preferAuthoredPrompt(card, generatedStem) {
+  const authored = String(card.promptText || "").trim();
+  if (authored && !isAuthoringStylePrompt(authored)) return authored;
+  return generatedStem;
+}
+
 function buildLegacyPrompt(card) {
   const lane = String(card.deckLane || "").toLowerCase();
   const subTheme = String(card.subTheme || "").toLowerCase();
@@ -374,7 +386,7 @@ function applySunnahHardPatterns(card, selectedCards, allCards) {
     const options = shuffleDeck([correct, ...distractors]);
     return {
       ...card,
-      promptText: "Complete this hadith teaching.",
+      promptText: preferAuthoredPrompt(card, "Complete this hadith teaching."),
       promptSupportText: buildSunnahSourceChoice(card),
       questionMode: "multiple-choice",
       questionType: "fill-blank",
@@ -397,6 +409,8 @@ function applySunnahHardPatterns(card, selectedCards, allCards) {
   const options = shuffleDeck([correct, ...distractors]);
   return {
     ...card,
+    // This override changes the question into a source-matching MCQ (answer and
+    // options are hadith sources), so it keeps its own source-focused prompt.
     promptText: "Which source best matches this hadith teaching?",
     promptSupportText: card.answerText || "",
     answerText: correct,
@@ -429,7 +443,7 @@ function applyHidayahHardPatterns(card, selectedCards, allCards) {
     const options = shuffleDeck([correct, ...distractors]);
     return {
       ...card,
-      promptText: "Complete this guidance teaching.",
+      promptText: preferAuthoredPrompt(card, "Complete this guidance teaching."),
       promptSupportText: buildLegacyPromptSupport(card),
       questionMode: "multiple-choice",
       questionType: "fill-blank",
@@ -447,7 +461,7 @@ function applyHidayahHardPatterns(card, selectedCards, allCards) {
   const options = shuffleDeck([correct, ...distractors]);
   return {
     ...card,
-    promptText: "Which guidance answer best matches this prompt?",
+    promptText: preferAuthoredPrompt(card, "Which guidance answer best matches this prompt?"),
     promptSupportText: buildLegacyPromptSupport(card),
     questionMode: "multiple-choice",
     questionType: "multiple-choice",
@@ -560,6 +574,7 @@ function applyQuranMultipleChoice(card, selectedCards, allCards) {
     const options = shuffleDeck([correct, ...distractors]);
     return {
       ...card,
+      // Answer becomes a location choice, so this keeps its location prompt.
       promptText: "Which Quran location matches this passage?",
       promptSupportText: card.translationText || "",
       answerText: correct,
@@ -581,6 +596,7 @@ function applyQuranMultipleChoice(card, selectedCards, allCards) {
     const options = shuffleDeck([correct, ...distractors]);
     return {
       ...card,
+      // Answer becomes a passage-completion choice, so this keeps its own prompt.
       promptText: "Which phrase best completes this Quran passage?",
       promptArabicText: buildArabicPromptWithBlank(card.arabicText || card.promptArabicText || ""),
       promptSupportText: card.translationText || "",
@@ -603,7 +619,7 @@ function applyQuranMultipleChoice(card, selectedCards, allCards) {
 
   return {
     ...card,
-    promptText: "Which meaning best matches this Quran passage?",
+    promptText: preferAuthoredPrompt(card, "Which meaning best matches this Quran passage?"),
     answerText: correct,
     answerChoice: correct,
     questionMode: "multiple-choice",
@@ -633,7 +649,7 @@ function applyQuranStudyCard(card, selectedCards, allCards, quranLookup) {
     if (!correct) {
       return {
         ...card,
-        promptText: "Which meaning best matches this Quran passage?",
+        promptText: preferAuthoredPrompt(card, "Which meaning best matches this Quran passage?"),
         promptSupportText: "",
         questionMode: "multiple-choice",
         questionType: "multiple-choice",
@@ -650,7 +666,7 @@ function applyQuranStudyCard(card, selectedCards, allCards, quranLookup) {
       : null;
     return {
       ...card,
-      promptText: "Which meaning best matches this Quran passage?",
+      promptText: preferAuthoredPrompt(card, "Which meaning best matches this Quran passage?"),
       promptSupportText: "",
       answerText: correct,
       answerChoice: correct,
@@ -1001,6 +1017,19 @@ export async function loadDeck(config, difficulty = "medium") {
       return shapeLegacyDeck(selected, all, difficulty);
     }
 
+    if (config.deckType === "seasonal-multi") {
+      // Several authored MCQ packs gathered into one round (like the bonus round,
+      // every question plays regardless of the selected difficulty tier).
+      const urls = Array.isArray(config.deckUrls) ? config.deckUrls : [config.deckUrl].filter(Boolean);
+      const packs = await Promise.all(urls.map(fetchJson));
+      const cards = packs.flatMap(data =>
+        Array.isArray(data)
+          ? data.map(card => normalizeSeasonalCard(card, config, card.difficulty || difficulty))
+          : []
+      );
+      return shuffleDeck(cards);
+    }
+
     if (config.deckType === "seasonal-pack") {
       const data = await fetchJson(config.deckUrl);
       const triviaCards = Array.isArray(data)
@@ -1059,6 +1088,16 @@ export async function loadDeckForReview(config) {
       const decks = await Promise.all(urls.map(fetchJson));
       const all = decks.flatMap(flattenSinglePassDeck);
       return shapeLegacyDeckForReview(all, all);
+    }
+
+    if (config.deckType === "seasonal-multi") {
+      const urls = Array.isArray(config.deckUrls) ? config.deckUrls : [config.deckUrl].filter(Boolean);
+      const packs = await Promise.all(urls.map(fetchJson));
+      return packs.flatMap(data =>
+        Array.isArray(data)
+          ? data.map(card => normalizeSeasonalCard(card, config, card.difficulty || "medium"))
+          : []
+      );
     }
 
     if (config.deckType === "seasonal-pack") {

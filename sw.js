@@ -1,4 +1,4 @@
-const CACHE = 'hikmah-quest-v10';
+const CACHE = 'hikmah-quest-v11';
 const RUNTIME_CACHE = 'hikmah-quest-runtime-v1';
 const ASSETS = [
   './beta/index.html',
@@ -12,6 +12,14 @@ const ASSETS = [
   './beta/donation.html',
   './beta/beta-participation.html',
   './beta/cards-99.json',
+  './beta/content/banks/quran-99.json',
+  './beta/content/banks/sunnah-99.json',
+  './beta/content/banks/ummah-99.json',
+  './beta/content/banks/hidayah-99.json',
+  './beta/content/packs/allah-names-finale.json',
+  './beta/content/packs/adha-hajj.json',
+  './beta/content/packs/fitr-ramadan.json',
+  './beta/content/packs/prophets-hadiths.json',
   './quran-repository.json',
   './manifest.json',
   './card-back.avif',
